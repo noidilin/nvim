@@ -1,0 +1,65 @@
+local lush = require("lush")
+local hsl = lush.hsl
+
+return {
+	mono25 = hsl("#eaeaea"),
+	mono24 = hsl("#dcdcdc"),
+	mono23 = hsl("#cccccc"),
+	mono22 = hsl("#c0c0c0"),
+	mono21 = hsl("#b3b3b3"), -- text
+	mono20 = hsl("#aaaaaa"),
+	mono19 = hsl("#9d9d9d"), -- subtext1
+	mono18 = hsl("#8e8e8e"),
+	mono17 = hsl("#878787"), -- subtext0
+	mono16 = hsl("#7f7f7f"),
+	mono15 = hsl("#707070"), -- overlay2
+	mono14 = hsl("#686868"),
+	mono13 = hsl("#5d5d5d"), -- overlay1
+	mono12 = hsl("#555555"),
+	mono11 = hsl("#4e4e4e"), -- overlay0
+	mono10 = hsl("#474747"),
+	mono09 = hsl("#414141"), -- surface2
+	mono08 = hsl("#3a3a3a"),
+	mono07 = hsl("#353535"), -- surface1
+	mono06 = hsl("#303030"),
+	mono05 = hsl("#2a2a2a"), -- surface0
+	mono04 = hsl("#242424"),
+	mono03 = hsl("#1e1e1e"), -- base
+	mono02 = hsl("#191919"), -- mantle
+	mono01 = hsl("#151515"), -- crust
+	mono00 = hsl("#101010"),
+
+	acc08 = hsl("#faf5eb"),
+	acc07 = hsl("#dad5c8"),
+	acc06 = hsl("#c0baad"),
+	acc05 = hsl("#b3ad9f"),
+	acc04 = hsl("#a69f91"),
+	acc03 = hsl("#9a9487"),
+	acc02 = hsl("#8e897d"),
+	acc01 = hsl("#7f7b70"),
+	acc00 = hsl("#706c62"),
+	acc_dim08 = hsl("#f7f4ed"),
+	acc_dim07 = hsl("#d6d3cc"),
+	acc_dim06 = hsl("#bdbab2"),
+	acc_dim05 = hsl("#b4b0a7"),
+	acc_dim04 = hsl("#a19d97"),
+	acc_dim03 = hsl("#97948c"),
+	acc_dim02 = hsl("#8e8b85"),
+	acc_dim01 = hsl("#7b7974"),
+	acc_dim00 = hsl("#6c6a65"),
+
+	red01 = hsl("#cc9393"),
+	red00 = hsl("#b07878"),
+	green01 = hsl("#9bb09b"),
+	green00 = hsl("#778777"),
+	yellow01 = hsl("#ebd6b7"),
+	yellow00 = hsl("#d6caab"),
+	blue01 = hsl("#9db2cf"),
+	blue00 = hsl("#7d96ad"),
+	magenta01 = hsl("#9f9fbd"),
+	magenta00 = hsl("#797994"),
+	cyan01 = hsl("#92b3b3"),
+	cyan00 = hsl("#769494"),
+	orange01 = hsl("#dcb5a5"),
+	orange00 = hsl("#c8a492"),
+}
