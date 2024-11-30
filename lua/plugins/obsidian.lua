@@ -1,42 +1,28 @@
+-- Try to resolve the real path of the vault
+local VAULT_PATH = vim.uv.fs_realpath(vim.fn.expand("$XDG_DATA_HOME/obsidian"))
+
+-- Fallback to a default value if VAULT_PATH is nil
+if not VAULT_PATH then
+	vim.notify("Vault path not found. Using fallback path.", vim.log.levels.WARN)
+	VAULT_PATH = "" -- Set a reasonable default here
+else
+	-- Normalize slashes to forward slashes
+	VAULT_PATH = VAULT_PATH:gsub("\\", "/")
+end
+
+local MD_PATH = VAULT_PATH .. "/**.md"
+
 return {
 	"epwalsh/obsidian.nvim",
-	-- enabled = false,
 	version = "*", -- recommended, use latest release instead of latest commit
 	lazy = true,
-	-- ft = "markdown",
-	-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-	-- event = {
-	--   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-	--   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-	--   "BufReadPre path/to/my-vault/**.md",
-	--   "BufNewFile path/to/my-vault/**.md",
-	-- },
-	cmd = {
-		"ObsidianNew",
-		"ObsidianLinks",
-		"ObsidianBacklinks",
-		"ObsidianToday",
-		"ObsidianDailies",
-		"ObsidianTemplate",
-		"ObsidianNewFromTemplate",
-		"ObsidianExtractNote",
-		"ObsidianPasteImg",
-		"ObsidianRename",
-		"ObsidianFollowLink",
-		"ObsidianTags",
-		-- "ObsidianOpen",
-		-- "ObsidianQuickSwitch",
-		-- "ObsidianSearch",
-		-- "ObsidianLink",
-		-- "ObsidianLinkNew",
-		-- "ObsidianYesterday",
-		-- "ObsidianTomorrow",
-		-- "ObsidianWorkspace",
-		-- "ObsidianTOC",
+	-- C:/Users/noid/.local/share/obsidian/**.md
+	-- D:/area/obsidian/**.md
+	event = {
+		"BufReadPre " .. MD_PATH,
+		"BufNewFile " .. MD_PATH,
 	},
-	dependencies = {
-		"nvim-lua/plenary.nvim", -- Required.
-	},
+	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
 		{ "<leader>n", "", desc = "Obsidian" },
 		-- note that `<cmd>ObsidianExtractNote<cr>` and `:ObsidianExtractNote<cr>` are not equal.
@@ -60,11 +46,9 @@ return {
 		workspaces = {
 			{
 				name = "obsidian",
-				path = "D:\\area\\obsidian",
-				-- Optional, override certain settings.
-				overrides = {
-					notes_subdir = "source",
-				},
+				-- path = "D:/area/obsidian",
+				path = vim.fn.expand("$XDG_DATA_HOME") .. "/obsidian",
+				overrides = {},
 			},
 		},
 
