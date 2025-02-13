@@ -135,7 +135,7 @@ local theme = lush(function(injected_functions)
 		TabLineSel { fg = p.mono02, bg = p.mono16 }, -- Tab pages line, active tab page label
 		ToolbarButton { fg = p.mono02, bg = p.mono07 },
 		ToolbarLine { fg = p.mono16 },
-		Title { fg = p.acc_dim02 }, -- Titles for output from ":set all", ":autocmd"
+		Title { fg = p.mono10 }, -- Titles for output from ":set all", ":autocmd"
 		Visual { fg = p.mono16, bg = p.mono07 }, -- Visual mode selection
 		VisualNOS { bg = p.mono12, gui = "underline" }, -- Visual mode selection when vim is "Not Owning the Selection".
 		WarningMsg { fg = p.orange00, gui = "bold" }, -- Warning messages
@@ -435,18 +435,18 @@ local theme = lush(function(injected_functions)
 		-- See :h diagnostic-highlights
 		DiagnosticError { fg = p.red00, gui = "bold" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticWarn { fg = p.orange00 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticInfo { fg = p.yellow00, fmt = "italic" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticInfo { fg = p.acc_dim02, fmt = "italic" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticHint { fg = p.acc02 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticOk { fg = p.green00 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticVirtualTextError { fg = p.red00, gui = "bold" }, -- Used for "Error" diagnostic virtual text.
 		DiagnosticVirtualTextWarn { fg = p.orange00 }, -- Used for "Warn" diagnostic virtual text.
-		DiagnosticVirtualTextInfo { fg = p.acc02 }, -- Used for "Info" diagnostic virtual text.
+		DiagnosticVirtualTextInfo { fg = p.acc_dim02 }, -- Used for "Info" diagnostic virtual text.
 		DiagnosticVirtualTextHint { fg = p.acc02 }, -- Used for "Hint" diagnostic virtual text.
 		DiagnosticVirtualTextOk { fg = p.green00 }, -- Used for "Ok" diagnostic virtual text.
 		-- TODO: what is sp
 		DiagnosticUnderlineError { gui = "underline", sp = p.red00 }, -- Used to underline "Error" diagnostics.
 		DiagnosticUnderlineWarn { gui = "underline", sp = p.yellow00 }, -- Used to underline "Warn" diagnostics.
-		DiagnosticUnderlineInfo { gui = "underline", sp = p.acc02 }, -- Used to underline "Info" diagnostics.
+		DiagnosticUnderlineInfo { gui = "underline", sp = p.acc_dim02 }, -- Used to underline "Info" diagnostics.
 		DiagnosticUnderlineHint { gui = "underline", sp = p.acc02 }, -- Used to underline "Hint" diagnostics.
 		DiagnosticUnderlineOk { gui = "underline", sp = p.green00 }, -- Used to underline "Ok" diagnostics.
 		-- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
@@ -663,6 +663,19 @@ local theme = lush(function(injected_functions)
 		TelescopeSelectionCaret { fg = p.mono25 },
 		TelescopeResultsNormal { fg = p.mono15 },
 
+		-- fzf-lua
+		FzfLuaHeaderBind { fg = p.acc_dim07 },
+		FzfLuaHeaderText { fg = p.mono23 },
+		FzfLuaPathColNr { fg = p.mono11 },
+		FzfLuaPathLineNr { fg = p.mono11 },
+		FzfLuaLivePrompt { fg = p.acc05 },
+		FzfLuaLiveSym { fg = p.acc05 },
+		FzfLuaTabTitle { fg = p.mono15, gui = "bold" },
+		FzfLuaTabMarker { fg = p.acc_dim05, gui = "bold" },
+		FzfLuaBufFlagCur { fg = p.orange00 },
+		FzfLuaBufFlagAlt { fg = p.yellow00 },
+		FzfLuaBufNr { fg = p.acc_dim05 },
+
 		-- flash
 		FlashBackdrop { fg = p.mono10 },
 		FlashCurrent { fg = p.mono01, bg = p.mono17, gui = "bold" },
@@ -708,6 +721,19 @@ local theme = lush(function(injected_functions)
 		-- RenderMarkdownChecked {  },
 		-- RenderMarkdownUnchecked {  },
 		-- RenderMarkdownTodo {  },
+
+		-- obsidian
+		ObsidianTodo { fg = p.acc06, gui = "bold" },
+		ObsidianDone { fg = p.mono15, gui = "bold" },
+		ObsidianRightArrow { fg = p.acc06, gui = "bold" },
+		ObsidianTilde { fg = p.red01, gui = "bold" },
+		ObsidianImportant { fg = p.red00, gui = "bold" },
+		ObsidianBullet { fg = p.mono15, gui = "bold" },
+		ObsidianRefText { fg = p.mono19, gui = "underline" },
+		ObsidianExtLinkIcon { fg = p.acc05 },
+		ObsidianTag { fg = p.mono07, bg = p.mono00, gui = "italic" },
+		ObsidianBlockID { fg = p.mono07, gui = "italic" },
+		ObsidianHighlightText { bg = p.mono09 },
 
 		-- dashboard
 		DashboardHeader { FloatTitle },
