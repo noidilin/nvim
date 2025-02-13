@@ -22,32 +22,41 @@ return {
 		"BufReadPre " .. MD_PATH,
 		"BufNewFile " .. MD_PATH,
 	},
-	dependencies = { "nvim-lua/plenary.nvim" },
-	keys = {
-		{ "<leader>n", "", desc = "Obsidian" },
-		-- note that `<cmd>ObsidianExtractNote<cr>` and `:ObsidianExtractNote<cr>` are not equal.
-		{ "<leader>n", ":ObsidianExtractNote<cr>", mode = "v", desc = "Extract Selected" },
-		{ "<leader>nc", ":ObsidianNew<cr>", desc = "New File" },
-		{ "<leader>n]", ":ObsidianLinks<cr>", desc = "Links" },
-		{ "<leader>n[", ":ObsidianBacklinks<cr>", desc = "Backlinks" },
-		{ "<leader>nd", ":ObsidianToday<cr>", desc = "Daily" },
-		{ "<leader>nD", ":ObsidianDailies -6 0<cr>", desc = "Last Week" },
-		{ "<leader>nt", ":ObsidianTemplate<cr>", desc = "Template Snippet" },
-		{ "<leader>nT", ":ObsidianNewFromTemplate<cr>", desc = "Template File" },
-		{ "<leader>np", ":ObsidianPasteImg<cr>", desc = "Paste Img" },
-		{ "<leader>nr", ":ObsidianRename<cr>", desc = "Paste Img" },
-		-- { "<leader>no", ":ObsidianOpen<cr>", desc = "Open in Obsidian" },
-		-- { "<leader>nf", ":ObsidianQuickSwitch<cr>", desc = "Find Files" },
-		-- { "<leader>ns", ":ObsidianSearch<cr>", desc = "Grep" },
-		-- { "<leader>nl", ":ObsidianLink<cr>", mode = "v", desc = "Link File" },
-		-- { "<leader>nh", ":ObsidianTOC<cr>", desc = "Headers" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		{
+			"folke/which-key.nvim",
+			opts = {
+				spec = {
+					mode = { "n" },
+					-- note that `<cmd>ObsidianExtractNote<cr>` and `:ObsidianExtractNote<cr>` are not equal.
+					{ "<leader>n", group = "+obsidian", icon = { icon = "" } },
+					{ "<leader>nc", ":ObsidianNew<cr>", desc = "new file", icon = { icon = "" } },
+					{ "<leader>n]", ":ObsidianLinks<cr>", desc = "links", icon = { icon = "" } },
+					{ "<leader>n[", ":ObsidianBacklinks<cr>", desc = "backlinks", icon = { icon = "󰌷" } },
+					{ "<leader>nd", ":ObsidianToday<cr>", desc = "daily", icon = { icon = "" } },
+					{ "<leader>nt", ":ObsidianTemplate<cr>", desc = "snippet", icon = { icon = "" } },
+					{ "<leader>no", ":ObsidianOpen<cr>", desc = "open in obsidian", icon = { icon = "" } },
+					-- { "<leader>nT", ":ObsidianNewFromTemplate<cr>", desc = "template", icon = { icon = "" }, },
+					-- { "<leader>np", ":ObsidianPasteImg<cr>", desc = "paste img", icon = { icon = "" }, },
+					{ "<leader>nr", ":ObsidianRename<cr>", desc = "rename", icon = { icon = "" } },
+					{
+						"<leader>n",
+						":ObsidianExtractNote<cr>",
+						mode = "v",
+						desc = "obsidian: extract note",
+						icon = { icon = "" },
+					},
+				},
+			},
+		},
 	},
 	opts = {
 		workspaces = {
 			{
 				name = "obsidian",
-				-- path = "D:/area/obsidian",
-				path = vim.fn.expand("$XDG_DATA_HOME") .. "/obsidian",
+				-- path = vim.fn.expand("$XDG_DATA_HOME") .. "/obsidian",
+				path = VAULT_PATH,
 				overrides = {},
 			},
 		},
@@ -59,10 +68,6 @@ return {
 		-- Optional, if you keep notes in a specific subdirectory of your vault.
 		notes_subdir = "source",
 
-		-- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
-		-- levels defined by "vim.log.levels.*".
-		-- log_level = vim.log.levels.INFO,
-
 		daily_notes = {
 			folder = "calendar/daily", -- Optional, if you keep daily notes in a separate directory.
 			date_format = "%Y-%m-%d", -- Optional, if you want to change the date format for the ID of daily notes.
@@ -70,7 +75,7 @@ return {
 			-- default_tags = { "daily-notes" }, -- Optional, default tags to add to each new daily note created.
 
 			-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-			template = "extra/templates/n-daily.md",
+			template = "extra/templates/daily.md",
 		},
 
 		-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -149,28 +154,6 @@ return {
 		-- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
 		disable_frontmatter = true,
 
-		-- Optional, alternatively you can customize the frontmatter data.
-		---@return table
-		--[[ note_frontmatter_func = function(note)
-			-- Add the title of the note as an alias.
-			if note.title then
-				note:add_alias(note.title)
-			end
-
-			local out = { id = note.id, aliases = note.aliases, tags = note.tags }
-
-			-- `note.metadata` contains any manually added fields in the frontmatter.
-			-- So here we just make sure those fields are kept in the frontmatter.
-			if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-				for k, v in pairs(note.metadata) do
-					out[k] = v
-				end
-			end
-
-			return out
-		end, ]]
-
-		-- Optional, for templates (see below).
 		templates = {
 			folder = "extra/templates",
 			date_format = "%Y-%m-%d",
@@ -184,157 +167,32 @@ return {
 			},
 		},
 
-		-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
-		-- URL it will be ignored but you can customize this behavior here.
-		---@param url string
-		--[[ follow_url_func = function(url)
-			-- Open the URL in the default web browser.
-			vim.fn.jobstart({ "open", url }) -- Mac OS
-			-- vim.fn.jobstart({"xdg-open", url})  -- linux
-			-- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
-		end, ]]
+		ui = { enable = false },
 
-		-- Optional, by default when you use `:ObsidianFollowLink` on a link to an image
-		-- file it will be ignored but you can customize this behavior here.
-		---@param img string
-		--[[ follow_img_func = function(img)
-      vim.fn.jobstart { "qlmanage", "-p", img }  -- Mac OS quick look preview
-      -- vim.fn.jobstart({"xdg-open", url})  -- linux
-      -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
-    end, ]]
+		-- Specify how to handle attachments.
+		attachments = {
+			-- The default folder to place images in via `:ObsidianPasteImg`.
+			-- If this is a relative path it will be interpreted as relative to the vault root.
+			-- You can always override this per image by passing a full path to the command instead of just a filename.
+			img_folder = "extra/asset", -- This is the default
 
-		-- Optional, set to true if you use the Obsidian Advanced URI plugin.
-		-- https://github.com/Vinzent03/obsidian-advanced-uri
-		use_advanced_uri = false,
+			-- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
+			---@return string
+			img_name_func = function()
+				-- Prefix image names with timestamp.
+				return string.format("%s", os.date("R_%Y%m%d%H%M%S"))
+			end,
 
-		-- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
-		open_app_foreground = false,
-
-		picker = {
-			-- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-			name = "telescope.nvim",
-			-- Optional, configure key mappings for the picker. These are the defaults.
-			-- Not all pickers support all mappings.
-			note_mappings = {
-				new = "<C-x>", -- Create a new note from your query.
-				insert_link = "<C-l>", -- Insert a link to the selected note.
-			},
-			tag_mappings = {
-				tag_note = "<C-x>", -- Add tag(s) to current note.
-				insert_tag = "<C-l>", -- Insert a tag at the current location.
-			},
+			-- A function that determines the text to insert in the note when pasting an image.
+			-- It takes two arguments, the `obsidian.Client` and an `obsidian.Path` to the image file.
+			-- This is the default implementation.
+			---@param client obsidian.Client
+			---@param path obsidian.Path the absolute path to the image file
+			---@return string
+			img_text_func = function(client, path)
+				path = client:vault_relative_path(path) or path
+				return string.format("![%s](%s)", path.name, path)
+			end,
 		},
-
-		-- Optional, sort search results by "path", "modified", "accessed", or "created".
-		-- The recommend value is "modified" and `true` for `sort_reversed`, which means, for example,
-		-- that `:ObsidianQuickSwitch` will show the notes sorted by latest modified time
-		sort_by = "modified",
-		sort_reversed = true,
-
-		-- Set the maximum number of lines to read from notes on disk when performing certain searches.
-		search_max_lines = 1000,
-
-		-- Optional, determines how certain commands open notes. The valid options are:
-		-- 1. "current" (the default) - to always open in the current window
-		-- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
-		-- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
-		open_notes_in = "current",
-
-		-- Optional, define your own callbacks to further customize behavior.
-		--[[ callbacks = {
-			-- Runs at the end of `require("obsidian").setup()`.
-			---@param client obsidian.Client
-			post_setup = function(client) end,
-
-			-- Runs anytime you enter the buffer for a note.
-			---@param client obsidian.Client
-			---@param note obsidian.Note
-			enter_note = function(client, note) end,
-
-			-- Runs anytime you leave the buffer for a note.
-			---@param client obsidian.Client
-			---@param note obsidian.Note
-			leave_note = function(client, note) end,
-
-			-- Runs right before writing the buffer for a note.
-			---@param client obsidian.Client
-			---@param note obsidian.Note
-			pre_write_note = function(client, note) end,
-
-			-- Runs anytime the workspace is set/changed.
-			---@param client obsidian.Client
-			---@param workspace obsidian.Workspace
-			post_set_workspace = function(client, workspace) end,
-		}, ]]
-
-		-- Optional, configure additional syntax highlighting / extmarks.
-		-- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
-		ui = {
-			enable = false, -- set to false to disable all additional syntax features
-			update_debounce = 200, -- update delay after a text change (in milliseconds)
-			max_file_length = 5000, -- disable UI features for files with more than this many lines
-			-- Define how various check-boxes are displayed
-			checkboxes = {
-				-- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-				[" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-				["x"] = { char = "", hl_group = "ObsidianDone" },
-				[">"] = { char = "", hl_group = "ObsidianRightArrow" },
-				["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-				["!"] = { char = "", hl_group = "ObsidianImportant" },
-				-- Replace the above with this if you don't have a patched font:
-				-- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-				-- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
-
-				-- You can also add more custom ones...
-			},
-			-- Use bullet marks for non-checkbox lists.
-			bullets = { char = "•", hl_group = "ObsidianBullet" },
-			external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-			-- Replace the above with this if you don't have a patched font:
-			-- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-			reference_text = { hl_group = "ObsidianRefText" },
-			highlight_text = { hl_group = "ObsidianHighlightText" },
-			tags = { hl_group = "ObsidianTag" },
-			block_ids = { hl_group = "ObsidianBlockID" },
-			hl_groups = {
-				-- The options are passed directly to `vim.api.nvim_set_hl()`. See `:help nvim_set_hl`.
-				ObsidianTodo = { bold = true, fg = "#c0baad" },
-				ObsidianDone = { bold = true, fg = "#707070" },
-				ObsidianRightArrow = { bold = true, fg = "#c0baad" },
-				ObsidianTilde = { bold = true, fg = "#cc9393" },
-				ObsidianImportant = { bold = true, fg = "#b07878" },
-				ObsidianBullet = { bold = true, fg = "#707070" },
-				ObsidianRefText = { underline = true, fg = "#9d9d9d" },
-				ObsidianExtLinkIcon = { fg = "#b3ad9f" },
-				ObsidianTag = { italic = true, fg = "#dad5c8", bg = "#706c62" },
-				ObsidianBlockID = { italic = true, fg = "#dad5c8" },
-				ObsidianHighlightText = { bg = "#414141" },
-			},
-		},
-	},
-	-- Specify how to handle attachments.
-	attachments = {
-		-- The default folder to place images in via `:ObsidianPasteImg`.
-		-- If this is a relative path it will be interpreted as relative to the vault root.
-		-- You can always override this per image by passing a full path to the command instead of just a filename.
-		img_folder = "extra/asset", -- This is the default
-
-		-- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
-		---@return string
-		img_name_func = function()
-			-- Prefix image names with timestamp.
-			return string.format("%s", os.date("R_%Y%m%d%H%M%S"))
-		end,
-
-		-- A function that determines the text to insert in the note when pasting an image.
-		-- It takes two arguments, the `obsidian.Client` and an `obsidian.Path` to the image file.
-		-- This is the default implementation.
-		---@param client obsidian.Client
-		---@param path obsidian.Path the absolute path to the image file
-		---@return string
-		img_text_func = function(client, path)
-			path = client:vault_relative_path(path) or path
-			return string.format("![%s](%s)", path.name, path)
-		end,
 	},
 }
