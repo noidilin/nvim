@@ -1,13 +1,13 @@
 return {
 	-- { "rebelot/kanagawa.nvim" }, { "sho-87/kanagawa-paper.nvim" },
-	{ "aktersnurra/no-clown-fiesta.nvim" },
-	{
-		"slugbyte/lackluster.nvim",
-		opts = {
-			tweak_syntax = { comment = "#555555", keyword = "#878787" },
-			tweak_background = { normal = "#191919", telescope = "#1e1e1e", menu = "#242424", popup = "#1e1e1e" },
-		},
-	},
+	-- { "aktersnurra/no-clown-fiesta.nvim" },
+	-- {
+	-- 	"slugbyte/lackluster.nvim",
+	-- 	opts = {
+	-- 		tweak_syntax = { comment = "#555555", keyword = "#878787" },
+	-- 		tweak_background = { normal = "#191919", telescope = "#1e1e1e", menu = "#242424", popup = "#1e1e1e" },
+	-- 	},
+	-- },
 
 	{
 		"vague2k/vague.nvim",
@@ -70,7 +70,6 @@ return {
 		"LazyVim/LazyVim",
 		opts = {
 			colorscheme = "color-fatigue",
-			-- colorscheme = "vague",
 		},
 	},
 }

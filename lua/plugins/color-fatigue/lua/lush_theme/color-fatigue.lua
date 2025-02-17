@@ -764,18 +764,20 @@ local theme = lush(function(injected_functions)
 		-- avante color
 		-- avante UI
 		AvanteTitle { fg = p.acc_dim05, bg = p.mono05 }, -- title
-		AvanteReversedTitle { fg = p.mono05 }, -- used for rounded border
 		AvanteSubtitle { AvanteTitle }, -- selected code title
-		AvanteReversedSubtitle { AvanteReversedTitle }, -- used for rounded border
 		AvanteThirdTitle { AvanteTitle }, -- prompt title
+		AvanteReversedTitle { fg = p.mono05 }, -- used for rounded border
+		AvanteReversedSubtitle { AvanteReversedTitle }, -- used for rounded border
 		AvanteReversedThirdTitle { AvanteReversedTitle }, -- used for rounded border
+		AvanteToBeDeleted { bg = p.red00.darken(30), gui = "strikethrough" },
+		AvanteInlineHint { fg = p.mono13, gui = "underline italic" },
 		-- avante conflict
-		AvanteConflictCurrent { fg = p.mono21, bg = p.green00, gui = "bold" },
-		AvanteConflictIncoming { fg = p.mono21, bg = p.yellow00, gui = "bold" },
-		AvanteConflictAncestor { fg = p.mono21, bg = p.mono15, gui = "bold" },
-		-- AvanteConflictCurrentLabel  {}, -- current shade = 60
-		-- AvanteConflictIncomingLabel  {}, -- incoming shade = 60
-		-- AvanteConflictAncestorLabel  {}, -- ancestor shade = 60
+		AvanteConflictCurrent { fg = p.mono21, bg = p.red00.darken(65), gui = "bold" },
+		AvanteConflictIncoming { fg = p.mono21, bg = p.green00.darken(65), gui = "bold" },
+		AvanteConflictAncestor { fg = p.mono21, bg = p.mono09, gui = "bold" },
+		AvanteConflictCurrentLabel { bg = p.red00.darken(50) },
+		AvanteConflictIncomingLabel { bg = p.green00.darken(50) },
+		AvanteConflictAncestorLabel { bg = p.mono13 },
 	}
 end)
 
