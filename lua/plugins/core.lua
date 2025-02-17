@@ -1,16 +1,16 @@
 return {
-	{
-		"hrsh7th/nvim-cmp",
-		opts = function(_, opts)
-			local cmp = require("cmp")
-			opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
-				-- disable arrow and return key
-				["<CR>"] = cmp.config.disable,
-				["<Up>"] = cmp.config.disable,
-				["<Down>"] = cmp.config.disable,
-			})
-		end,
-	},
+	-- {
+	-- 	"hrsh7th/nvim-cmp",
+	-- 	opts = function(_, opts)
+	-- 		local cmp = require("cmp")
+	-- 		opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
+	-- 			-- disable arrow and return key
+	-- 			["<CR>"] = cmp.config.disable,
+	-- 			["<Up>"] = cmp.config.disable,
+	-- 			["<Down>"] = cmp.config.disable,
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- mini-move
 	{
