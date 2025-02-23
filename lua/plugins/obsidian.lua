@@ -34,11 +34,11 @@ return {
 					{ "<leader>n[", ":ObsidianBacklinks<cr>", desc = "backlinks", icon = { icon = "󰌷" } },
 					{ "<leader>nd", ":ObsidianToday<cr>", desc = "daily", icon = { icon = "" } },
 					{ "<leader>nt", ":ObsidianTemplate<cr>", desc = "snippet", icon = { icon = "" } },
+					{ "<leader>nT", ":ObsidianNewFromTemplate<cr>", desc = "template", icon = { icon = "" } },
 					{ "<leader>no", ":ObsidianOpen<cr>", desc = "open in obsidian", icon = { icon = "" } },
-					-- { "<leader>nT", ":ObsidianNewFromTemplate<cr>", desc = "template", icon = { icon = "" }, },
-					-- { "<leader>np", ":ObsidianPasteImg<cr>", desc = "paste img", icon = { icon = "" }, },
 					{ "<leader>nr", ":ObsidianRename<cr>", desc = "rename", icon = { icon = "" } },
 					{ "<leader>nx", ":ObsidianExtractNote<cr>", mode = "v", desc = "extract", icon = { icon = "" } },
+					-- { "<leader>np", ":ObsidianPasteImg<cr>", desc = "paste img", icon = { icon = "" }, },
 				},
 			},
 		},
@@ -57,12 +57,75 @@ return {
 			folder = "extra/templates",
 			date_format = "%Y-%m-%d",
 			time_format = "%H:%M",
-			-- A map for custom variables, the key should be the variable and the value a function
+			-- ref: https://github.com/epwalsh/obsidian.nvim/discussions/475
+			-- substitute {{template_variable}} when inserting a template.
 			substitutions = {
-				-- substitute template variable {{yesterday}} when inserting a template.
-				--[[ yesterday = function()
-          return os.date("%Y-%m-%d", os.time() - 86400)
-        end ]]
+				-- "14:45:00"
+				time24 = function()
+					return os.date("%H:%M:%S")
+				end,
+				-- "2:45:00 PM"
+				time12 = function()
+					local hour = tonumber(os.date("%H"))
+					local ampm = hour >= 12 and "PM" or "AM"
+					hour = hour % 12
+					hour = hour == 0 and 12 or hour
+					return string.format("%02d:%s %s", hour, os.date("%M:%S"), ampm)
+				end,
+				-- "2024"
+				year = function()
+					return os.date("%Y", os.time())
+				end,
+				-- "March"
+				month = function()
+					return os.date("%B", os.time())
+				end,
+				-- "2024-03-05"
+				yesterday = function()
+					return os.date("%Y-%m-%d", os.time() - 86400)
+				end,
+				-- "2024-03-07"
+				nextday = function()
+					return os.date("%Y-%m-%d", os.time() + 86400)
+				end,
+				-- "Wednesday, March 6, 2024"
+				hdate = function()
+					return os.date("%A, %B %d, %Y")
+				end,
+				-- "2024-03-06T14:45:00+00:00"
+				rfc3339 = function()
+					return os.date("!%Y-%m-%dT%H:%M:%SZ")
+				end,
+				-- "10"
+				week = function()
+					return os.date("%V", os.time())
+				end,
+				-- "2024-W10"
+				isoweek = function()
+					return os.date("%G-W%V", os.time())
+				end,
+				-- "2024-W09"
+				isoprevweek = function()
+					local adjustment = -7 * 24 * 60 * 60 -- One week in seconds
+					return os.date("%G-W%V", os.time() + adjustment)
+				end,
+				-- "2024-W11"
+				isonextweek = function()
+					local adjustment = 7 * 24 * 60 * 60 -- One week in seconds
+					return os.date("%G-W%V", os.time() + adjustment)
+				end,
+				-- "06"
+				day_of_month = function()
+					return os.date("%d", os.time())
+				end,
+				-- "03"
+				month_numeric = function()
+					return os.date("%m", os.time())
+				end,
+				-- "Wednesday"
+				weekday = function()
+					return os.date("%A", os.time())
+				end,
 			},
 		},
 
@@ -70,6 +133,7 @@ return {
 		disable_frontmatter = true, -- boolean or a function that takes a filename and returns a boolean.
 		completion = { nvim_cmp = false },
 		preferred_link_style = "wiki", -- 'wiki' or 'markdown'.
+		mappings = {}, -- set 'mappings = {}' to disable keymappings
 
 		---@param title string|?
 		---@return string
@@ -84,42 +148,8 @@ return {
 					suffix = tostring(os.time()) .. "-" .. suffix
 				end
 			end
+			-- use title as ID
 			return suffix
 		end,
-
-		-- set 'mappings = {}' to disable keymappings
-		mappings = {
-			-- normal 'go to definition' in neovim can't reach to link like this [[name#heading]]
-			["<cr>"] = {
-				action = function()
-					return require("obsidian").util.smart_action()
-				end,
-				opts = { buffer = true, expr = true },
-			},
-		},
-
-		-- specify how to handle attachments.
-		attachments = {
-			-- If this is a relative path it will be interpreted as relative to the vault root.
-			-- You can always override this per image by passing a full path to the command instead of just a filename.
-			img_folder = "extra/asset", -- folder to place images in via `:ObsidianPasteImg`
-
-			-- customize the name or prefix when pasting images via `:ObsidianPasteImg`.
-			---@return string
-			img_name_func = function()
-				return string.format("%s", os.date("R_%Y%m%d%H%M%S")) -- prefix image names with timestamp.
-			end,
-
-			-- A function that determines the text to insert in the note when pasting an image.
-			-- It takes two arguments, the `obsidian.Client` and an `obsidian.Path` to the image file.
-			-- This is the default implementation.
-			---@param client obsidian.Client
-			---@param path obsidian.Path the absolute path to the image file
-			---@return string
-			img_text_func = function(client, path)
-				path = client:vault_relative_path(path) or path
-				return string.format("![%s](%s)", path.name, path)
-			end,
-		},
 	},
 }
