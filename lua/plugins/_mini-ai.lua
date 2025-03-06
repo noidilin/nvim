@@ -13,7 +13,7 @@ return {
 				f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function method
 				c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
 				a = ai.gen_spec.treesitter({ a = "@parameter.outer", i = "@parameter.inner" }), -- parameter
-				i = ai.gen_spec.treesitter({ a = "@call.outer", i = "@call.inner" }), -- function call
+				x = ai.gen_spec.treesitter({ a = "@call.outer", i = "@call.inner" }), -- function call
 				s = ai.gen_spec.treesitter({ a = "@assignment.outer", i = "@assignment.inner" }), -- assignment
 				r = ai.gen_spec.treesitter({ a = "@property.outer", i = "@property.inner" }), -- property
 
@@ -25,8 +25,7 @@ return {
 					"^().*()$",
 				},
 
-				-- i = LazyVim.mini.ai_indent, -- indent
-				-- g = LazyVim.mini.ai_buffer, -- buffer
+				g = LazyVim.mini.ai_buffer, -- buffer
 				u = ai.gen_spec.function_call(), -- u for "Usage"
 				U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
 			},
