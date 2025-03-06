@@ -42,6 +42,6 @@ return {
 			},
 		},
 	},
-	-- { "<leader>np", "<cmd>PasteImage<cr>", desc = "paste image", icon = { icon = "" }, },
-	keys = { { "<leader>np", "<cmd>PasteImage<cr>", desc = "paste image" } },
+	-- { "<leader>np", "<cmd>PasteImage<cr>", desc = "paste img", icon = { icon = "" }, },
+	keys = { { "<leader>np", "<cmd>PasteImage<cr>", desc = "paste img" } },
 }

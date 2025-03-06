@@ -29,16 +29,14 @@ return {
 				spec = {
 					-- note that `<cmd>ObsidianExtractNote<cr>` and `:ObsidianExtractNote<cr>` are not equal.
 					{ "<leader>n", group = "+obsidian", mode = { "n", "v" }, icon = { icon = "" } },
-					{ "<leader>na", ":ObsidianNew<cr>", desc = "new file", icon = { icon = "" } },
+					{ "<leader>na", ":ObsidianNewFromTemplate<cr>", desc = "new file", icon = { icon = "" } },
 					{ "<leader>n]", ":ObsidianLinks<cr>", desc = "links", icon = { icon = "" } },
 					{ "<leader>n[", ":ObsidianBacklinks<cr>", desc = "backlinks", icon = { icon = "󰌷" } },
 					{ "<leader>nd", ":ObsidianToday<cr>", desc = "daily", icon = { icon = "" } },
 					{ "<leader>nt", ":ObsidianTemplate<cr>", desc = "snippet", icon = { icon = "" } },
-					{ "<leader>nT", ":ObsidianNewFromTemplate<cr>", desc = "template", icon = { icon = "" } },
 					{ "<leader>no", ":ObsidianOpen<cr>", desc = "open in obsidian", icon = { icon = "" } },
 					{ "<leader>nr", ":ObsidianRename<cr>", desc = "rename", icon = { icon = "" } },
 					{ "<leader>nx", ":ObsidianExtractNote<cr>", mode = "v", desc = "extract", icon = { icon = "" } },
-					-- { "<leader>np", ":ObsidianPasteImg<cr>", desc = "paste img", icon = { icon = "" }, },
 				},
 			},
 		},
@@ -58,72 +56,56 @@ return {
 			date_format = "%Y-%m-%d",
 			time_format = "%H:%M",
 			-- ref: https://github.com/epwalsh/obsidian.nvim/discussions/475
-			-- substitute {{template_variable}} when inserting a template.
 			substitutions = {
-				-- "14:45:00"
-				time24 = function()
+				time24 = function() -- "14:45:00"
 					return os.date("%H:%M:%S")
 				end,
-				-- "2:45:00 PM"
-				time12 = function()
+				time12 = function() -- "2:45:00 PM"
 					local hour = tonumber(os.date("%H"))
 					local ampm = hour >= 12 and "PM" or "AM"
 					hour = hour % 12
 					hour = hour == 0 and 12 or hour
 					return string.format("%02d:%s %s", hour, os.date("%M:%S"), ampm)
 				end,
-				-- "2024"
-				year = function()
+				year = function() -- "2024"
 					return os.date("%Y", os.time())
 				end,
-				-- "March"
-				month = function()
+				month = function() -- "March"
 					return os.date("%B", os.time())
 				end,
-				-- "2024-03-05"
-				yesterday = function()
+				yesterday = function() -- "2024-03-05"
 					return os.date("%Y-%m-%d", os.time() - 86400)
 				end,
-				-- "2024-03-07"
-				nextday = function()
+				nextday = function() -- "2024-03-07"
 					return os.date("%Y-%m-%d", os.time() + 86400)
 				end,
-				-- "Wednesday, March 6, 2024"
-				hdate = function()
+				hdate = function() -- "Wednesday, March 6, 2024"
 					return os.date("%A, %B %d, %Y")
 				end,
-				-- "2024-03-06T14:45:00+00:00"
-				rfc3339 = function()
+				rfc3339 = function() -- "2024-03-06T14:45:00+00:00"
 					return os.date("!%Y-%m-%dT%H:%M:%SZ")
 				end,
-				-- "10"
-				week = function()
+				week = function() -- "10"
 					return os.date("%V", os.time())
 				end,
-				-- "2024-W10"
-				isoweek = function()
+				isoweek = function() -- "2024-W10"
 					return os.date("%G-W%V", os.time())
 				end,
-				-- "2024-W09"
-				isoprevweek = function()
+				isoprevweek = function() -- "2024-W09"
 					local adjustment = -7 * 24 * 60 * 60 -- One week in seconds
 					return os.date("%G-W%V", os.time() + adjustment)
 				end,
-				-- "2024-W11"
-				isonextweek = function()
+				isonextweek = function() -- "2024-W11"
 					local adjustment = 7 * 24 * 60 * 60 -- One week in seconds
 					return os.date("%G-W%V", os.time() + adjustment)
 				end,
-				-- "06"
-				day_of_month = function()
+				day_of_month = function() -- "06"
 					return os.date("%d", os.time())
 				end,
-				-- "03"
-				month_numeric = function()
+				month_numeric = function() -- "03"
 					return os.date("%m", os.time())
 				end,
-				-- "Wednesday"
-				weekday = function()
+				weekday = function() -- "Wednesday"
 					return os.date("%A", os.time())
 				end,
 			},
