@@ -27,4 +27,25 @@ return {
 		},
 		opts = { startVisible = false },
 	},
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				harper_ls = {
+					enabled = true,
+					settings = {
+						["harper-ls"] = {
+							linters = {
+								SentenceCapitalization = false,
+								-- SpellCheck = false,
+							},
+							markdown = {
+								IgnoreLinkTitle = false,
+							},
+						},
+					},
+				},
+			},
+		},
+	},
 }
