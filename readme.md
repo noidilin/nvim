@@ -7,6 +7,13 @@
 
 - create a symlink at '$env.LOCALAPPDATA\nvim' for vscode-neovim, since it only check the default installation path.
 
+## Snippet
+
+- engine: [blink.cmp](https://github.com/saghen/blink.cmp)
+- snippet:
+  - react: [simple-react-snippets](https://github.com/burkeholland/simple-react-snippets/tree/master)
+  - arrow function: [vscode-arrow-snippets](https://github.com/deinsoftware/vscode-arrow-snippets/tree/main)
+
 ## Known issue
 
 ### fix `main.shada.tmp.X  files exist, cannot write ShaDa` issue
