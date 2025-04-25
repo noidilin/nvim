@@ -761,6 +761,11 @@ local theme = lush(function(injected_functions)
 		NeotestSkipped { fg = p.orange00 },
 		NeotestIndent { fg = p.mono12 },
 
+		-- grug-far
+		GrugFarResultsChangeIndicator { fg = p.red00 },
+		GrugFarResultsRemoveIndicator { fg = p.red00 },
+		GrugFarResultsAddIndicator { fg = p.green00 },
+
 		-- avante color
 		-- avante UI
 		AvanteTitle { fg = p.acc_dim05, bg = p.mono05 }, -- title
