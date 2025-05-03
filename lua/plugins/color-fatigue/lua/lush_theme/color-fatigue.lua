@@ -10,7 +10,7 @@
 
 local lush = require("lush")
 local hsl = lush.hsl
-local p = require("lush_theme.color")
+local p = require("lush_theme.color").hsl
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec
 ---@diagnostic disable: undefined-global
