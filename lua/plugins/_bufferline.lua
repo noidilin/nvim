@@ -1,5 +1,15 @@
 local reserved = { "default", "error", "layout", "loading", "not-found", "page", "route", "template" }
 local utils = { "actions", "components", "data", "entities", "hooks", "lib", "utils", "env" }
+local utils_temp = {
+	["actions"] = "act",
+	["components"] = "cmp",
+	["data"] = "data",
+	["entities"] = "ent",
+	["hooks"] = "hooks",
+	["lib"] = "lib",
+	["utils"] = "util",
+	["env"] = "env",
+}
 
 local function isNext()
 	local sep = package.config:sub(1, 1) -- OS-specific path separator
@@ -37,8 +47,11 @@ local function getBufName(path, name)
 
 	-- Rule 2: File in a utility folder at project root (or anywhere in path)
 	for _, seg in ipairs(segments) do
-		if vim.tbl_contains(utils, seg) then
-			return seg .. "/" .. name
+		-- if vim.tbl_contains(utils, seg) then
+		-- 	return seg .. "/" .. name
+		-- end
+		if utils_temp[seg] then
+			return utils_temp[seg] .. "/" .. name
 		end
 	end
 
