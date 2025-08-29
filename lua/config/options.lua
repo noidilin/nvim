@@ -7,8 +7,12 @@
 -- * pwsh
 -- * powershell
 -- LazyVim.terminal.setup("pwsh")
-
 vim.o.shell = "nu"
 
 -- Enable this option to avoid conflicts with Prettier.
 vim.g.lazyvim_prettier_needs_config = true
+
+-- set to `true` to follow the main branch
+-- you need to have a working rust toolchain to build the plugin
+-- in this case.
+vim.g.lazyvim_blink_main = true
