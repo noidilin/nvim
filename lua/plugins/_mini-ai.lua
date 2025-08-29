@@ -13,8 +13,8 @@ return {
 				f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function method
 				c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
 				a = ai.gen_spec.treesitter({ a = "@parameter.outer", i = "@parameter.inner" }), -- parameter
-				x = ai.gen_spec.treesitter({ a = "@call.outer", i = "@call.inner" }), -- function call
-				s = ai.gen_spec.treesitter({ a = "@assignment.outer", i = "@assignment.inner" }), -- assignment
+				-- x = ai.gen_spec.treesitter({ a = "@call.outer", i = "@call.inner" }), -- function call
+				x = ai.gen_spec.treesitter({ a = "@assignment.outer", i = "@assignment.inner" }), -- assignment
 				r = ai.gen_spec.treesitter({ a = "@property.outer", i = "@property.inner" }), -- property
 
 				-- regex
