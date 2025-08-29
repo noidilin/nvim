@@ -1,3 +1,7 @@
+-- NOTE: caused too many issue in float/ side panel and input state
+-- stylua: ignore
+if true then return {} end
+
 return {
 	"levouh/tint.nvim",
 	event = "VeryLazy",
