@@ -1,15 +1,6 @@
 local lush = require("lush")
-local hsl = lush.hsl
 
 local M = {}
-
-local function map_palette(palette, transform)
-	local result = {}
-	for k, v in pairs(palette) do
-		result[k] = transform(v)
-	end
-	return result
-end
 
 M.hex = {
 	mono25 = "#eaeaea",
@@ -74,6 +65,14 @@ M.hex = {
 	orange00 = "#c8a492",
 }
 
-M.hsl = map_palette(M.hex, hsl)
+local function map_palette(palette, transform)
+	local result = {}
+	for k, v in pairs(palette) do
+		result[k] = transform(v)
+	end
+	return result
+end
+
+M.hsl = map_palette(M.hex, lush.hsl)
 
 return M

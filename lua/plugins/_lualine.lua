@@ -2,7 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = function()
-		local p = require("plugins.color-fatigue.lua.lush_theme.color").hex
+		local p = require("plugins.color-fatigue.lua.lush_theme._primitive").hex
 		local color_fatigue = {
 			normal = {
 				a = { bg = p.mono03, fg = p.mono17, gui = "bold" },
