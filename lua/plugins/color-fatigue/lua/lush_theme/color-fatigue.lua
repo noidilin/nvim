@@ -567,47 +567,6 @@ local theme = lush(function(injected_functions)
 		BufferLineMiniIconsRed { BufferLineCloseButton },
 		BufferLineMiniIconsYellow { BufferLineCloseButton },
 
-		-- cmp
-		CmpItemAbbr { fg = p.mono15 },
-		CmpItemAbbrDeprecated { fg = p.mono11, gui = "strikethrough" },
-		CmpItemAbbrMatch { fg = p.mono19 },
-		CmpItemAbbrMatchFuzzy { fg = p.mono19 },
-		CmpItemMenu { fg = p.mono11 },
-		CmpItemKind { fg = p.mono11 },
-		-- function
-		CmpItemKindFunction { fg = p.mono21 },
-		CmpItemKindStruct { CmpItemKindFunction },
-		CmpItemKindClass { CmpItemKindFunction },
-		CmpItemKindModule { CmpItemKindFunction },
-		-- interface
-		CmpItemKindInterface { fg = p.mono23 },
-		CmpItemKindTypeParameter { CmpItemKindInterface },
-		CmpItemKindValue { CmpItemKindInterface },
-		CmpItemKindMethod { CmpItemKindInterface },
-		CmpItemKindEnumMember { CmpItemKindInterface },
-		-- keyword
-		CmpItemKindKeyword { fg = p.mono17 },
-		CmpItemKindOperator { CmpItemKindKeyword },
-		CmpItemKindSnippet { CmpItemKindKeyword },
-		CmpItemKindUnit { CmpItemKindKeyword },
-		CmpItemKindFolder { CmpItemKindKeyword },
-		-- constant
-		CmpItemKindConstant { fg = p.acc_dim05 },
-		CmpItemKindConstructor { CmpItemKindConstant },
-		CmpItemKindReference { CmpItemKindConstant },
-		-- text
-		CmpItemKindText { fg = p.mono15 },
-		CmpItemKindCopilot { CmpItemKindText },
-		CmpItemKindEnum { CmpItemKindText },
-		-- variable
-		CmpItemKindVariable { fg = p.mono19 },
-		CmpItemKindFile { CmpItemKindVariable },
-		CmpItemKindColor { CmpItemKindVariable },
-		-- field
-		CmpItemKindField { fg = p.acc_dim02 },
-		CmpItemKindProperty { CmpItemKindField },
-		CmpItemKindEvent { CmpItemKindField },
-
 		-- gitsigns
 		GitSignsAdd { fg = p.green00 },
 		GitSignsAddLn { fg = p.green00 },
@@ -618,63 +577,6 @@ local theme = lush(function(injected_functions)
 		GitSignsDelete { fg = p.red00 },
 		GitSignsDeleteLn { fg = p.red00 },
 		GitSignsDeleteNr { fg = p.red00 },
-
-		-- neo tree
-		NeoTreeNormal { Normal },
-		NeoTreeNormalNC { NormalNC },
-		NeoTreeDirectoryName { Normal },
-		NeoTreeDirectoryIcon { Normal },
-		NeoTreeRootName { NormalNC, gui = "bold" },
-		NeoTreeFileNameOpened { fg = p.mono16 },
-		NeoTreeModified { fg = p.mono19 },
-		NeoTreeDimText { NonText }, -- text when not focus neo-tree
-		NeoTreeFilterTerm { Search, gui = "bold" },
-		NeoTreeFloatBorder { FloatBorder },
-		NeoTreeFloatTitle { FloatTitle },
-		-- neotree ui element
-		NeoTreeTitleBar { fg = p.mono02 },
-		NeoTreeVertSplit { VertSplit },
-		NeoTreeWinSeparator { Winseparator },
-		NeoTreeEndOfBuffer { EndOfBuffer },
-		NeoTreeSymbolicLinkTarget { fg = p.acc02 },
-		NeoTreeStatusLineNC { StatusLineNC },
-		NeoTreeIndentMarker { fg = p.mono12 },
-		NeoTreeExpander { Normal }, -- expand icon in front of directory
-		-- neogree git status
-		NeoTreeGitUntracked { NonText, gui = "italic" },
-		NeoTreeGitIgnored { NonText, gui = "italic strikethrough" },
-		NeoTreeGitAdded { Normal },
-		NeoTreeGitModified { fg = p.mono19, gui = "bold" },
-		NeoTreeGitDeleted { fg = p.orange00, gui = "strikethrough" },
-		NeoTreeGitStaged { fg = p.green00 },
-		NeoTreeGitUnstaged { fg = p.orange00 },
-		NeoTreeGitConflict { fg = p.red00, gui = "bold italic" },
-		-- neotree tab
-		-- NeoTreeTabActive  { bg = active_bg, fg = C.lavender, style = { "bold" } },
-		-- NeoTreeTabInactive  { bg = inactive_bg, fg = C.overlay0 },
-		-- NeoTreeTabSeparatorActive  { fg = active_bg, bg = active_bg },
-		-- NeoTreeTabSeparatorInactive  { fg = inactive_bg, bg = inactive_bg },
-
-		-- telescope
-		TelescopeBorder { FloatBorder },
-		TelescopeMatching { fg = p.mono21, bg = p.mono05, gui = "bold" },
-		TelescopePromptPrefix { fg = p.acc_dim05 },
-		TelescopeSelection { fg = p.acc_dim05, bg = p.mono05 },
-		TelescopeSelectionCaret { fg = p.mono25 },
-		TelescopeResultsNormal { fg = p.mono15 },
-
-		-- fzf-lua
-		FzfLuaHeaderBind { fg = p.acc_dim07 },
-		FzfLuaHeaderText { fg = p.mono23 },
-		FzfLuaPathColNr { fg = p.mono11 },
-		FzfLuaPathLineNr { fg = p.mono11 },
-		FzfLuaLivePrompt { fg = p.acc05 },
-		FzfLuaLiveSym { fg = p.acc05 },
-		FzfLuaTabTitle { fg = p.mono15, gui = "bold" },
-		FzfLuaTabMarker { fg = p.acc_dim05, gui = "bold" },
-		FzfLuaBufFlagCur { fg = p.orange00 },
-		FzfLuaBufFlagAlt { fg = p.yellow00 },
-		FzfLuaBufNr { fg = p.acc_dim05 },
 
 		-- flash
 		FlashBackdrop { fg = p.mono10 },
@@ -735,15 +637,6 @@ local theme = lush(function(injected_functions)
 		ObsidianBlockID { fg = p.mono07, gui = "italic" },
 		ObsidianHighlightText { bg = p.mono09 },
 
-		-- dashboard
-		DashboardHeader { FloatTitle },
-		DashboardFooter { FloatFooter, gui = "italic" },
-		-- dashboard doom (used by lazy vim)
-		DashboardShortCut { fg = p.acc_dim02 },
-		DashboardIcon { NonText },
-		DashboardDesc { NormalFloat },
-		DashboardKey { NonText },
-
 		-- neo test
 		NeotestTest { fg = p.mono15 },
 		NeotestUnknown { fg = p.mono15 },
@@ -766,24 +659,161 @@ local theme = lush(function(injected_functions)
 		GrugFarResultsRemoveIndicator { fg = p.red00 },
 		GrugFarResultsAddIndicator { fg = p.green00 },
 
+		-- Snacks Indent
+		SnacksIndent { fg = p.mono07 },
+		SnacksIndentScope { fg = p.mono13 },
+		SnacksIndent1 { fg = p.mono11 },
+		SnacksIndent2 { fg = p.mono10 },
+		SnacksIndent3 { fg = p.mono09 },
+		SnacksIndent4 { fg = p.mono08, gui = "bold" },
+		SnacksIndent5 { fg = p.mono07 },
+		SnacksIndent6 { fg = p.mono06 },
+		SnacksIndent7 { fg = p.mono07 },
+		SnacksIndent8 { fg = p.mono06, gui = "bold" },
+
 		-- avante color
-		-- avante UI
+		-- avante title
 		AvanteTitle { fg = p.acc_dim05, bg = p.mono05 }, -- title
 		AvanteSubtitle { AvanteTitle }, -- selected code title
 		AvanteThirdTitle { AvanteTitle }, -- prompt title
 		AvanteReversedTitle { fg = p.mono05, bg = p.mono05 }, -- used for rounded border
 		AvanteReversedSubtitle { AvanteReversedTitle }, -- used for rounded border
 		AvanteReversedThirdTitle { AvanteReversedTitle }, -- used for rounded border
-		AvantePopupHint {}, -- usage hints in popup menus
-		AvanteInlineHint { fg = p.mono13, gui = "underline italic" }, -- the end of line hint displayed in visual model
-		AvantePromptInput {}, -- the body highlight of the prompt input
-		AvantePromptInputBorder {}, -- the border highlight of the prompt input
 		-- avante conflict
 		AvanteConflictCurrent { fg = p.mono21, bg = p.red00.darken(65), gui = "bold" }, -- current conflict
 		AvanteConflictIncoming { fg = p.mono21, bg = p.green00.darken(65), gui = "bold" }, -- incoming conflict
 		AvanteConflictCurrentLabel { fg = p.mono21, bg = p.red00.darken(50) }, -- current conflict label
 		AvanteConflictIncomingLabel { fg = p.mono21, bg = p.green00.darken(50) }, -- incoming conflict label
+		-- avante UI
+		AvantePopupHint { fg = p.mono13 }, -- usage hints in popup menus
+		AvanteInlineHint { fg = p.mono13, gui = "underline italic" }, -- the end of line hint displayed in visual model
 		AvanteToBeDeleted { bg = p.red00.darken(30), gui = "strikethrough" },
+		AvanteToBeDeletedWOStrikethrough { bg = p.red00.darken(30) },
+		AvanteReversedNormal { fg = p.mono02, bg = p.mono16 },
+		-- avante dialog
+		AvanteConfirmTitle { fg = p.mono02, bg = p.red01 },
+		AvanteButtonDefault { fg = p.mono02, bg = p.acc_dim05 },
+		AvanteButtonDefaultHover { fg = p.mono02, bg = p.green01 },
+		AvanteButtonPrimary { fg = p.mono02, bg = p.acc_dim05 },
+		AvanteButtonPrimaryHover { fg = p.mono02, bg = p.acc_dim05 },
+		AvanteButtonDanger { fg = p.mono02, bg = p.acc_dim05 },
+		AvanteButtonDangerHover { fg = p.mono02, bg = p.red01 },
+		-- avante state
+		AvanteStateSpinnerGenerating { fg = p.mono02, bg = p.acc08 },
+		AvanteStateSpinnerToolCalling { fg = p.mono02, bg = p.cyan01 },
+		AvanteStateSpinnerFailed { fg = p.mono02, bg = p.red01 },
+		AvanteStateSpinnerSucceeded { fg = p.mono02, bg = p.green01 },
+		AvanteStateSpinnerSearching { fg = p.mono02, bg = p.acc08 },
+		AvanteStateSpinnerThinking { fg = p.mono02, bg = p.acc08 },
+		AvanteStateSpinnerCompacting { fg = p.mono02, bg = p.acc08 },
+		AvanteTaskRunning { fg = p.acc08, bg_link = "Normal" },
+		AvanteTaskCompleted { fg = p.green01, bg_link = "Normal" },
+		AvanteTaskFailed { fg = p.red01, bg_link = "Normal" },
+		AvanteThinking { fg = p.acc08, bg_link = "Normal" },
+
+		-- DEPRECIATED
+		-- neo tree
+		NeoTreeNormal { Normal },
+		NeoTreeNormalNC { NormalNC },
+		NeoTreeDirectoryName { Normal },
+		NeoTreeDirectoryIcon { Normal },
+		NeoTreeRootName { NormalNC, gui = "bold" },
+		NeoTreeFileNameOpened { fg = p.mono16 },
+		NeoTreeModified { fg = p.mono19 },
+		NeoTreeDimText { NonText }, -- text when not focus neo-tree
+		NeoTreeFilterTerm { Search, gui = "bold" },
+		NeoTreeFloatBorder { FloatBorder },
+		NeoTreeFloatTitle { FloatTitle },
+		-- neotree ui element
+		NeoTreeTitleBar { fg = p.mono02 },
+		NeoTreeVertSplit { VertSplit },
+		NeoTreeWinSeparator { Winseparator },
+		NeoTreeEndOfBuffer { EndOfBuffer },
+		NeoTreeSymbolicLinkTarget { fg = p.acc02 },
+		NeoTreeStatusLineNC { StatusLineNC },
+		NeoTreeIndentMarker { fg = p.mono12 },
+		NeoTreeExpander { Normal }, -- expand icon in front of directory
+		-- neogree git status
+		NeoTreeGitUntracked { NonText, gui = "italic" },
+		NeoTreeGitIgnored { NonText, gui = "italic strikethrough" },
+		NeoTreeGitAdded { Normal },
+		NeoTreeGitModified { fg = p.mono19, gui = "bold" },
+		NeoTreeGitDeleted { fg = p.orange00, gui = "strikethrough" },
+		NeoTreeGitStaged { fg = p.green00 },
+		NeoTreeGitUnstaged { fg = p.orange00 },
+		NeoTreeGitConflict { fg = p.red00, gui = "bold italic" },
+		-- neotree tab
+		-- NeoTreeTabActive  { bg = active_bg, fg = C.lavender, style = { "bold" } },
+		-- NeoTreeTabInactive  { bg = inactive_bg, fg = C.overlay0 },
+		-- NeoTreeTabSeparatorActive  { fg = active_bg, bg = active_bg },
+		-- NeoTreeTabSeparatorInactive  { fg = inactive_bg, bg = inactive_bg },
+		-- telescope
+		TelescopeBorder { FloatBorder },
+		TelescopeMatching { fg = p.mono21, bg = p.mono05, gui = "bold" },
+		TelescopePromptPrefix { fg = p.acc_dim05 },
+		TelescopeSelection { fg = p.acc_dim05, bg = p.mono05 },
+		TelescopeSelectionCaret { fg = p.mono25 },
+		TelescopeResultsNormal { fg = p.mono15 },
+		-- fzf-lua
+		FzfLuaHeaderBind { fg = p.acc_dim07 },
+		FzfLuaHeaderText { fg = p.mono23 },
+		FzfLuaPathColNr { fg = p.mono11 },
+		FzfLuaPathLineNr { fg = p.mono11 },
+		FzfLuaLivePrompt { fg = p.acc05 },
+		FzfLuaLiveSym { fg = p.acc05 },
+		FzfLuaTabTitle { fg = p.mono15, gui = "bold" },
+		FzfLuaTabMarker { fg = p.acc_dim05, gui = "bold" },
+		FzfLuaBufFlagCur { fg = p.orange00 },
+		FzfLuaBufFlagAlt { fg = p.yellow00 },
+		FzfLuaBufNr { fg = p.acc_dim05 },
+		-- dashboard
+		DashboardHeader { FloatTitle },
+		DashboardFooter { FloatFooter, gui = "italic" },
+		-- dashboard doom (used by lazy vim)
+		DashboardShortCut { fg = p.acc_dim02 },
+		DashboardIcon { NonText },
+		DashboardDesc { NormalFloat },
+		DashboardKey { NonText },
+		-- cmp
+		CmpItemAbbr { fg = p.mono15 },
+		CmpItemAbbrDeprecated { fg = p.mono11, gui = "strikethrough" },
+		CmpItemAbbrMatch { fg = p.mono19 },
+		CmpItemAbbrMatchFuzzy { fg = p.mono19 },
+		CmpItemMenu { fg = p.mono11 },
+		CmpItemKind { fg = p.mono11 },
+		-- function
+		CmpItemKindFunction { fg = p.mono21 },
+		CmpItemKindStruct { CmpItemKindFunction },
+		CmpItemKindClass { CmpItemKindFunction },
+		CmpItemKindModule { CmpItemKindFunction },
+		-- interface
+		CmpItemKindInterface { fg = p.mono23 },
+		CmpItemKindTypeParameter { CmpItemKindInterface },
+		CmpItemKindValue { CmpItemKindInterface },
+		CmpItemKindMethod { CmpItemKindInterface },
+		CmpItemKindEnumMember { CmpItemKindInterface },
+		-- keyword
+		CmpItemKindKeyword { fg = p.mono17 },
+		CmpItemKindOperator { CmpItemKindKeyword },
+		CmpItemKindSnippet { CmpItemKindKeyword },
+		CmpItemKindUnit { CmpItemKindKeyword },
+		CmpItemKindFolder { CmpItemKindKeyword },
+		-- constant
+		CmpItemKindConstant { fg = p.acc_dim05 },
+		CmpItemKindConstructor { CmpItemKindConstant },
+		CmpItemKindReference { CmpItemKindConstant },
+		-- text
+		CmpItemKindText { fg = p.mono15 },
+		CmpItemKindCopilot { CmpItemKindText },
+		CmpItemKindEnum { CmpItemKindText },
+		-- variable
+		CmpItemKindVariable { fg = p.mono19 },
+		CmpItemKindFile { CmpItemKindVariable },
+		CmpItemKindColor { CmpItemKindVariable },
+		-- field
+		CmpItemKindField { fg = p.acc_dim02 },
+		CmpItemKindProperty { CmpItemKindField },
+		CmpItemKindEvent { CmpItemKindField },
 	}
 end)
 
