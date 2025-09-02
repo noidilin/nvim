@@ -6,8 +6,7 @@ local p = require("lush_theme._primitive").hsl
 local s = require("lush_theme._semantic")
 local c = require("lush_theme._component")
 
--- design system: component token
-local component = lush(function(injected_functions)
+return lush(function(injected_functions)
 	-- For more information see https://github.com/rktjmp/lush.nvim/issues/109
 	local sym = injected_functions.sym
 	return {
@@ -23,9 +22,11 @@ local component = lush(function(injected_functions)
 		sym("@module")(s._constant), -- modules and namespace
 		sym("@module.builtin")(s._constant), -- built-in modules and namespace
 		sym("@label")(s._block), -- GOTO and other labels (e.g. `label:` in C), including heredoc labels
-		-- sym("@lsp.typemod.variable.defaultLibrary")  { }, -- @constant.builtin
-		-- sym("@lsp.typemod.variable.definition")  { }, -- @property
-		-- sym("@lsp.typemod.variable.injected") { c_variable },
+
+		-- LSP semantic tokens - high-value only
+		sym("@lsp.type.unresolvedReference")(s._error), -- unresolved imports/references
+		sym("@lsp.modifier.readonly") { fg = p.acc_dim05, gui = "italic" }, -- immutable bindings
+		sym("@lsp.modifier.deprecated") { fg = p.mono12, gui = "strikethrough" }, -- deprecated symbols
 
 		-- Literals
 		sym("@string")(s._string), -- string literals
@@ -50,12 +51,19 @@ local component = lush(function(injected_functions)
 		sym("@attribute")(s._constant), -- attribute annotations (e.g. Python decorators, Rust lifetimes)
 		sym("@attribute.builtin")(s._constant), -- builtin annotations (e.g. `@property` in Python)
 		sym("@property")(s._property), -- the key in key/value pairs
-		-- sym("@lsp.type.interface") { Structure },
-		-- sym("@lsp.type.class") { Structure },
-		-- sym("@lsp.type.enum") { Structure },
-		-- sym("@lsp.type.enumMember")(s._variable_member), -- @variable.member
-		-- sym("@lsp.type.generic")  { }, -- @type
-		-- sym("@lsp.type.typeParameter") { Typedef },
+
+		-- TypeScript-specific LSP tokens
+		sym("@lsp.type.interface.typescript") { fg = p.acc07, gui = "bold" }, -- interface declarations
+		sym("@lsp.type.type.typescript") { fg = p.mono23, gui = "italic" }, -- type aliases
+		sym("@lsp.type.typeParameter") { fg = p.acc_dim02, gui = "italic" }, -- generic parameters <T>
+		sym("@lsp.type.decorator") { fg = p.yellow00, gui = "bold" }, -- @Component, @Injectable
+
+		-- Rust-specific LSP tokens
+		sym("@lsp.type.lifetime.rust") { fg = p.green00, gui = "italic" }, -- 'a, 'static lifetimes
+		sym("@lsp.type.trait.rust") { fg = p.acc07, gui = "underline" }, -- trait definitions
+		sym("@lsp.modifier.mutable.rust") { fg = p.red00, gui = "bold" }, -- mut bindings
+		sym("@lsp.type.macro.rust") { fg = p.mono19, gui = "bold" }, -- macro invocations
+		sym("@lsp.modifier.attribute.rust") { fg = p.mono14, gui = "italic" }, -- #[derive(...)]
 
 		-- Functions
 		sym("@function")(s._function), -- function definitions
@@ -66,18 +74,10 @@ local component = lush(function(injected_functions)
 		sym("@function.method.call") { fg = p.mono25 }, -- method calls
 		sym("@constructor") { fg = p.acc_dim05 }, -- constructor calls and definitions: = { } in Lua, and Java constructors
 		sym("@operator")(s._operator), -- any symbolic operator (e.g. `+` / `*`), but also -> and * in C
-		-- sym("@lsp.type.selfParameter") { Special },
-		-- sym("@lsp.type.selfKeyword")(s._variable_builtin), -- @variable.builtin
-		-- sym("@lsp.typemod.function")  { }, -- @function.call
-		-- sym("@lsp.typemod.function.defaultLibrary")  { }, -- @function.builtin
-		-- sym("@lsp.typemod.class.defaultLibrary") {}, -- @type.builtin
-		-- sym("@lsp.typemod.enum.defaultLibrary") {}, -- @type.builtin
-		-- sym("@lsp.typemod.enumMember.defaultLibrary") {}, -- @constant.builtin
-		-- sym("@lsp.typemod.macro.defaultLibrary") {}, -- @function.builtin
-		-- sym("@lsp.typemod.method.defaultLibrary") {}, -- @function.builtin
-		-- sym("@lsp.typemod.operator.injected") { c_operator },
-		-- sym("@lsp.typemod.string.injected") { c_string },
-		-- sym("@lsp.typemod.type.defaultLibrary") {}, -- @type.builtin
+
+		-- Function-related LSP tokens
+		sym("@lsp.modifier.async") { fg = p.acc07, gui = "italic" }, -- async functions
+		sym("@lsp.type.selfKeyword.rust") { fg = p.acc_dim05, gui = "bold italic" }, -- self parameter in Rust
 
 		-- Keywords
 		sym("@keyword")(s._keyword), -- keywords not fitting into specific categories
@@ -131,7 +131,7 @@ local component = lush(function(injected_functions)
 		sym("@markup.link.label") { fg = p.mono15, gui = "underline" }, -- link, reference, descriptions
 		sym("@markup.link.url") { fg = p.mono15, gui = "underline" }, -- urls, links, emails
 		sym("@markup.raw") { fg = p.acc_dim05 }, -- literal or verbatim text (e.g. inline code in markdown and for doc in python ("""))
-		-- sym("@markup.raw.block") { fg = p.acc_dim05 }, -- literal or verbatim text as a stand-alone block
+		sym("@markup.raw.block") { fg = p.acc_dim05 }, -- literal or verbatim text as a stand-alone block
 		sym("@markup.list") { fg = p.mono22 }, -- list markers
 		sym("@markup.list.checked") { fg = p.mono22 }, -- checked todo-style list markers
 		sym("@markup.list.unchecked") { fg = p.mono22 }, -- unchecked todo-style list markers
@@ -196,5 +196,3 @@ local component = lush(function(injected_functions)
 		-- sym("@string.special.path.gitignore")  {},
 	}
 end)
-
-return component
