@@ -26,6 +26,12 @@ This configuration is customized with my own theme color-fatigue, which powered 
   - design token level 1: `_primitive.lua` (color palette)
   - design token level 2: `_semantic.lua` (syntax)
   - design token level 3: `_component.lua` (UI group)
+  - core features: `lua\theme\lua\lush_core\`
+  - plugin: `lua\theme\lua\lush_plugin\`
+  - deprecated plugin: `lua\theme\lua\lush_stale\`
+
+> [!note] directories naming starting with `lush_`
+> Due to the poor path resolution in lua, the name of directories should avoid collapsing with names under the root `lua`.
 
 ## Known issue
 

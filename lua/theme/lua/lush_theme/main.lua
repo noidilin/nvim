@@ -1,6 +1,6 @@
 local lush = require("lush")
 
--- basic
+-- core
 local editor = require("lush_core.editor")
 local syntax = require("lush_core.syntax")
 local trsssitter = require("lush_core.treesitter")
@@ -12,7 +12,7 @@ local neotest = require("lush_plugin.neotest")
 local snack = require("lush_plugin.snack")
 local avante = require("lush_plugin.avante")
 local trivia = require("lush_plugin.trivia")
--- depreciated
+-- stale
 -- local neotree = require("lush_stale.neotree")
 -- local telescope = require("lush_stale.telescope")
 -- local fzflua = require("lush_stale.fzflua")
