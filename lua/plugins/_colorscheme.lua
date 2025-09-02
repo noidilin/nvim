@@ -1,6 +1,4 @@
 return {
-	-- { "aktersnurra/no-clown-fiesta.nvim" },
-	-- { "slugbyte/lackluster.nvim" },
 	{
 		"vague2k/vague.nvim",
 		lazy = true,

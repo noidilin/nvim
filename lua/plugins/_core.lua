@@ -6,7 +6,18 @@ return {
 			keymap = { preset = "default", ["<Up>"] = {}, ["<Down>"] = {} },
 		},
 	},
-
+	{
+		-- BUG: char mode in macro
+		-- [bug: unexpected result when using `f` in macro when `multi_line = false`](https://github.com/folke/flash.nvim/issues/310)
+		-- [bug: broken macros when using 'f' character jump](https://github.com/folke/flash.nvim/issues/366)
+		-- [bug: Weird behavior when using f in a macro](https://github.com/folke/flash.nvim/issues/379)
+		"folke/flash.nvim",
+		opts = {
+			modes = {
+				char = { enabled = false },
+			},
+		},
+	},
 	{
 		"echasnovski/mini.move",
 		event = "VeryLazy",

@@ -1,3 +1,6 @@
+-- stylua: ignore
+-- if true then return {} end
+
 return {
 	"yetone/avante.nvim",
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -6,26 +9,10 @@ return {
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	opts = {
-		mode = "agentic",
+		mode = "legacy",
 		---@alias Provider "claude" | "openai" | "azure" | "gemini" | "vertex" | "cohere" | "copilot" | "bedrock" | "ollama" | string
 		---@type Provider
 		provider = "claude",
-		providers = {
-			deepseek = {
-				__inherited_from = "moonshot",
-				api_key_name = "DEEPSEEK_API_KEY",
-				endpoint = "https://api.deepseek.com",
-				model = "deepseek-coder",
-				disable_tools = true,
-			},
-			deepseek_r1 = {
-				__inherited_from = "moonshot",
-				api_key_name = "DEEPSEEK_API_KEY",
-				endpoint = "https://api.deepseek.com",
-				model = "deepseek-reasoner",
-				disable_tools = true,
-			},
-		},
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
