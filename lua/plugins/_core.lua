@@ -7,14 +7,35 @@ return {
 		},
 	},
 	{
-		-- BUG: char mode in macro
-		-- [bug: unexpected result when using `f` in macro when `multi_line = false`](https://github.com/folke/flash.nvim/issues/310)
-		-- [bug: broken macros when using 'f' character jump](https://github.com/folke/flash.nvim/issues/366)
-		-- [bug: Weird behavior when using f in a macro](https://github.com/folke/flash.nvim/issues/379)
+		-- BUG: char mode in macro [bug: Weird behavior when using f in a macro](https://github.com/folke/flash.nvim/issues/379)
 		"folke/flash.nvim",
 		opts = {
-			modes = {
-				char = { enabled = false },
+			modes = { char = { enabled = false } },
+		},
+	},
+	{
+		"folke/snacks.nvim",
+		opts = {
+			picker = {
+				layout = function()
+					return vim.o.columns >= 150 and { preset = "default" }
+						or {
+							layout = {
+								backdrop = false,
+								width = 0.8,
+								min_width = 80,
+								height = 0.8,
+								min_height = 30,
+								box = "vertical",
+								border = "rounded",
+								title = "{title} {live} {flags}",
+								title_pos = "center",
+								{ win = "input", height = 1, border = "bottom" },
+								{ win = "list", border = "none" },
+								{ win = "preview", title = "{preview}", height = 0.7, border = "top" },
+							},
+						}
+				end,
 			},
 		},
 	},
