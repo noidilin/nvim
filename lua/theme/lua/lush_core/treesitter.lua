@@ -10,22 +10,27 @@ local c = require("lush_theme._component")
 local component = lush(function(injected_functions)
 	local sym = injected_functions.sym
 	return {
-		-- Tree-Sitter groups are defined with an "@" symbol, which must be specially handled to be valid lua code.
-		-- We do this via the special sym function. The following are all valid ways to call the sym function,
-		-- for more details see https://www.lua.org/pil/5.html
-		--
-		-- sym("@text.literal")
-		-- sym"@text.literal"
 		-- For more information see https://github.com/rktjmp/lush.nvim/issues/109
+		-- Keywords
+		sym("@lsp.type.keyword")(s._keyword),
+		sym("@lsp.type.operator")(s._operator),
+		sym("@keyword")(s._keyword), -- keywords that don't fall in previous categories
+		sym("@operator")(s._operator), -- any operator: +, but also -> and * in C
+		sym("@keyword.operator")(s._operator), -- keyword operator (eg, 'in' in python)
+		sym("@keyword.modifier")(s._keyword), -- keywords modifying other constructs (e.g. `const`, `static`, `public`)
+		sym("@keyword.repeat")(s._block), -- keywords related to loops
+		sym("@keyword.return")(s._block),
+		sym("@keyword.debug")(s._block), -- keywords related to debugging
+		sym("@keyword.exception")(s._block),
+		sym("@keyword.conditional")(s._block), -- keywords for conditional statements
+		sym("@keyword.conditional.ternary")(s._operator), -- keywords for ternary operators (e.g. `?` / `:`)		sym("@conditional") { c_block }, -- Conditional
+		sym("@keyword.directive")(s._preproc00), -- various preprocessor directives & shebangs
+		sym("@keyword.directive.define")(s._preproc02), -- preprocessor definition directives
 
-		-- LSP
-		-- sym("@lsp.type.interface") { Structure },
-		-- sym("@lsp.type.class") { Structure },
-		-- sym("@lsp.type.enum") { Structure },
-		sym("@lsp.type.enumMember")(s._variable_member), -- @variable.member
-		-- sym("@lsp.type.selfParameter") { Special },
-		sym("@lsp.type.selfKeyword")(s._variable_builtin), -- @variable.builtin
-		sym("@lsp.type.unresolvedReference")(s._error),
+		-- Module
+		sym("@module")(s._constant), -- modules and namespace
+		sym("@keyword.import")(s._preproc00), -- includes: #include in C, use or extern crate in Rust, or require in Lua.		sym("@keyword.export") {  }, -- javascript & derivative
+		sym("@keyword.export")(s._preproc00), -- javascript & derivative
 
 		-- Identifier
 		-- sym("@lsp.type.variable")  { }, -- @constant
@@ -39,7 +44,6 @@ local component = lush(function(injected_functions)
 		sym("@constant")(s._constant), -- constants
 		sym("@constant.builtin") { fg = p.mono17 }, -- constants that are defined by the language, like 'nil' in lua
 		sym("@constant.macro")(s._preproc00), -- constants that are defined by macros like 'NULL' in c
-		sym("@module")(s._constant), -- modules and namespace
 		sym("@label")(s._block), -- for labels: label: in C and :label: in Lua
 		--- type variable modifiers
 		-- sym("@lsp.typemod.variable.defaultLibrary")  { }, -- @constant.builtin
@@ -56,32 +60,40 @@ local component = lush(function(injected_functions)
 		sym("@string.special.path")(s._special01), -- filenames
 		sym("@string.special.symbol")(s._variable), -- symbols or atoms
 		sym("@string.special.url") { fg = p.mono22 }, -- urls, links, emails
-		--- character
 		sym("@character")(s._string), -- character literals
 		sym("@character.special")(s._special01), -- special characters (e.g. wildcards)
-		--- other
 		sym("@boolean")(s._boolean), -- boolean
 		sym("@number")(s._number), -- all numbers
 		sym("@number.float")(s._number), -- float
-		--- custom
 		sym("@string.javascript")(s._none),
+
 		-- Types
+		-- sym("@lsp.type.interface") { Structure },
+		-- sym("@lsp.type.class") { Structure },
+		-- sym("@lsp.type.enum") { Structure },
+		sym("@lsp.type.enumMember")(s._variable_member), -- @variable.member
 		-- sym("@lsp.type.generic")  { }, -- @type
 		-- sym("@lsp.type.builtinType")  { }, -- @type.builtin
 		-- sym("@lsp.type.typeAlias")  { }, -- @type.definition
 		-- sym("@lsp.type.property")  { }, -- @type
 		-- sym("@lsp.type.typeParameter") { Typedef },
+		sym("@keyword.type")(s._keyword), -- keywords describing composite types (e.g. `struct`, `enum`, `class`)
 		sym("@type")(s._type), -- types
 		sym("@type.builtin") { fg = p.mono20 }, -- builtin types
 		sym("@type.definition")(s._preproc00), -- type definitions (e.g. `typedef` in C)
 		sym("@type.declaration") { fg = p.acc_dim05 },
 		sym("@attribute")(s._constant), -- attributes, like <decorators> in python
 		sym("@property")(s._property), -- same as TSField
+
 		-- Functions
-		sym("@lsp.type.operator")(s._operator),
-		-- sym("@lsp.type.macro") { Macro },
 		-- sym("@lsp.type.function")  { }, -- @function.call
+		sym("@lsp.typemod.keyword.async")(s._coroutine), -- @keyword.coroutine
+		-- sym("@lsp.type.macro") { Macro },
+		-- sym("@lsp.type.selfParameter") { Special },
+		sym("@lsp.type.selfKeyword")(s._variable_builtin), -- @variable.builtin
 		-- sym("@lsp.type.method")  { }, -- @function.method
+		sym("@keyword.function")(s._preproc02), -- keywords used to define a function
+		sym("@keyword.coroutine")(s._coroutine), -- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
 		sym("@function")(s._function), -- function (calls and definitions)
 		sym("@function.builtin")(s._special01), -- builtin functions: table.insert in Lua
 		sym("@function.call") { fg = p.mono17 }, -- function calls
@@ -89,7 +101,6 @@ local component = lush(function(injected_functions)
 		sym("@function.method") { fg = p.mono22 }, -- method definitions
 		sym("@function.method.call") { fg = p.mono25 }, -- method calls
 		sym("@constructor") { fg = p.acc_dim05 }, -- constructor calls and definitions: = { } in Lua, and Java constructors
-		sym("@operator")(s._operator), -- any operator: +, but also -> and * in C
 		--- type function modifiers
 		-- sym("@lsp.typemod.function")  { }, -- @function.call
 		-- sym("@lsp.typemod.function.defaultLibrary")  { }, -- @function.builtin
@@ -103,33 +114,14 @@ local component = lush(function(injected_functions)
 		-- sym("@lsp.typemod.operator.injected") { c_operator },
 		-- sym("@lsp.typemod.string.injected") { c_string },
 		-- sym("@lsp.typemod.type.defaultLibrary") {}, -- @type.builtin
-		-- Keywords
-		--- LSP
-		sym("@lsp.type.keyword")(s._keyword),
-		sym("@lsp.typemod.keyword.async")(s._coroutine), -- @keyword.coroutine
-		--- treesitter
-		sym("@keyword")(s._keyword), -- keywords that don't fall in previous categories
-		sym("@keyword.modifier")(s._keyword), -- keywords modifying other constructs (e.g. `const`, `static`, `public`)
-		sym("@keyword.type")(s._keyword), -- keywords describing composite types (e.g. `struct`, `enum`, `class`)
-		sym("@keyword.coroutine")(s._coroutine), -- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
-		sym("@keyword.function")(s._preproc02), -- keywords used to define a function
-		sym("@keyword.operator")(s._operator), -- keyword operator (eg, 'in' in python)
-		sym("@keyword.import")(s._preproc00), -- includes: #include in C, use or extern crate in Rust, or require in Lua.		sym("@keyword.export") {  }, -- javascript & derivative
-		sym("@keyword.repeat")(s._block), -- keywords related to loops
-		sym("@keyword.return")(s._block),
-		sym("@keyword.debug")(s._block), -- keywords related to debugging
-		sym("@keyword.exception")(s._block),
-		sym("@keyword.conditional")(s._block), -- keywords for conditional statements
-		sym("@keyword.conditional.ternary")(s._operator), -- keywords for ternary operators (e.g. `?` / `:`)		sym("@conditional") { c_block }, -- Conditional
-		sym("@keyword.directive")(s._preproc00), -- various preprocessor directives & shebangs
-		sym("@keyword.directive.define")(s._preproc02), -- preprocessor definition directives
-		sym("@keyword.export")(s._preproc00), -- javascript & derivative
+
 		-- Punctuation
 		-- sym("@lsp.type.formatSpecifier")  {  }, -- @punctuation.special
 		sym("@punctuation")(s_special02),
 		sym("@punctuation.delimiter")(s_special02), -- delimiters, like `; . , `
 		sym("@punctuation.bracket")(s._special00), -- brackets and parentheses
 		sym("@punctuation.special")(s._special01), -- punctuation that does not fall into above categories, like `{}` in string interpolation
+
 		-- Comment
 		-- sym("@lsp.type.comment") { c_comment },
 		sym("@comment")(s._comment),
@@ -139,6 +131,23 @@ local component = lush(function(injected_functions)
 		sym("@comment.hint")(c._success),
 		sym("@comment.todo")(c._info),
 		sym("@comment.note")(c._memo),
+
+		-- Diff
+		sym("@diff.plus") { fg = p.green00 }, -- added text (diff files)
+		sym("@diff.minus") { fg = p.red00 }, -- removed text (diff files)
+		sym("@diff.delta") { fg = p.yellow00 }, -- changed text (diff files)
+		-- Tags
+		sym("@tag")(s._tag), -- tags like html tag names
+		sym("@tag.attribute")(s._attribute), -- tags like in html tag names
+		sym("@tag.delimiter") { fg = p.mono11 }, -- tag delimiter < >
+		--- custom
+		sym("@tag.builtin")(s._tag), -- builtin tags (html)
+		sym("@tag.javascript") { fg = p.mono25, gui = "bold" }, -- component
+		-- Misc
+		sym("@lsp.type.unresolvedReference")(s._error),
+		sym("@error")(s._error),
+		sym("@none")(s._none),
+
 		-- Markup
 		sym("@markup") { fg = p.mono16 }, -- text in markup language
 		sym("@markup.strong") { fg = p.mono16, gui = "bold" }, -- bold
@@ -157,20 +166,6 @@ local component = lush(function(injected_functions)
 		sym("@markup.list") { fg = p.mono22 },
 		sym("@markup.list.checked") { fg = p.mono22 }, -- todo checked
 		sym("@markup.list.unchecked") { fg = p.mono22 }, -- todo unchecked
-		-- Diff
-		sym("@diff.plus") { fg = p.green00 }, -- added text (diff files)
-		sym("@diff.minus") { fg = p.red00 }, -- removed text (diff files)
-		sym("@diff.delta") { fg = p.yellow00 }, -- changed text (diff files)
-		-- Tags
-		sym("@tag")(s._tag), -- tags like html tag names
-		sym("@tag.attribute")(s._attribute), -- tags like in html tag names
-		sym("@tag.delimiter") { fg = p.mono11 }, -- tag delimiter < >
-		--- custom
-		sym("@tag.builtin")(s._tag), -- builtin tags (html)
-		sym("@tag.javascript") { fg = p.mono25, gui = "bold" }, -- component
-		-- Misc
-		sym("@error")(s._error),
-		sym("@none")(s._none),
 		-- Markdown
 		sym("@markup.heading.1.markdown")(s._md_h1),
 		sym("@markup.heading.2.markdown")(s._md_h2),
@@ -178,6 +173,7 @@ local component = lush(function(injected_functions)
 		sym("@markup.heading.4.markdown")(s._md_h4),
 		sym("@markup.heading.5.markdown")(s._md_h5),
 		sym("@markup.heading.6.markdown")(s._md_h6),
+
 		--[[
 		-- -- css
 		-- sym("@property.css") { fg = C.lavender },

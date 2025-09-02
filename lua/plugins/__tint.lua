@@ -7,7 +7,7 @@ return {
 	event = "VeryLazy",
 	opts = function()
 		local tint = require("tint")
-		local p = require("plugins.color-fatigue.lua.lush_theme._primitive").hex
+		local p = require("theme.lua.lush_theme._primitive").hex
 		tint.setup({
 			-- ref: https://github.com/levouh/tint.nvim/blob/master/DOC.md#transforms-tint_with_threshold
 			transforms = {
