@@ -60,9 +60,9 @@ return lush(function()
 		DiffLine { fg = p.mono09 },
 		DiffIndexLine { fg = p.mono13 },
 		-- background: darken diff
-		DiffAdd { bg = p.green00.darken(80) }, -- Diff mode: Added line |diff.txt|
-		DiffDelete { bg = p.red00.darken(80) }, -- Diff mode: Deleted line |diff.txt|
-		DiffChange { bg = p.yellow00.darken(90) }, -- Diff mode: Changed line |diff.txt|
+		DiffAdd { bg = p.green00.darken(65) }, -- Diff mode: Added line |diff.txt|
+		DiffDelete { bg = p.red00.darken(65) }, -- Diff mode: Deleted line |diff.txt|
+		DiffChange { bg = p.mono05 }, -- Diff mode: Changed line |diff.txt|
 		DiffText { bg = p.mono05 }, -- Diff mode: Changed text within a changed line |diff.txt|
 	}
 end)
