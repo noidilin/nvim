@@ -3,7 +3,7 @@ local lush = require("lush")
 -- core
 local editor = require("lush_core.editor")
 local syntax = require("lush_core.syntax")
-local trsssitter = require("lush_core.treesitter")
+local treesitter = require("lush_core.treesitter")
 local lsp = require("lush_core.lsp")
 -- plugin
 local bufferline = require("lush_plugin.bufferline")
@@ -22,7 +22,7 @@ local trivia = require("lush_plugin.trivia")
 local specs = {
 	editor,
 	syntax,
-	trsssitter,
+	treesitter,
 	lsp,
 	bufferline,
 	markdown,
@@ -38,9 +38,3 @@ local specs = {
 }
 
 return lush.merge(specs)
-
--- neotree_highlights,
--- telescope_highlights,
--- fzflua_highlights,
--- dashboard_highlights,
--- cmp_highlights
