@@ -14,6 +14,19 @@
   - react: [simple-react-snippets](https://github.com/burkeholland/simple-react-snippets/tree/master)
   - arrow function: [vscode-arrow-snippets](https://github.com/deinsoftware/vscode-arrow-snippets/tree/main)
 
+## Theme customization
+
+This configuration is customized with my own theme color-fatigue, which powered by the lush plugin.
+
+- `lua\plugins\lush.lua` loads lush function, and my custom theme directory `lua\theme\`
+- load custom theme: `lua\theme\colors\color-fatigue.lua` is loaded
+  - theme is named after `vim.g.colors_name = "color-fatigue"`
+  - theme setup is passed to lush to apply with `require("lush")(require("lush_theme.init"))`
+- theme setup: `lua\theme\lua\lush_theme\init.lua` is the entry point of my theme.
+  - design token level 1: `_primitive.lua` (color palette)
+  - design token level 2: `_semantic.lua` (syntax)
+  - design token level 3: `_component.lua` (UI group)
+
 ## Known issue
 
 ### fix `main.shada.tmp.X  files exist, cannot write ShaDa` issue
