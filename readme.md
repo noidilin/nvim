@@ -1,18 +1,17 @@
 # Read me
 
-## Setup
-
 > [!note]
-> config is installed at the XDG directory.
+> config is installed at the XDG based directory.
 
-- create a symlink at '$env.LOCALAPPDATA\nvim' for vscode-neovim, since it only check the default installation path.
+## VSCode neovim
 
-## Snippet
+There is a sub-configuration for vscode, located in `lua\noidilin\`.
 
-- engine: [blink.cmp](https://github.com/saghen/blink.cmp)
-- snippet:
-  - react: [simple-react-snippets](https://github.com/burkeholland/simple-react-snippets/tree/master)
-  - arrow function: [vscode-arrow-snippets](https://github.com/deinsoftware/vscode-arrow-snippets/tree/main)
+- lazyvim alike keymap: `lua\noidilin\vs-keymap`
+- lazyvim alike plugin: `lua\noidilin\vs-env`
+
+> [!warning]
+> Symlink at '$env.LOCALAPPDATA\nvim' for vscode-neovim, since it only check the default installation path.
 
 ## Theme customization
 
@@ -32,6 +31,13 @@ This configuration is customized with my own theme color-fatigue, which powered 
 
 > [!note] directories naming starting with `lush_`
 > Due to the poor path resolution in lua, the name of directories should avoid collapsing with names under the root `lua`.
+
+## Snippet
+
+- engine: [blink.cmp](https://github.com/saghen/blink.cmp)
+- snippet:
+  - react: [simple-react-snippets](https://github.com/burkeholland/simple-react-snippets/tree/master)
+  - arrow function: [vscode-arrow-snippets](https://github.com/deinsoftware/vscode-arrow-snippets/tree/main)
 
 ## Known issue
 

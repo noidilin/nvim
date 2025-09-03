@@ -1,5 +1,5 @@
+require("config.lazy")
+
 if vim.g.vscode then
-	require("noidilin")
-else
-	require("config.lazy")
+	require("vsc")
 end

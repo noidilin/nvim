@@ -1,14 +1,10 @@
 return {
-	{
-		"saghen/blink.cmp",
-		opts = {
-			-- set to {} to disable a keymap from preset
-			keymap = { preset = "default", ["<Up>"] = {}, ["<Down>"] = {} },
-		},
-	},
+	-- Disable leap.nvim from LazyVim VSCode module in favor of flash.nvim
+	{ "ggandor/leap.nvim", enabled = false },
 	{
 		-- BUG: char mode in macro [bug: Weird behavior when using f in a macro](https://github.com/folke/flash.nvim/issues/379)
 		"folke/flash.nvim",
+		vscode = true,
 		opts = {
 			modes = { char = { enabled = false } },
 		},
@@ -37,6 +33,13 @@ return {
 						}
 				end,
 			},
+		},
+	},
+	{
+		"saghen/blink.cmp",
+		opts = {
+			-- set to {} to disable a keymap from preset
+			keymap = { preset = "default", ["<Up>"] = {}, ["<Down>"] = {} },
 		},
 	},
 	{

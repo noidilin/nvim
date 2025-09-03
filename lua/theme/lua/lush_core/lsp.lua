@@ -20,10 +20,11 @@ return lush(function()
 		LspCxxHlGroupNamespace { fg = p.mono22 },
 		LspCxxHlSkippedRegion { fg = p.mono12 },
 		LspCxxHlSkippedRegionBeginEnd { fg = p.mono19 },
+
 		-- See :h diagnostic-highlights
 		DiagnosticError { fg = p.red00, gui = "bold" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticWarn { fg = p.orange00 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticInfo { fg = p.acc_dim02, fmt = "italic" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticInfo { fg = p.acc_dim02, gui = "italic" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticHint { fg = p.acc02 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticOk { fg = p.green00 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticVirtualTextError { fg = p.red00, gui = "bold" }, -- Used for "Error" diagnostic virtual text.
@@ -33,7 +34,7 @@ return lush(function()
 		DiagnosticVirtualTextOk { fg = p.green00 }, -- Used for "Ok" diagnostic virtual text.
 		-- TODO: what is sp
 		DiagnosticUnderlineError { gui = "underline", sp = p.red00 }, -- Used to underline "Error" diagnostics.
-		DiagnosticUnderlineWarn { gui = "underline", sp = p.yellow00 }, -- Used to underline "Warn" diagnostics.
+		DiagnosticUnderlineWarn { gui = "underline", sp = p.orange00 }, -- Used to underline "Warn" diagnostics.
 		DiagnosticUnderlineInfo { gui = "underline", sp = p.acc_dim02 }, -- Used to underline "Info" diagnostics.
 		DiagnosticUnderlineHint { gui = "underline", sp = p.acc02 }, -- Used to underline "Hint" diagnostics.
 		DiagnosticUnderlineOk { gui = "underline", sp = p.green00 }, -- Used to underline "Ok" diagnostics.
