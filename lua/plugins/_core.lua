@@ -1,4 +1,9 @@
 return {
+	{
+		"neovim/nvim-lspconfig",
+		-- biome default config:  https://github.com/neovim/nvim-lspconfig/blob/master/lsp/biome.lua
+		opts = { servers = { biome = {} } },
+	},
 	-- Disable leap.nvim from LazyVim VSCode module in favor of flash.nvim
 	{ "ggandor/leap.nvim", enabled = false },
 	{
