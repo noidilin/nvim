@@ -1,10 +1,29 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		-- biome default config:  https://github.com/neovim/nvim-lspconfig/blob/master/lsp/biome.lua
-		opts = { servers = { biome = {} } },
+		-- biome default config: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/biome.lua
+		opts = {
+			servers = {
+				biome = {},
+				harper_ls = {
+					enabled = true,
+					settings = {
+						["harper-ls"] = {
+							userDictPath = "~/.config/harper-ls/dict.txt",
+							fileDictPath = "~/.local/share/harper-ls/file-dict.txt",
+							linters = {
+								SentenceCapitalization = false,
+							},
+							markdown = {
+								IgnoreLinkTitle = false,
+							},
+						},
+					},
+				},
+			},
+		},
 	},
-	-- Disable leap.nvim from LazyVim VSCode module in favor of flash.nvim
+	-- Disable leap.nvim from LazyVim VS Code module in favor of flash.nvim
 	{ "ggandor/leap.nvim", enabled = false },
 	{
 		-- BUG: char mode in macro [bug: Weird behavior when using f in a macro](https://github.com/folke/flash.nvim/issues/379)
