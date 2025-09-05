@@ -9,7 +9,7 @@ return lush(function()
 	return {
 		-- DashboardHeader { FloatTitle },
 		-- DashboardFooter { FloatFooter, gui = "italic" },
-		DashboardShortCut { fg = p.acc_dim02 },
+		DashboardShortCut { fg = p.accDim02 },
 		-- DashboardIcon { NonText },
 		-- DashboardDesc { NormalFloat },
 		-- DashboardKey { NonText },

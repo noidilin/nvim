@@ -21,7 +21,7 @@ return lush(function()
 		FlashBackdrop { fg = p.mono10 },
 		FlashCurrent { fg = p.mono01, bg = p.mono17, gui = "bold" },
 		FlashLabel { fg = p.acc07, gui = "bold" },
-		FlashMatch { fg = p.acc_dim02, bg = p.mono05, gui = "underline" },
+		FlashMatch { fg = p.accDim02, bg = p.mono05, gui = "underline" },
 		FlashCursor { gui = "reverse" },
 		-- yanky
 		YankyYanked { fg = p.acc07, bg = p.mono10 },

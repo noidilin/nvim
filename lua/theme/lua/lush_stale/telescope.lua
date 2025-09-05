@@ -10,8 +10,8 @@ return lush(function()
 		-- telescope
 		-- TelescopeBorder { FloatBorder },
 		TelescopeMatching { fg = p.mono21, bg = p.mono05, gui = "bold" },
-		TelescopePromptPrefix { fg = p.acc_dim05 },
-		TelescopeSelection { fg = p.acc_dim05, bg = p.mono05 },
+		TelescopePromptPrefix { fg = p.accDim05 },
+		TelescopeSelection { fg = p.accDim05, bg = p.mono05 },
 		TelescopeSelectionCaret { fg = p.mono25 },
 		TelescopeResultsNormal { fg = p.mono15 },
 	}

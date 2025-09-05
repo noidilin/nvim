@@ -11,7 +11,7 @@ return lush(function()
 		NeotestTest { fg = p.mono15 },
 		NeotestUnknown { fg = p.mono15 },
 		NeotestDir { fg = p.mono12 },
-		NeotestFile { fg = p.acc_dim05 },
+		NeotestFile { fg = p.accDim05 },
 		NeotestPassed { fg = p.green00 },
 		NeotestFailed { fg = p.red00 },
 		NeotestMarked { fg = p.yellow00 },

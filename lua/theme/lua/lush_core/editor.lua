@@ -51,7 +51,7 @@ return lush(function()
 		-- PmenuExtraSel  { }, -- Popup menu: Selected item "extra text"
 		PmenuSbar { bg = p.mono03 }, -- Popup menu: Scrollbar.
 		PmenuThumb { bg = p.mono03 }, -- Popup menu: Thumb of the scrollbar.
-		Question { fg = p.acc_dim05 }, -- |hit-enter| prompt and yes/no questions
+		Question { fg = p.accDim05 }, -- |hit-enter| prompt and yes/no questions
 		QuickFixLine { fg = p.mono22, gui = "underline" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		Search { fg = p.mono16, bg = p.mono10 or p.mono07 }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 		IncSearch { fg = p.mono02, bg = p.mono10 or p.mono07 }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"

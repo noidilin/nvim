@@ -31,7 +31,7 @@ return lush(function()
 		CmpItemKindUnit { CmpItemKindKeyword },
 		CmpItemKindFolder { CmpItemKindKeyword },
 		-- constant
-		CmpItemKindConstant { fg = p.acc_dim05 },
+		CmpItemKindConstant { fg = p.accDim05 },
 		CmpItemKindConstructor { CmpItemKindConstant },
 		CmpItemKindReference { CmpItemKindConstant },
 		-- text
@@ -43,7 +43,7 @@ return lush(function()
 		CmpItemKindFile { CmpItemKindVariable },
 		CmpItemKindColor { CmpItemKindVariable },
 		-- field
-		CmpItemKindField { fg = p.acc_dim02 },
+		CmpItemKindField { fg = p.accDim02 },
 		CmpItemKindProperty { CmpItemKindField },
 		CmpItemKindEvent { CmpItemKindField },
 	}

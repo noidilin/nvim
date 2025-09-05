@@ -32,6 +32,12 @@ This configuration is customized with my own theme color-fatigue, which powered 
 > [!note] directories naming starting with `lush_`
 > Due to the poor path resolution in lua, the name of directories should avoid collapsing with names under the root `lua`.
 
+> [!note] naming in lazyvim
+>
+> - plugin name: `theme` (based on the directory name)
+> - colorscheme name: `color-fatigue` (based on `vim.g.colors_name` in `lua\theme\colors\color-fatigue.lua`)
+>   Note that custom theme file needs to be named after the name of the colorscheme.
+
 ## Snippet
 
 - engine: [blink.cmp](https://github.com/saghen/blink.cmp)

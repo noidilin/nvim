@@ -8,16 +8,16 @@ local p = require("lush_theme._primitive").hsl
 return lush(function()
 	return {
 		-- fzf-lua
-		FzfLuaHeaderBind { fg = p.acc_dim07 },
+		FzfLuaHeaderBind { fg = p.accDim07 },
 		FzfLuaHeaderText { fg = p.mono23 },
 		FzfLuaPathColNr { fg = p.mono11 },
 		FzfLuaPathLineNr { fg = p.mono11 },
 		FzfLuaLivePrompt { fg = p.acc05 },
 		FzfLuaLiveSym { fg = p.acc05 },
 		FzfLuaTabTitle { fg = p.mono15, gui = "bold" },
-		FzfLuaTabMarker { fg = p.acc_dim05, gui = "bold" },
+		FzfLuaTabMarker { fg = p.accDim05, gui = "bold" },
 		FzfLuaBufFlagCur { fg = p.orange00 },
 		FzfLuaBufFlagAlt { fg = p.yellow00 },
-		FzfLuaBufNr { fg = p.acc_dim05 },
+		FzfLuaBufNr { fg = p.accDim05 },
 	}
 end)

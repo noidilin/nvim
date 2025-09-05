@@ -9,7 +9,7 @@ return lush(function()
 	return {
 		-- avante color
 		-- avante title
-		AvanteTitle { fg = p.acc_dim05, bg = p.mono05 }, -- title
+		AvanteTitle { fg = p.accDim05, bg = p.mono05 }, -- title
 		AvanteSubtitle { AvanteTitle }, -- selected code title
 		AvanteThirdTitle { AvanteTitle }, -- prompt title
 		AvanteReversedTitle { fg = p.mono05, bg = p.mono05 }, -- used for rounded border
@@ -28,11 +28,11 @@ return lush(function()
 		AvanteReversedNormal { fg = p.mono02, bg = p.mono16 },
 		-- avante dialog
 		AvanteConfirmTitle { fg = p.mono02, bg = p.red01 },
-		AvanteButtonDefault { fg = p.mono02, bg = p.acc_dim05 },
+		AvanteButtonDefault { fg = p.mono02, bg = p.accDim05 },
 		AvanteButtonDefaultHover { fg = p.mono02, bg = p.green01 },
-		AvanteButtonPrimary { fg = p.mono02, bg = p.acc_dim05 },
-		AvanteButtonPrimaryHover { fg = p.mono02, bg = p.acc_dim05 },
-		AvanteButtonDanger { fg = p.mono02, bg = p.acc_dim05 },
+		AvanteButtonPrimary { fg = p.mono02, bg = p.accDim05 },
+		AvanteButtonPrimaryHover { fg = p.mono02, bg = p.accDim05 },
+		AvanteButtonDanger { fg = p.mono02, bg = p.accDim05 },
 		AvanteButtonDangerHover { fg = p.mono02, bg = p.red01 },
 		-- avante state
 		AvanteStateSpinnerGenerating { fg = p.mono02, bg = p.acc08 },

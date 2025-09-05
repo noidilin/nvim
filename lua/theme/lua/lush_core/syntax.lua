@@ -32,7 +32,7 @@ return lush(function()
 		Macro(s._preproc02), --   Same as Define
 		PreCondit(s._preproc00), --   Preprocessor #if, #else, #endif,
 
-		StorageClass { fg = p.acc_dim05 }, --   static, register, volatile,
+		StorageClass { fg = p.accDim05 }, --   static, register, volatile,
 		Structure(s._constant), --   struct, union, enum,
 		Special(s._special01), -- (*) Any special symbol
 		Type(s._type), -- (*) int, long, char,
@@ -44,7 +44,7 @@ return lush(function()
 		Error(s._error), -- Any erroneous construct
 		Todo { fg = p.mono22 }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-		Debug { fg = p.acc_dim05 }, --   Debugging statements
+		Debug { fg = p.accDim05 }, --   Debugging statements
 		DebugPC { fg = p.mono02, bg = p.mono16 },
 		DebugBreakpoint { fg = p.mono02, bg = p.mono19 },
 

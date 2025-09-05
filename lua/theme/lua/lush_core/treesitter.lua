@@ -25,7 +25,7 @@ return lush(function(injected_functions)
 
 		-- LSP semantic tokens - high-value only
 		sym("@lsp.type.unresolvedReference")(s._error), -- unresolved imports/references
-		sym("@lsp.modifier.readonly") { fg = p.acc_dim05, gui = "italic" }, -- immutable bindings
+		sym("@lsp.modifier.readonly") { fg = p.accDim05, gui = "italic" }, -- immutable bindings
 		sym("@lsp.modifier.deprecated") { fg = p.mono12, gui = "strikethrough" }, -- deprecated symbols
 
 		-- Literals
@@ -47,7 +47,7 @@ return lush(function(injected_functions)
 		sym("@type")(s._type), -- type or class definitions and annotations
 		sym("@type.builtin") { fg = p.mono20 }, -- builtin types
 		sym("@type.definition")(s._preproc00), -- identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
-		sym("@type.declaration") { fg = p.acc_dim05 },
+		sym("@type.declaration") { fg = p.accDim05 },
 		sym("@attribute")(s._constant), -- attribute annotations (e.g. Python decorators, Rust lifetimes)
 		sym("@attribute.builtin")(s._constant), -- builtin annotations (e.g. `@property` in Python)
 		sym("@property")(s._property), -- the key in key/value pairs
@@ -55,7 +55,7 @@ return lush(function(injected_functions)
 		-- TypeScript-specific LSP tokens
 		sym("@lsp.type.interface.typescript") { fg = p.acc07, gui = "bold" }, -- interface declarations
 		sym("@lsp.type.type.typescript") { fg = p.mono23, gui = "italic" }, -- type aliases
-		sym("@lsp.type.typeParameter") { fg = p.acc_dim02, gui = "italic" }, -- generic parameters <T>
+		sym("@lsp.type.typeParameter") { fg = p.accDim02, gui = "italic" }, -- generic parameters <T>
 		sym("@lsp.type.decorator") { fg = p.yellow00, gui = "bold" }, -- @Component, @Injectable
 
 		-- Rust-specific LSP tokens
@@ -72,12 +72,12 @@ return lush(function(injected_functions)
 		sym("@function.macro")(s._preproc00), -- macro defined functions (calls and definitions): each macro_rules in Rust
 		sym("@function.method") { fg = p.mono22 }, -- method definitions
 		sym("@function.method.call") { fg = p.mono25 }, -- method calls
-		sym("@constructor") { fg = p.acc_dim05 }, -- constructor calls and definitions: = { } in Lua, and Java constructors
+		sym("@constructor") { fg = p.accDim05 }, -- constructor calls and definitions: = { } in Lua, and Java constructors
 		sym("@operator")(s._operator), -- any symbolic operator (e.g. `+` / `*`), but also -> and * in C
 
 		-- Function-related LSP tokens
 		sym("@lsp.modifier.async") { fg = p.acc07, gui = "italic" }, -- async functions
-		sym("@lsp.type.selfKeyword.rust") { fg = p.acc_dim05, gui = "bold italic" }, -- self parameter in Rust
+		sym("@lsp.type.selfKeyword.rust") { fg = p.accDim05, gui = "bold italic" }, -- self parameter in Rust
 
 		-- Keywords
 		sym("@keyword")(s._keyword), -- keywords not fitting into specific categories
@@ -106,11 +106,11 @@ return lush(function(injected_functions)
 		-- Comment
 		sym("@comment")(s._comment), -- line and block comments
 		sym("@comment.documentation")(s._comment), -- comments documenting code
-		sym("@comment.error")(c._danger), -- error-type comments (e.g. `ERROR`, `FIXME`, `DEPRECATED`)
-		sym("@comment.warning")(c._warn), -- warning-type comments (e.g. `WARNING`, `FIX`, `HACK`)
-		sym("@comment.hint")(c._success),
-		sym("@comment.todo")(c._info), -- todo-type comments (e.g. `TODO`, `WIP`)
-		sym("@comment.note")(c._memo), -- note-type comments (e.g. `NOTE`, `INFO`, `XXX`)
+		sym("@comment.error")(c.errorBlock), -- error-type comments (e.g. `ERROR`, `FIXME`, `DEPRECATED`)
+		sym("@comment.warning")(c.warnBlock), -- warning-type comments (e.g. `WARNING`, `FIX`, `HACK`)
+		sym("@comment.hint")(c.okBlock),
+		sym("@comment.todo")(c.hintBlock), -- todo-type comments (e.g. `TODO`, `WIP`)
+		sym("@comment.note")(c.infoBlock), -- note-type comments (e.g. `NOTE`, `INFO`, `XXX`)
 
 		-- Markup
 		sym("@markup") { fg = p.mono16 }, -- text in markup language
@@ -130,8 +130,8 @@ return lush(function(injected_functions)
 		sym("@markup.link") { fg = p.mono15 }, -- text references, footnotes, citations, etc
 		sym("@markup.link.label") { fg = p.mono15, gui = "underline" }, -- link, reference, descriptions
 		sym("@markup.link.url") { fg = p.mono15, gui = "underline" }, -- urls, links, emails
-		sym("@markup.raw") { fg = p.acc_dim05 }, -- literal or verbatim text (e.g. inline code in markdown and for doc in python ("""))
-		sym("@markup.raw.block") { fg = p.acc_dim05 }, -- literal or verbatim text as a stand-alone block
+		sym("@markup.raw") { fg = p.accDim05 }, -- literal or verbatim text (e.g. inline code in markdown and for doc in python ("""))
+		sym("@markup.raw.block") { fg = p.accDim05 }, -- literal or verbatim text as a stand-alone block
 		sym("@markup.list") { fg = p.mono22 }, -- list markers
 		sym("@markup.list.checked") { fg = p.mono22 }, -- checked todo-style list markers
 		sym("@markup.list.unchecked") { fg = p.mono22 }, -- unchecked todo-style list markers

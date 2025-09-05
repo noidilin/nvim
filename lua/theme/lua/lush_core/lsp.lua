@@ -24,20 +24,19 @@ return lush(function()
 		-- See :h diagnostic-highlights
 		DiagnosticError { fg = p.red00, gui = "bold" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticWarn { fg = p.orange00 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticInfo { fg = p.acc_dim02, gui = "italic" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticHint { fg = p.acc02 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticInfo { fg = p.mono15, gui = "italic" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticHint { fg = p.acc05 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticOk { fg = p.green00 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticVirtualTextError { fg = p.red00, gui = "bold" }, -- Used for "Error" diagnostic virtual text.
-		DiagnosticVirtualTextWarn { fg = p.orange00 }, -- Used for "Warn" diagnostic virtual text.
-		DiagnosticVirtualTextInfo { fg = p.acc_dim02 }, -- Used for "Info" diagnostic virtual text.
-		DiagnosticVirtualTextHint { fg = p.acc02 }, -- Used for "Hint" diagnostic virtual text.
-		DiagnosticVirtualTextOk { fg = p.green00 }, -- Used for "Ok" diagnostic virtual text.
-		-- TODO: what is sp
-		DiagnosticUnderlineError { gui = "underline", sp = p.red00 }, -- Used to underline "Error" diagnostics.
-		DiagnosticUnderlineWarn { gui = "underline", sp = p.orange00 }, -- Used to underline "Warn" diagnostics.
-		DiagnosticUnderlineInfo { gui = "underline", sp = p.acc_dim02 }, -- Used to underline "Info" diagnostics.
-		DiagnosticUnderlineHint { gui = "underline", sp = p.acc02 }, -- Used to underline "Hint" diagnostics.
-		DiagnosticUnderlineOk { gui = "underline", sp = p.green00 }, -- Used to underline "Ok" diagnostics.
+		-- DiagnosticVirtualTextError { DiagnosticError }, -- Used for "Error" diagnostic virtual text.
+		-- DiagnosticVirtualTextWarn { DiagnosticWarn }, -- Used for "Warn" diagnostic virtual text.
+		-- DiagnosticVirtualTextInfo { DiagnosticInfo }, -- Used for "Info" diagnostic virtual text.
+		-- DiagnosticVirtualTextHint { DiagnosticHint }, -- Used for "Hint" diagnostic virtual text.
+		-- DiagnosticVirtualTextOk { DiagnosticOk }, -- Used for "Ok" diagnostic virtual text.
+		DiagnosticUnderlineError { DiagnosticError, gui = "bold underline" }, -- Used to underline "Error" diagnostics.
+		DiagnosticUnderlineWarn { DiagnosticWarn, gui = "underline" }, -- Used to underline "Warn" diagnostics.
+		DiagnosticUnderlineInfo { DiagnosticInfo, gui = "italic underline" }, -- Used to underline "Info" diagnostics.
+		DiagnosticUnderlineHint { DiagnosticHint, gui = "underline" }, -- Used to underline "Hint" diagnostics.
+		DiagnosticUnderlineOk { DiagnosticOk, gui = "underline" }, -- Used to underline "Ok" diagnostics.
 		-- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
 		-- DiagnosticFloatingWarn     { } , -- Used to color "Warn" diagnostic messages in diagnostics float.
 		-- DiagnosticFloatingInfo     { } , -- Used to color "Info" diagnostic messages in diagnostics float.

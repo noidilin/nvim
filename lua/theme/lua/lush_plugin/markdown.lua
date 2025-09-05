@@ -32,7 +32,7 @@ return lush(function()
 		RenderMarkdownDash { fg = p.mono06 }, -- thematic break line
 		--- link
 		RenderMarkdownWikiLink { fg = p.mono19 }, -- wiki link icon & text
-		RenderMarkdownLink { fg = p.acc_dim02 }, -- image & hyperlink icons
+		RenderMarkdownLink { fg = p.accDim02 }, -- image & hyperlink icons
 		--- table
 		-- RenderMarkdownTableHead {  },
 		-- RenderMarkdownTableRow {  },
