@@ -24,6 +24,7 @@ return {
 						["]u"] = "@call.outer",
 						["]x"] = "@assignment.outer",
 						["]r"] = "@property.outer",
+						["]j"] = "@attribute.outer",
 					},
 					goto_next_end = {
 						["]O"] = "@block.outer",
@@ -33,6 +34,7 @@ return {
 						["]U"] = "@call.outer",
 						["]X"] = "@assignment.outer",
 						["]R"] = "@property.outer",
+						["]J"] = "@attribute.outer",
 					},
 					goto_previous_start = {
 						["[o"] = "@block.outer",
@@ -42,6 +44,7 @@ return {
 						["[u"] = "@call.outer",
 						["[x"] = "@assignment.outer",
 						["[r"] = "@property.outer",
+						["[j"] = "@attribute.outer",
 					},
 					goto_previous_end = {
 						["[O"] = "@block.outer",
@@ -51,6 +54,7 @@ return {
 						["[U"] = "@call.outer",
 						["[X"] = "@assignment.outer",
 						["[R"] = "@property.outer",
+						["[J"] = "@attribute.outer",
 					},
 				},
 			},
@@ -70,8 +74,6 @@ return {
 					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function method
 					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
 					a = ai.gen_spec.treesitter({ a = "@parameter.outer", i = "@parameter.inner" }), -- parameter
-					x = ai.gen_spec.treesitter({ a = "@assignment.outer", i = "@assignment.inner" }), -- assignment
-					r = ai.gen_spec.treesitter({ a = "@property.outer", i = "@property.inner" }), -- property
 
 					t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
 					d = { "%f[%d]%d+" }, -- digits
@@ -88,6 +90,10 @@ return {
 					g = LazyVim.mini.ai_buffer, -- buffer
 					u = ai.gen_spec.function_call(), -- u for "Usage"
 					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
+
+					x = ai.gen_spec.treesitter({ a = "@assignment.outer", i = "@assignment.inner" }), -- assignment
+					r = ai.gen_spec.treesitter({ a = "@property.outer", i = "@property.inner" }), -- property
+					j = ai.gen_spec.treesitter({ a = "@attribute.outer", i = "@attribute.inner" }), -- html/jsx attribute
 				},
 			}
 		end,
