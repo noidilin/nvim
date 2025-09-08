@@ -1,28 +1,4 @@
 return {
-	{
-		"neovim/nvim-lspconfig",
-		-- biome default config: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/biome.lua
-		opts = {
-			servers = {
-				biome = {},
-				harper_ls = {
-					enabled = true,
-					settings = {
-						["harper-ls"] = {
-							userDictPath = "~/.config/harper-ls/dict.txt",
-							fileDictPath = "~/.local/share/harper-ls/file-dict.txt",
-							linters = {
-								SentenceCapitalization = false,
-							},
-							markdown = {
-								IgnoreLinkTitle = false,
-							},
-						},
-					},
-				},
-			},
-		},
-	},
 	-- Disable leap.nvim from LazyVim VS Code module in favor of flash.nvim
 	{ "ggandor/leap.nvim", enabled = false },
 	{
@@ -62,7 +38,6 @@ return {
 	{
 		"saghen/blink.cmp",
 		opts = {
-			-- set to {} to disable a keymap from preset
 			keymap = { preset = "default", ["<Up>"] = {}, ["<Down>"] = {} },
 		},
 	},
@@ -70,7 +45,6 @@ return {
 		"echasnovski/mini.move",
 		event = "VeryLazy",
 		opts = {
-			-- Module mappings. Use `''` (empty string) to disable one.
 			mappings = {
 				-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
 				left = "<M-Left>",
@@ -82,6 +56,27 @@ return {
 				line_right = "<M-Right>",
 				line_down = "<M-Down>",
 				line_up = "<M-Up>",
+			},
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				-- biome default config: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/biome.lua
+				biome = {},
+				harper_ls = {
+					enabled = true,
+					filetypes = { "markdown" },
+					settings = {
+						["harper-ls"] = {
+							userDictPath = "~/.config/harper-ls/dict.txt",
+							fileDictPath = "~/.local/share/harper-ls/file-dict.txt",
+							linters = { SentenceCapitalization = false },
+							markdown = { IgnoreLinkTitle = false },
+						},
+					},
+				},
 			},
 		},
 	},
