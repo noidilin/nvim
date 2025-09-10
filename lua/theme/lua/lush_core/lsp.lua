@@ -4,6 +4,7 @@
 local lush = require("lush")
 local p = require("lush_theme._primitive").hsl
 -- local s = require("lush_theme._semantic")
+local c = require("lush_theme._component")
 
 return lush(function()
 	return {
@@ -22,31 +23,37 @@ return lush(function()
 		LspCxxHlSkippedRegionBeginEnd { fg = p.mono19 },
 
 		-- See :h diagnostic-highlights
-		DiagnosticError { fg = p.red00, gui = "bold" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticWarn { fg = p.orange00 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticInfo { fg = p.mono15, gui = "italic" }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticHint { fg = p.acc05 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticOk { fg = p.green00 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticVirtualTextError { DiagnosticError }, -- Used for "Error" diagnostic virtual text.
-		-- DiagnosticVirtualTextWarn { DiagnosticWarn }, -- Used for "Warn" diagnostic virtual text.
-		-- DiagnosticVirtualTextInfo { DiagnosticInfo }, -- Used for "Info" diagnostic virtual text.
-		-- DiagnosticVirtualTextHint { DiagnosticHint }, -- Used for "Hint" diagnostic virtual text.
-		-- DiagnosticVirtualTextOk { DiagnosticOk }, -- Used for "Ok" diagnostic virtual text.
-		DiagnosticUnderlineError { DiagnosticError, gui = "bold underline" }, -- Used to underline "Error" diagnostics.
-		DiagnosticUnderlineWarn { DiagnosticWarn, gui = "underline" }, -- Used to underline "Warn" diagnostics.
-		DiagnosticUnderlineInfo { DiagnosticInfo, gui = "italic underline" }, -- Used to underline "Info" diagnostics.
-		DiagnosticUnderlineHint { DiagnosticHint, gui = "underline" }, -- Used to underline "Hint" diagnostics.
-		DiagnosticUnderlineOk { DiagnosticOk, gui = "underline" }, -- Used to underline "Ok" diagnostics.
-		-- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
-		-- DiagnosticFloatingWarn     { } , -- Used to color "Warn" diagnostic messages in diagnostics float.
-		-- DiagnosticFloatingInfo     { } , -- Used to color "Info" diagnostic messages in diagnostics float.
-		-- DiagnosticFloatingHint     { } , -- Used to color "Hint" diagnostic messages in diagnostics float.
-		-- DiagnosticFloatingOk       { } , -- Used to color "Ok" diagnostic messages in diagnostics float.
-		-- DiagnosticSignError        { } , -- Used for "Error" signs in sign column.
-		-- DiagnosticSignWarn         { } , -- Used for "Warn" signs in sign column.
-		-- DiagnosticSignInfo         { } , -- Used for "Info" signs in sign column.
-		-- DiagnosticSignHint         { } , -- Used for "Hint" signs in sign column.
-		-- DiagnosticSignOk           { } , -- Used for "Ok" signs in sign column.
+		-- The base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticError(c.error),
+		DiagnosticWarn(c.warn),
+		DiagnosticInfo(c.info),
+		DiagnosticHint(c.hint),
+		DiagnosticOk(c.ok),
+		-- For diagnostic virtual text
+		-- DiagnosticVirtualTextError { DiagnosticError },
+		-- DiagnosticVirtualTextWarn { DiagnosticWarn },
+		-- DiagnosticVirtualTextInfo { DiagnosticInfo },
+		-- DiagnosticVirtualTextHint { DiagnosticHint },
+		-- DiagnosticVirtualTextOk { DiagnosticOk },
+		-- To color diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
+		-- DiagnosticFloatingError    { } ,
+		-- DiagnosticFloatingWarn     { } ,
+		-- DiagnosticFloatingInfo     { } ,
+		-- DiagnosticFloatingHint     { } ,
+		-- DiagnosticFloatingOk       { } ,
+		-- For signs in sign column
+		-- DiagnosticSignError        { } ,
+		-- DiagnosticSignWarn         { } ,
+		-- DiagnosticSignInfo         { } ,
+		-- DiagnosticSignHint         { } ,
+		-- DiagnosticSignOk           { } ,
+		-- To underline diagnostics
+		DiagnosticUnderlineError { DiagnosticError, gui = "underline" },
+		DiagnosticUnderlineWarn { DiagnosticWarn, gui = "underline" },
+		DiagnosticUnderlineInfo { DiagnosticInfo, gui = "underline" },
+		DiagnosticUnderlineHint { DiagnosticHint, gui = "underline" },
+		DiagnosticUnderlineOk { DiagnosticOk, gui = "underline" },
+
 		TroubleText { fg = p.mono19 },
 		TroubleCount { fg = p.red00, bg = p.mono05 },
 		TroubleNormal { fg = p.mono17, bg = p.mono02 },

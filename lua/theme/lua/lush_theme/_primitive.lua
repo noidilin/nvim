@@ -49,20 +49,20 @@ M.hex = {
 	accDim01 = "#7b7974",
 	accDim00 = "#6c6a65",
 
-	red01 = "#cc9393",
-	red00 = "#b07878",
-	green01 = "#9bb09b",
-	green00 = "#778777",
-	yellow01 = "#ebd6b7",
-	yellow00 = "#d6caab",
-	blue01 = "#9db2cf",
-	blue00 = "#7d96ad",
-	magenta01 = "#9f9fbd",
-	magenta00 = "#797994",
-	cyan01 = "#92b3b3",
-	cyan00 = "#769494",
-	orange01 = "#dcb5a5",
-	orange00 = "#c8a492",
+	red01 = "#cc9393", -- '#eba0ac'
+	red00 = "#b07878", -- '#f38ba8'
+	green01 = "#9bb09b", -- '#94e2d5'
+	green00 = "#778777", -- '#a6e3a1'
+	yellow01 = "#ebd6b7", -- '#f9e2af'
+	yellow00 = "#d6caab", -- '#fab387'
+	blue01 = "#9db2cf", -- '#b4befe'
+	blue00 = "#7d96ad", -- '#89b4fa'
+	magenta01 = "#9f9fbd", -- '#f5c2e7'
+	magenta00 = "#797994", -- '#cba6f7'
+	cyan01 = "#92b3b3", -- '#89dceb'
+	cyan00 = "#769494", -- '#74c7ec'
+	orange01 = "#dcb5a5", -- '#f5e0dc'
+	orange00 = "#c8a492", -- '#f2cdcd'
 }
 
 local function map_palette(palette, transform)
