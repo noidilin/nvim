@@ -1,3 +1,6 @@
+-- stylua: ignore
+if true then return {} end
+
 -- NOTE:
 -- img-clip.nvim provide image pasting feature, but it currently won't work on nushell + windows device
 -- snack.image provide image preview feature, but it heavily relys on caching image in png format.
