@@ -6,21 +6,12 @@ return {
 			lazy = false, -- load this during startup, since its the main colorscheme
 		},
 	},
-	{
-		"vague2k/vague.nvim",
-		lazy = true,
-		opts = {},
-	},
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "color-fatigue",
-		},
-	},
+	{ "vague2k/vague.nvim", lazy = true },
+	{ "LazyVim/LazyVim", opts = { colorscheme = "color-fatigue" } },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = function()
+		opts = function(_, opts)
 			local p = require("theme.lua.lush_theme._primitive").hex
 			local color_fatigue = {
 				normal = {
@@ -55,7 +46,8 @@ return {
 				},
 			}
 
-			return { options = { theme = color_fatigue } }
+			opts.options = { theme = color_fatigue }
+			return opts
 		end,
 	},
 }
