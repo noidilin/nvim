@@ -9,6 +9,10 @@ return {
 	{ "vague2k/vague.nvim", lazy = true },
 	{ "LazyVim/LazyVim", opts = { colorscheme = "color-fatigue" } },
 	{
+		"folke/noice.nvim",
+		opts = { presets = { lsp_doc_border = true } },
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = function(_, opts)
