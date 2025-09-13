@@ -1,0 +1,124 @@
+{
+  "useStateHook": {
+    "prefix": "ush",
+    "body": ["const [${1}, set${1/(.*)/${1:/capitalize}/}] = useState($2);$0"],
+    "description": "React useState() hook"
+  },
+  "useReducerHook": {
+    "prefix": "urdh",
+    "body": [
+      "const [${1:state},${2: dispatch}] = useReducer(${3:reducer}, ${4:initialArg}, ${5:init});"
+    ],
+    "description": "React useReducer() hook"
+  },
+  "useContextHook": {
+    "prefix": "uch",
+    "body": ["const $1 = useContext($2);$0"],
+    "description": "React useContext() hook"
+  },
+  "useRefHook": {
+    "prefix": "urh",
+    "body": ["const $1 = useRef($2);$0"],
+    "description": "React useRef() hook"
+  },
+  "useImperativeHandleHook": {
+    "prefix": "uihh",
+    "body": [
+      "useImperativeHandle(ref, () => {",
+      "\treturn {",
+      "\t\t$1",
+      "\t}",
+      "}, [$2]);$0"
+    ],
+    "description": "React useImperativeHandle() hook"
+  },
+  "useEffectHook": {
+    "prefix": "ueh",
+    "body": [
+      "useEffect(() => {",
+      "\t$1",
+      "\n\treturn () => {",
+      "\t\t$2",
+      "\t}",
+      "}, [${3}]);$0"
+    ],
+    "description": "React useEffect() hook"
+  },
+  "useLayoutEffectHook": {
+    "prefix": "uleh",
+    "body": ["useLayoutEffect(() => {", "\t$1", "}, [${2}]);$0"],
+    "description": "React useLayoutEffect() hook"
+  },
+  "useInsertionEffectHook": {
+    "prefix": "uieh",
+    "body": ["useInsertionEffect(() => {", "\t$1", "}, [${2}]);$0"],
+    "description": "React useInsertionEffect() hook"
+  },
+  "useMemoHook": {
+    "prefix": "umh",
+    "body": [
+      "const ${1:memoizedValue} = useMemo(() => ${2:computeExpensiveValue}(${3:a}, ${4:b}), [${5:a}, ${6:b}]);$0"
+    ],
+    "description": "React useMemo() hook"
+  },
+  "useCallBackHook": {
+    "prefix": "ucbh",
+    "body": [
+      "const ${1:memoizedCallback} = useCallback(",
+      "\t() => {",
+      "\t\t${2:doSomething}(${3:a}, ${4:b})",
+      "\t},",
+      "\t[${5:a}, ${6:b}],",
+      ");$0"
+    ],
+    "description": "React useCallback() hook"
+  },
+  "useTransitionHook": {
+    "prefix": "uth",
+    "body": ["const [isPending, startTransition] = useTransition();$0"],
+    "description": "React useTransition() hook"
+  },
+  "useDeferredValueHook": {
+    "prefix": "udvh",
+    "body": ["const ${1:deferredValue} = useDeferredValue(${2:value});$0"],
+    "description": "React useDeferredValue() hook"
+  },
+  "useFormStatusHook": {
+    "prefix": "ufsh",
+    "body": [
+      "const { ${1:pending}, ${2:data}, ${3:method}, ${4:action} } = useFormStatus();$0"
+    ],
+    "description": "React Dom useFormStatus() hook"
+  },
+  "useDebugValueHook": {
+    "prefix": "udbvh",
+    "body": ["useDebugValue(${1:value});$0"],
+    "description": "React useDebugValue() hook"
+  },
+  "useIdHook": {
+    "prefix": "uidh",
+    "body": ["const ${1:id} = useId();$0"],
+    "description": "React useId() hook"
+  },
+  "useSyncExternalStoreHook": {
+    "prefix": "usesh",
+    "body": [
+      "const ${1:snapshot} = useSyncExternalStore(${2:subscribe}, ${3:getSnapshot}, ${4:getServerSnapshot});$0"
+    ],
+    "description": "React useSyncExternalStore() hook"
+  },
+  "useActionStateHook": {
+    "prefix": "uash",
+    "body": [
+      "const [${1:state}, ${2:formAction}, ${3:isPending}] = useActionState(${4:fn}, ${5:initialState});$0"
+    ],
+    "description": "React useActionState() hook"
+  },
+  "useOptimisticHook": {
+    "prefix": "uoh",
+    "body": [
+      "const [${1:optimisticState}, ${2:addOptimistic}] = useOptimistic(${3:state}, ${4:updateFn});$0"
+    ],
+    "description": "React useOptimistic() hook"
+  }
+}

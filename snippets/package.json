@@ -1,78 +1,55 @@
 {
-  "name": "vscode-snippets",
+  "name": "noidilin-snippets",
   "contributes": {
     "snippets": [
       {
-        "language": "javascriptreact",
-        "path": "./react/snippets.json"
+        "language": [
+          "typescriptreact",
+          "javascriptreact",
+          "jsx-attr",
+          "tsx-attr"
+        ],
+        "path": "./javascript/react.json"
       },
       {
-        "language": "javascript",
-        "path": "./react/snippets.json"
+        "language": [
+          "typescriptreact",
+          "javascriptreact",
+          "jsx-attr",
+          "tsx-attr"
+        ],
+        "path": "./javascript/react-hook.json"
       },
       {
-        "language": "typescriptreact",
-        "path": "./react/snippets-ts.json"
+        "language": [
+          "typescriptreact",
+          "javascriptreact",
+          "jsx-attr",
+          "tsx-attr"
+        ],
+        "path": "./javascript/react-prop-type.json"
       },
       {
-        "language": "typescript",
-        "path": "./react/snippets-ts.json"
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "jsx-attr",
+          "typescript",
+          "typescriptreact",
+          "tsx-attr"
+        ],
+        "path": "./javascript/js.json"
       },
       {
-        "language": "javascript",
-        "path": "./arrow/arrow.json"
-      },
-      {
-        "language": "javascript",
-        "path": "./arrow/function-js.json"
-      },
-      {
-        "language": "javascriptreact",
-        "path": "./arrow/arrow.json"
-      },
-      {
-        "language": "javascriptreact",
-        "path": "./arrow/function-js.json"
-      },
-      {
-        "language": "jsx-attr",
-        "path": "./arrow/arrow.json"
-      },
-      {
-        "language": "jsx-attr",
-        "path": "./arrow/function-js.json"
-      },
-      {
-        "language": "typescript",
-        "path": "./arrow/arrow.json"
-      },
-      {
-        "language": "typescript",
-        "path": "./arrow/function-ts.json"
-      },
-      {
-        "language": "typescriptreact",
-        "path": "./arrow/arrow.json"
-      },
-      {
-        "language": "typescriptreact",
-        "path": "./arrow/function-ts.json"
-      },
-      {
-        "language": "tsx-attr",
-        "path": "./arrow/arrow.json"
-      },
-      {
-        "language": "tsx-attr",
-        "path": "./arrow/function-ts.json"
-      },
-      {
-        "language": "vue",
-        "path": "./arrow/arrow.json"
-      },
-      {
-        "language": "vue",
-        "path": "./arrow/function-js.json"
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "jsx-attr",
+          "typescript",
+          "typescriptreact",
+          "tsx-attr"
+        ],
+        "path": "./javascript/js-console.json"
       }
     ]
   }

@@ -39,6 +39,7 @@ return {
 		"saghen/blink.cmp",
 		opts = {
 			keymap = { preset = "default", ["<Up>"] = {}, ["<Down>"] = {} },
+			sources = { providers = { snippets = { opts = { friendly_snippets = false } } } },
 		},
 	},
 	{
