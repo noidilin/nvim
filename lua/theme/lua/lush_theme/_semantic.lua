@@ -31,7 +31,7 @@ return {
 	_event = { fg = p.accDim02, gui = "underline" },
 	_tag = { fg = p.mono25 },
 	_attribute = { fg = p.mono14 },
-	_none = { fg = p.mono11 },
+	_none = { fg = p.mono10 },
 	_regexp = { fg = p.mono15 },
 	_comment = { fg = p.mono12, gui = "italic" },
 	_md_h1 = { fg = p.mono25, gui = "bold underline" },

@@ -61,7 +61,7 @@ return lush(function()
 		SpellCap { sp = p.orange00, gui = "underline" }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		SpellLocal { sp = p.yellow00, gui = "underline" }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		SpellRare { sp = p.yellow00, gui = "underline" }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-		StatusLine { fg = p.mono16, bg = p.mono12 }, -- Status line of current window
+		StatusLine { fg = p.mono16, bg = p.mono03 }, -- Status line of current window
 		StatusLineTerm { fg = p.mono16, bg = p.mono05 },
 		StatusLineNC { fg = p.mono12, bg = p.mono02 }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		StatusLineTermNC { fg = p.mono12, bg = p.mono05 },
