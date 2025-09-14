@@ -1,161 +1,93 @@
 {
+  "importModule": {
+    "prefix": "im",
+    "body": "import $2 from '$1'"
+  },
+  "importModuleAs": {
+    "prefix": "ima",
+    "body": "import $2 as $3 from '$1'"
+  },
+  "importModuleDestructured": {
+    "prefix": "imd",
+    "body": "import { $2 } from '$1'"
+  },
+  "export": {
+    "prefix": "e",
+    "body": "export $1"
+  },
   "exportDefault": {
     "prefix": "ed",
-    "body": ["export default ${1:first}"]
+    "body": ["export default $1"]
+  },
+  "tryCatch": {
+    "prefix": "tc",
+    "body": "try {\n\t$0\n} catch ($1) {\n\t\n}"
+  },
+  "tryFinally": {
+    "prefix": "tf",
+    "body": "try {\n\t$0\n} finally {\n\t\n}"
+  },
+  "tryCatchFinally": {
+    "prefix": "tcf",
+    "body": "try {\n\t$0\n} catch ($1) {\n\t\n} finally {\n\t\n}"
   },
   "forOf": {
     "prefix": "fof",
-    "body": ["for(let ${1:first} of ${2:second}) {${3:third}}"],
+    "body": ["for(let $1 of $2) {\n\t$3\n}"],
     "description": "Iterating over property names of iterable objects"
   },
   "forIn": {
     "prefix": "fin",
-    "body": ["for(let ${1:first} in ${2:second}) {${3:third}}"],
+    "body": ["for(let $1 in $2) {\n\t$3\n}"],
     "description": "Iterating over property values of iterable objects"
   },
   "destructingObject": {
     "prefix": "dob",
-    "body": ["const {${2:second}} = ${1:first}"],
+    "body": ["const { $2 } = $1"],
     "description": "Creates and assigns a local variable using object destructing"
   },
   "destructingArray": {
     "prefix": "dar",
-    "body": ["const [${2:second}] = ${1:first}"],
+    "body": ["const [ $2 ] = $1"],
     "description": "Creates and assigns a local variable using array destructing"
   },
-
-  "arrowFunction": {
-    "prefix": "af",
-    "body": "() => $0",
-    "description": "Arrow function (implicit return)"
+  "constObject": {
+    "prefix": "co",
+    "body": "const $1 = {\n\t$0\n}"
   },
-  "arrowFunction.WithArguments": {
+  "constArray": {
+    "prefix": "car",
+    "body": "const $1 = [\n\t$0\n]"
+  },
+
+  "named.Function": {
+    "prefix": "nf",
+    "body": "function $1 ($2) {\n\t$0\n}",
+    "description": "Named function with arguments"
+  },
+  "async.Named.Function": {
+    "prefix": "anf",
+    "body": "async function $1 ($2) {\n\t$0\n}",
+    "description": "Async named function with arguments"
+  },
+  "arrow.Function": {
     "prefix": "afa",
-    "body": "(${1:arg}) => $0",
-    "description": "Arrow function (implicit return) with arguments"
+    "body": " ($1) => $0",
+    "description": "Arrow function with arguments"
   },
-  "arrowFunction.WithArgument.Destructuring": {
-    "prefix": "afad",
-    "body": "({${1:prop}, ${2:prop}}) => $0",
-    "description": "Arrow function (implicit return) with argument destructuring"
-  },
-  "arrowFunction.Explicit": {
-    "prefix": "afe",
-    "body": ["() => {", "\t${1:return} $0", "}"],
-    "description": "Arrow function (explicit return)"
-  },
-  "arrowFunction.Explicit.WithArguments": {
-    "prefix": "afea",
-    "body": ["(${1:arg}) => {", "\t${2:return} $0", "}"],
-    "description": "Arrow function (explicit return) with arguments"
-  },
-  "arrowFunction.Explicit.WithArgument.Destructuring": {
-    "prefix": "afead",
-    "body": ["({${1:prop}, ${2:prop}}) => {", "\t${3:return} $0", "}"],
-    "description": "Arrow function (explicit return) with argument destructuring"
-  },
-
-  "arrowAsyncFunction": {
-    "prefix": "aaf",
-    "body": "async () => $0",
-    "description": "Arrow async function"
-  },
-  "arrowAsyncFunction.WithArguments": {
+  "async.Arrow.Function": {
     "prefix": "aafa",
-    "body": "async (${1:arg}) => $0",
-    "description": "Arrow async function (implicit return) with arguments"
+    "body": "async ($1) => $0",
+    "description": "Arrow async function with arguments"
   },
-  "arrowAsyncFunction.Implicit.WithArgument.Destructuring": {
-    "prefix": "aafad",
-    "body": "async ({ ${1:prop} }) => $0",
-    "description": "Arrow async function (explicit return) with argument destructuring"
-  },
-  "arrowAsyncFunction.Explicit.Return": {
-    "prefix": "aafe",
-    "body": ["async () => {", "\t${1:return} $0", "}"],
-    "description": "Arrow async function (explicit with return)"
-  },
-  "arrowAsyncFunction.Explicit.WithArguments": {
-    "prefix": "aafea",
-    "body": ["async (${1:arg}) => {", "\t${2:return} $0", "}"],
-    "description": "Arrow async function (explicit without return) with arguments"
-  },
-  "arrowAsyncFunction.Explicit.WithArgument.Destructuring": {
-    "prefix": "aafead",
-    "body": ["async ({ ${1:prop}, ${2:prop} }) => {", "\t${3:return} $0", "}"],
-    "description": "Arrow async function (explicit return) with argument destructuring"
-  },
-
-  "export.Default.ArrowFunction": {
-    "prefix": "edaf",
-    "body": ["export default ($1) => {", "\t$0", "}"],
-    "description": "Export Default Anonymous Arrow function"
-  },
-  "export.Default.AsyncArrowFunction": {
-    "prefix": "edaaf",
-    "body": ["export default async ($1) => {", "\t$0", "}"],
-    "description": "Export Default Async Anonymous Arrow function"
-  },
-  "constant.ArrowFunction": {
+  "constant.Arrow.Function": {
     "prefix": "caf",
-    "body": ["const ${1:name} = ($2) => $0"],
-    "description": "Constant Arrow function (implicit return)"
+    "body": "const $1 = ($2) => $0",
+    "description": "Constant arrow function"
   },
-  "constant.ArrowFunction.Explicit": {
-    "prefix": "cafe",
-    "body": ["const ${1:name} = ($2) => {", "\t${3:return} $0", "}"],
-    "description": "Constant Arrow function (explicit return)"
-  },
-  "export.Constant.ArrowFunction": {
-    "prefix": "ecaf",
-    "body": ["export const ${1:name} = ($2) => {", "\t$0", "}"],
-    "description": "Export Constant Arrow function"
-  },
-  "constant.AsyncArrowFunction": {
+  "constant.Async.Arrow.Function": {
     "prefix": "caaf",
-    "body": ["const ${1:name} = async ($2) => {", "\t$0", "}"],
+    "body": "const $1 = async ($2) => {\n\t$0\n}",
     "description": "Constant Async Arrow function"
-  },
-  "export.Constant.AsyncArrowFunction": {
-    "prefix": "ecaaf",
-    "body": ["export const ${1:name} = async ($2) => {", "\t$0", "}"],
-    "description": "Export Constant Async Arrow function"
-  },
-
-  "constant.ArrowFunction.Type": {
-    "prefix": "caft",
-    "body": [
-      "const ${1:name} = ($2) : ${3|string,number,boolean,custom|} => {",
-      "\t$0",
-      "}"
-    ],
-    "description": "Constant Arrow function (explicit return type)"
-  },
-  "export.ConstantArrow.Function.Type": {
-    "prefix": "ecaft",
-    "body": [
-      "export const ${1:name} = ($2) : ${3|string,number,boolean,custom|} => {",
-      "\t$0",
-      "}"
-    ],
-    "description": "Export Constant Arrow function (explicit return type)"
-  },
-  "constant.AsyncArrowFunction.Type": {
-    "prefix": "caaft",
-    "body": [
-      "const ${1:name} = async ($2) : ${3|string,number,boolean,custom|} => {",
-      "\t$0",
-      "}"
-    ],
-    "description": "Constant Async Arrow function (explicit return type)"
-  },
-  "export.Constant.AsyncArrowFunction.Type": {
-    "prefix": "ecaaft",
-    "body": [
-      "export const ${1:name} = async ($2) : ${3|string,number,boolean,custom|} => {",
-      "\t$0",
-      "}"
-    ],
-    "description": "Constant Async Arrow function (explicit return type)"
   }
 }
