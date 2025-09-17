@@ -19,6 +19,7 @@
     "prefix": "ed",
     "body": ["export default $1"]
   },
+
   "tryCatch": {
     "prefix": "tc",
     "body": "try {\n\t$0\n} catch ($1) {\n\t\n}"
@@ -31,6 +32,25 @@
     "prefix": "tcf",
     "body": "try {\n\t$0\n} catch ($1) {\n\t\n} finally {\n\t\n}"
   },
+
+  "Switch Statement": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:key}) {",
+      "\tcase ${2:value}:",
+      "\t\t$0",
+      "\t\tbreak;",
+      "",
+      "\tdefault:",
+      "\t\tbreak;",
+      "}"
+    ]
+  },
+
+  "forLoop": {
+    "prefix": "for",
+    "body": "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {\n\t$0\n}"
+  },
   "forOf": {
     "prefix": "fof",
     "body": ["for(let $1 of $2) {\n\t$3\n}"],
@@ -41,6 +61,7 @@
     "body": ["for(let $1 in $2) {\n\t$3\n}"],
     "description": "Iterating over property values of iterable objects"
   },
+
   "destructingObject": {
     "prefix": "dob",
     "body": ["const { $2 } = $1"],
