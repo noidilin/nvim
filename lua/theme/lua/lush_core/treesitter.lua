@@ -150,6 +150,22 @@ return lush(function(injected_functions)
 		sym("@tag.delimiter") { fg = p.mono11 }, -- XML-style tag delimiter (<>)
 		sym("@tag.javascript") { fg = p.mono25, gui = "bold" }, -- component
 
+		-- text in between tags
+		sym("@markup.heading.1.tsx")(s._none),
+		sym("@markup.heading.2.tsx")(s._none),
+		sym("@markup.heading.3.tsx")(s._none),
+		sym("@markup.heading.4.tsx")(s._none),
+		sym("@markup.heading.5.tsx")(s._none),
+		sym("@markup.heading.6.tsx")(s._none),
+		sym("@markup.heading.1.jsx")(s._none),
+		sym("@markup.heading.2.jsx")(s._none),
+		sym("@markup.heading.3.jsx")(s._none),
+		sym("@markup.heading.4.jsx")(s._none),
+		sym("@markup.heading.5.jsx")(s._none),
+		sym("@markup.heading.6.jsx")(s._none),
+		sym("@markup.link.label.tsx")(s._none),
+		sym("@markup.link.label.jsx")(s._none),
+
 		-- Misc
 		sym("@none")(s._none), -- completely disable the highlight
 		sym("@error")(s._error),
