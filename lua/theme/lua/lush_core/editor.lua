@@ -62,9 +62,9 @@ return lush(function()
 		SpellLocal { sp = p.yellow00, gui = "underline" }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		SpellRare { sp = p.yellow00, gui = "underline" }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 		StatusLine { fg = p.mono16, bg = p.mono03 }, -- Status line of current window
-		StatusLineTerm { fg = p.mono16, bg = p.mono05 },
-		StatusLineNC { fg = p.mono12, bg = p.mono02 }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-		StatusLineTermNC { fg = p.mono12, bg = p.mono05 },
+		StatusLineTerm { fg = p.mono16, bg = p.mono03 },
+		StatusLineNC { fg = p.mono12, bg = p.mono03 }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		StatusLineTermNC { fg = p.mono12, bg = p.mono03 },
 		TabLine { fg = p.mono16, bg = p.mono05 }, -- Tab pages line, not active tab page label
 		TabLineFill { fg = p.mono12, bg = p.mono05 }, -- Tab pages line, where there are no labels
 		TabLineSel { fg = p.mono02, bg = p.mono16 }, -- Tab pages line, active tab page label
