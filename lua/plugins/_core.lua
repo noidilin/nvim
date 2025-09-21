@@ -43,7 +43,7 @@ return {
 		},
 	},
 	{
-		"echasnovski/mini.move",
+		"nvim-mini/mini.move",
 		event = "VeryLazy",
 		opts = {
 			mappings = {
