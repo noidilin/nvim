@@ -1,75 +1,55 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		keys = function()
-			-- from https://www.lazyvim.org/plugins/treesitter#nvim-treesitter-textobjects
-			local moves = {
-				-- [ "iI", "@conditional.outer" ], [ "lL", "@loop.outer" ]
-				goto_next_start = {
-					["]o"] = "@block.outer",
-					["]f"] = "@function.outer",
-					["]c"] = "@class.outer",
-					["]a"] = "@parameter.outer",
-					["]u"] = "@call.outer",
-					["]x"] = "@assignment.outer",
-					["]r"] = "@property.outer",
-					["]j"] = "@attribute.outer",
+		opts = {
+			move = {
+				enable = true,
+				set_jumps = true, -- whether to set jumps in the jumplist
+				keys = {
+					-- [ "iI", "@conditional.outer" ], [ "lL", "@loop.outer" ]
+					goto_next_start = {
+						["]o"] = "@block.outer",
+						["]f"] = "@function.outer",
+						["]c"] = "@class.outer",
+						["]a"] = "@parameter.outer",
+						["]u"] = "@call.outer",
+						["]x"] = "@assignment.outer",
+						["]r"] = "@property.outer",
+						["]j"] = "@attribute.outer",
+					},
+					goto_next_end = {
+						["]O"] = "@block.outer",
+						["]F"] = "@function.outer",
+						["]C"] = "@class.outer",
+						["]A"] = "@parameter.outer",
+						["]U"] = "@call.outer",
+						["]X"] = "@assignment.outer",
+						["]R"] = "@property.outer",
+						["]J"] = "@attribute.outer",
+					},
+					goto_previous_start = {
+						["[o"] = "@block.outer",
+						["[f"] = "@function.outer",
+						["[c"] = "@class.outer",
+						["[a"] = "@parameter.outer",
+						["[u"] = "@call.outer",
+						["[x"] = "@assignment.outer",
+						["[r"] = "@property.outer",
+						["[j"] = "@attribute.outer",
+					},
+					goto_previous_end = {
+						["[O"] = "@block.outer",
+						["[F"] = "@function.outer",
+						["[C"] = "@class.outer",
+						["[A"] = "@parameter.outer",
+						["[U"] = "@call.outer",
+						["[X"] = "@assignment.outer",
+						["[R"] = "@property.outer",
+						["[J"] = "@attribute.outer",
+					},
 				},
-				goto_next_end = {
-					["]O"] = "@block.outer",
-					["]F"] = "@function.outer",
-					["]C"] = "@class.outer",
-					["]A"] = "@parameter.outer",
-					["]U"] = "@call.outer",
-					["]X"] = "@assignment.outer",
-					["]R"] = "@property.outer",
-					["]J"] = "@attribute.outer",
-				},
-				goto_previous_start = {
-					["[o"] = "@block.outer",
-					["[f"] = "@function.outer",
-					["[c"] = "@class.outer",
-					["[a"] = "@parameter.outer",
-					["[u"] = "@call.outer",
-					["[x"] = "@assignment.outer",
-					["[r"] = "@property.outer",
-					["[j"] = "@attribute.outer",
-				},
-				goto_previous_end = {
-					["[O"] = "@block.outer",
-					["[F"] = "@function.outer",
-					["[C"] = "@class.outer",
-					["[A"] = "@parameter.outer",
-					["[U"] = "@call.outer",
-					["[X"] = "@assignment.outer",
-					["[R"] = "@property.outer",
-					["[J"] = "@attribute.outer",
-				},
-			}
-			local ret = {} ---@type LazyKeysSpec[]
-			for method, keymaps in pairs(moves) do
-				for key, query in pairs(keymaps) do
-					local desc = query:gsub("@", ""):gsub("%..*", "")
-					desc = desc:sub(1, 1):upper() .. desc:sub(2)
-					desc = (key:sub(1, 1) == "[" and "Prev " or "Next ") .. desc
-					desc = desc .. (key:sub(2, 2) == key:sub(2, 2):upper() and " End" or " Start")
-					ret[#ret + 1] = {
-						key,
-						function()
-							-- don't use treesitter if in diff mode and the key is one of the c/C keys
-							if vim.wo.diff and key:find("[cC]") then
-								return vim.cmd("normal! " .. key)
-							end
-							require("nvim-treesitter-textobjects.move")[method](query, "textobjects")
-						end,
-						desc = desc,
-						mode = { "n", "x", "o" },
-						silent = true,
-					}
-				end
-			end
-			return ret
-		end,
+			},
+		},
 	},
 	{
 		"nvim-mini/mini.ai",
