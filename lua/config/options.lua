@@ -15,4 +15,4 @@ vim.g.lazyvim_prettier_needs_config = true
 -- set to `true` to follow the main branch
 -- you need to have a working rust toolchain to build the plugin
 -- in this case.
-vim.g.lazyvim_blink_main = true
+-- vim.g.lazyvim_blink_main = true
