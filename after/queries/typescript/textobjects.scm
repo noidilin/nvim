@@ -1,23 +1,47 @@
-; TASK 01: whether there are intersection_type or not
+; extends
+
+; Type annotations (variable: Type, parameter: Type, etc.)
 ; (type_annotation
+;   ":"
 ;   [
-;    (generic_type)*
-;    (predefined_type)*
-;    (object_type)*
-;    ] @type)
+;     (predefined_type)
+;     (generic_type)
+;     (object_type)
+;     (array_type)
+;     (union_type)
+;     (intersection_type)
+;     (tuple_type)
+;     (function_type)
+;     (type_identifier)
+;   ] @type.inner) @type.outer
 
-; TASK 02: handle one or more arguments and parameters
-; arguments
-; (call_expression
-;   (member_expression)
-;   (arguments)* @argument)
+; Generic type arguments (<Type, Type>)
+; (type_arguments
+;   "<"
+;   [
+;     (predefined_type)
+;     (generic_type)
+;     (object_type)
+;     (array_type)
+;     (union_type)
+;     (intersection_type)
+;     (tuple_type)
+;     (function_type)
+;     (type_identifier)
+;   ] @type.inner
+;   ">") @type.outer
 
-; function parameters
-; (formal_parameters
-;   [(required_parameter
-;      pattern: (identifier)
-;      value: (identifier) @parameter.inner)* @parameter.outer
-;    (optional_parameter
-;      pattern: (identifier)
-;      value: (identifier) @parameter.inner)* @parameter.outer
-;    ])
+; Function return type annotations
+; (function_signature
+;   "=>"
+;   [
+;     (predefined_type)
+;     (generic_type)
+;     (object_type)
+;     (array_type)
+;     (union_type)
+;     (intersection_type)
+;     (tuple_type)
+;     (function_type)
+;     (type_identifier)
+;   ] @type.inner) @type.outer
