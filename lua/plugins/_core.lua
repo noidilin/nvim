@@ -1,5 +1,4 @@
 return {
-	-- Disable leap.nvim from LazyVim VS Code module in favor of flash.nvim
 	{ "ggandor/leap.nvim", enabled = false },
 	{
 		-- BUG: char mode in macro [bug: Weird behavior when using f in a macro](https://github.com/folke/flash.nvim/issues/379)
@@ -39,7 +38,35 @@ return {
 		"saghen/blink.cmp",
 		opts = {
 			keymap = { preset = "default", ["<Up>"] = {}, ["<Down>"] = {} },
-			sources = { providers = { snippets = { opts = { friendly_snippets = false } } } },
+			sources = {
+				providers = {
+					snippets = {
+						opts = {
+							-- disable friendly-snippet frameworks, except for in rust.
+							filter_snippets = function(ft, file)
+								local disabled_fts = {
+									javascript = true,
+									javascriptreact = true, -- .jsx
+									typescript = true,
+									typescriptreact = true, -- .tsx
+								}
+
+								-- check if the snippet file path contains 'friendly-snippet' or 'javascript'
+								if
+									disabled_fts[ft]
+									and string.match(file, "friendly.snippets")
+									and string.match(file, "javascript")
+								then
+									return false
+								end
+
+								-- allow everything else by default
+								return true
+							end,
+						},
+					},
+				},
+			},
 		},
 	},
 	{
