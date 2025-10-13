@@ -22,15 +22,6 @@
       },
       {
         "language": [
-          "typescriptreact",
-          "javascriptreact",
-          "jsx-attr",
-          "tsx-attr"
-        ],
-        "path": "./javascript/react-prop-type.json"
-      },
-      {
-        "language": [
           "javascript",
           "javascriptreact",
           "jsx-attr",

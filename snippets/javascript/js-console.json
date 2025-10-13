@@ -1,114 +1,82 @@
 {
-  "consoleLog": {
+  "console_log": {
     "prefix": "clg",
-    "body": [
-      "console.log(${1:first})"
-    ],
+    "body": "console.log(${1:first})",
     "description": "Log message"
   },
-  "consoleLogJson": {
+  "console_log_json": {
     "prefix": "clj",
-    "body": [
-      "console.log('${1:first}', JSON.stringify(${2:second}, null, 2))"
-    ],
-    "description": "Logs stringified JSON property with name."
+    "body": "console.log('${1:first}', JSON.stringify(${2:second}, null, 2))",
+    "description": "Logs stringified JSON property with name"
   },
-  "consoleLogObject": {
+  "console_log_object": {
     "prefix": "clo",
-    "body": [
-      "console.log('${1:first}', ${2:second})"
-    ],
-    "description": "Logs property with name."
+    "body": "console.log('${1:first}', ${2:second})",
+    "description": "Logs property with name"
   },
-  "consoleWarn": {
+  "console_warn": {
     "prefix": "cwa",
-    "body": [
-      "console.warn(${1:first})"
-    ],
+    "body": "console.warn(${1:first})",
     "description": "Log with warning icon"
   },
-  "consoleInfo": {
+  "console_info": {
     "prefix": "cin",
-    "body": [
-      "console.info(${1:first})"
-    ],
+    "body": "console.info(${1:first})",
     "description": "Log with information icon"
   },
-  "consoleError": {
+  "console_error": {
     "prefix": "cer",
-    "body": [
-      "console.error(${1:first})"
-    ],
+    "body": "console.error(${1:first})",
     "description": "Log with a stack trace from where the method was called"
   },
-  "consoleAssert": {
+  "console_assert": {
     "prefix": "cas",
-    "body": [
-      "console.assert(${1:first}, ${2:second})"
-    ],
+    "body": "console.assert(${1:first}, ${2:second})",
     "description": "If the specified expression is false, the message is written to the console along with a stack trace"
   },
-  "consoleClear": {
+  "console_clear": {
     "prefix": "ccl",
-    "body": [
-      "console.clear()"
-    ],
+    "body": "console.clear()",
     "description": "Clears the console"
   },
-  "consoleCount": {
+  "console_count": {
     "prefix": "cco",
-    "body": [
-      "console.count(${1:first})"
-    ],
+    "body": "console.count(${1:first})",
     "description": "Writes the the number of times that count() has been invoked at the same line and with the same label"
   },
-  "consoleDir": {
+  "console_dir": {
     "prefix": "cdi",
-    "body": [
-      "console.dir(${1:first})"
-    ],
+    "body": "console.dir(${1:first})",
     "description": "Prints a JavaScript representation of the specified object"
   },
-  "consoleGroup": {
+  "console_group": {
     "prefix": "cgr",
-    "body": [
-      "console.group('${1:first}')"
-    ],
-    "description": "Groups and indents all following output by an additional level, until console.groupEnd() is called."
+    "body": "console.group('${1:first}')",
+    "description": "Groups and indents all following output by an additional level, until console.groupEnd() is called"
   },
-  "consoleGroupEnd": {
+  "console_group_end": {
     "prefix": "cge",
-    "body": [
-      "console.groupEnd()"
-    ],
-    "description": "Closes out the corresponding console.group()."
+    "body": "console.groupEnd()",
+    "description": "Closes out the corresponding console.group()"
   },
-  "consoleTrace": {
+  "console_trace": {
     "prefix": "ctr",
-    "body": [
-      "console.trace(${1:first})"
-    ],
+    "body": "console.trace(${1:first})",
     "description": "Prints a stack trace from the point where the method was called"
   },
-  "consoleTime": {
+  "console_time": {
     "prefix": "ctm",
-    "body": [
-      "console.time('${1:first}')"
-    ],
+    "body": "console.time('${1:first}')",
     "description": "Console time wrapper"
   },
-  "consoleTimeEnd": {
+  "console_time_end": {
     "prefix": "cte",
-    "body": [
-      "console.timeEnd('${1:first}')"
-    ],
+    "body": "console.timeEnd('${1:first}')",
     "description": "Console time end wrapper"
   },
-  "consoleTable": {
+  "console_table": {
     "prefix": "ctl",
-    "body": [
-      "console.table([${1:first}])"
-    ],
+    "body": "console.table([${1:first}])",
     "description": "Logs table to console"
   }
 }

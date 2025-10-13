@@ -1,32 +1,30 @@
 {
-  "jsx element": {
-    "prefix": "j",
-    "body": "<${1:elementName}>\n\t$0\n</${1}>",
-    "description": "an element"
+  "jsx_element": {
+    "prefix": "jsx",
+    "body": ["<${1:elementName}>", "\t$0", "</${1}>"],
+    "description": "JSX element"
   },
-  "jsx element self closed": {
-    "prefix": "jc",
+  "jsx_element_self_closed": {
+    "prefix": "jsxc",
     "body": "<${1:elementName} />",
-    "description": "an element self closed"
+    "description": "JSX self-closing element"
   },
-  "jsx elements map": {
-    "prefix": "jm",
-    "body": "{${1:array}.map((item) => <${2:elementName} key={item.id}>\n\t$0\n</${2}>)}",
-    "description": "an element self closed"
+  "jsx_elements_map": {
+    "prefix": "jsxmap",
+    "body": ["{${1:array}.map((item) => <${2:elementName} key={item.id}>", "\t$0", "</${2}>)}"],
+    "description": "JSX map over array with inline return"
   },
-  "jsx elements map with return": {
-    "prefix": "jmr",
-    "body": "{${1:array}.map((item) => {\n\treturn <${2:elementName} key={item.id}>\n\t$0\n</${2}>\n})}",
-    "description": "an element self closed"
+  "jsx_elements_map_with_return": {
+    "prefix": "jsxmapr",
+    "body": ["{${1:array}.map((item) => {", "\treturn <${2:elementName} key={item.id}>", "\t$0", "</${2}>", "})}"],
+    "description": "JSX map over array with explicit return"
   },
-
-  "propTypes": {
+  "prop_types": {
     "prefix": "rpt",
-    "body": "$1.propTypes = {\n\t$2\n}",
+    "body": ["$1.propTypes = {", "\t$2", "}"],
     "description": "Creates empty propTypes declaration"
   },
-
-  "typescriptReactFunctionalExportComponent": {
+  "typescript_react_functional_export_component": {
     "prefix": "trfce",
     "body": [
       "type Props = {}",
@@ -41,7 +39,7 @@
     ],
     "description": "Creates a React Functional Component with ES7 module system and TypeScript interface"
   },
-  "typescriptReactFunctionalComponent": {
+  "typescript_react_functional_component": {
     "prefix": "trfc",
     "body": [
       "type Props = {}",
@@ -54,8 +52,7 @@
     ],
     "description": "Creates a React Functional Component with ES7 module system and TypeScript interface"
   },
-
-  "reactFunctionalExportComponent": {
+  "react_functional_export_component": {
     "prefix": "rfce",
     "body": [
       "function ${1:${TM_FILENAME_BASE}}() {",
@@ -64,11 +61,11 @@
       "  )",
       "}",
       "",
-      "export default ${TM_FILENAME_BASE}"
+      "export default ${1:${TM_FILENAME_BASE}}"
     ],
     "description": "Creates a React Functional Component with ES7 module system"
   },
-  "reactFunctionalComponent": {
+  "react_functional_component": {
     "prefix": "rfc",
     "body": [
       "export default function ${1:${TM_FILENAME_BASE}}() {",
@@ -80,8 +77,7 @@
     ],
     "description": "Creates a React Functional Component with ES7 module system"
   },
-
-  "hocComponent": {
+  "hoc_component": {
     "prefix": "hoc",
     "body": [
       "import PropTypes from 'prop-types'",
@@ -94,6 +90,7 @@
       "  return hocComponent",
       "}",
       ""
-    ]
+    ],
+    "description": "Higher-order component wrapper"
   }
 }

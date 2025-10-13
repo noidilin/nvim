@@ -1,39 +1,45 @@
 {
-  "importModule": {
+  "import_module": {
     "prefix": "im",
-    "body": "import $2 from '$1'"
+    "body": "import $2 from '$1'",
+    "description": "Import module"
   },
-  "importModuleAs": {
+  "import_module_as": {
     "prefix": "ima",
-    "body": "import $2 as $3 from '$1'"
+    "body": "import $2 as $3 from '$1'",
+    "description": "Import module as alias"
   },
-  "importModuleDestructured": {
+  "import_module_destructured": {
     "prefix": "imd",
-    "body": "import { $2 } from '$1'"
+    "body": "import { $2 } from '$1'",
+    "description": "Import module with destructuring"
   },
   "export": {
     "prefix": "e",
-    "body": "export $1"
+    "body": "export $1",
+    "description": "Export statement"
   },
-  "exportDefault": {
+  "export_default": {
     "prefix": "ed",
-    "body": ["export default $1"]
+    "body": "export default $1",
+    "description": "Export default statement"
   },
-
-  "tryCatch": {
+  "try_catch": {
     "prefix": "tc",
-    "body": "try {\n\t$0\n} catch ($1) {\n\t\n}"
+    "body": ["try {", "\t$0", "} catch ($1) {", "\t", "}"],
+    "description": "Try-catch block"
   },
-  "tryFinally": {
+  "try_finally": {
     "prefix": "tf",
-    "body": "try {\n\t$0\n} finally {\n\t\n}"
+    "body": ["try {", "\t$0", "} finally {", "\t", "}"],
+    "description": "Try-finally block"
   },
-  "tryCatchFinally": {
+  "try_catch_finally": {
     "prefix": "tcf",
-    "body": "try {\n\t$0\n} catch ($1) {\n\t\n} finally {\n\t\n}"
+    "body": ["try {", "\t$0", "} catch ($1) {", "\t", "} finally {", "\t", "}"],
+    "description": "Try-catch-finally block"
   },
-
-  "Switch Statement": {
+  "switch_statement": {
     "prefix": "switch",
     "body": [
       "switch (${1:key}) {",
@@ -44,71 +50,72 @@
       "\tdefault:",
       "\t\tbreak;",
       "}"
-    ]
+    ],
+    "description": "Switch statement"
   },
-
-  "forLoop": {
+  "for_loop": {
     "prefix": "for",
-    "body": "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {\n\t$0\n}"
+    "body": ["for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {", "\t$0", "}"],
+    "description": "For loop"
   },
-  "forOf": {
+  "for_of": {
     "prefix": "fof",
-    "body": ["for(let $1 of $2) {\n\t$3\n}"],
-    "description": "Iterating over property names of iterable objects"
+    "body": ["for (let $1 of $2) {", "\t$3", "}"],
+    "description": "For-of loop: iterating over property values of iterable objects"
   },
-  "forIn": {
+  "for_in": {
     "prefix": "fin",
-    "body": ["for(let $1 in $2) {\n\t$3\n}"],
-    "description": "Iterating over property values of iterable objects"
+    "body": ["for (let $1 in $2) {", "\t$3", "}"],
+    "description": "For-in loop: iterating over property names of objects"
   },
-
-  "destructingObject": {
+  "destructuring_object": {
     "prefix": "dob",
-    "body": ["const { $2 } = $1"],
-    "description": "Creates and assigns a local variable using object destructing"
+    "body": "const { $2 } = $1",
+    "description": "Creates and assigns a local variable using object destructuring"
   },
-  "destructingArray": {
+  "destructuring_array": {
     "prefix": "dar",
-    "body": ["const [ $2 ] = $1"],
-    "description": "Creates and assigns a local variable using array destructing"
+    "body": "const [ $2 ] = $1",
+    "description": "Creates and assigns a local variable using array destructuring"
   },
-  "constObject": {
+  "const_object": {
     "prefix": "co",
-    "body": "const $1 = {\n\t$0\n}"
+    "body": ["const $1 = {", "\t$0", "}"],
+    "description": "Constant object declaration"
   },
-  "constArray": {
+  "const_array": {
     "prefix": "car",
-    "body": "const $1 = [\n\t$0\n]"
+    "body": ["const $1 = [", "\t$0", "]"],
+    "description": "Constant array declaration"
   },
-
-  "named.Function": {
+  "named_function": {
     "prefix": "nf",
-    "body": "function $1 ($2) {\n\t$0\n}",
+    "body": ["function $1 ($2) {", "\t$0", "}"],
     "description": "Named function with arguments"
   },
-  "async.Named.Function": {
+  "async_named_function": {
     "prefix": "anf",
-    "body": "async function $1 ($2) {\n\t$0\n}",
+    "body": ["async function $1 ($2) {", "\t$0", "}"],
     "description": "Async named function with arguments"
   },
-  "arrow.Function": {
+  "arrow_function": {
     "prefix": "afa",
-    "body": " ($1) => $0",
+    "body": "($1) => $0",
     "description": "Arrow function with arguments"
   },
-  "async.Arrow.Function": {
+  "async_arrow_function": {
     "prefix": "aafa",
     "body": "async ($1) => $0",
-    "description": "Arrow async function with arguments"
+    "description": "Async arrow function with arguments"
   },
-  "constant.Arrow.Function": {
+  "constant_arrow_function": {
     "prefix": "caf",
     "body": "const $1 = ($2) => $0",
     "description": "Constant arrow function"
   },
-  "constant.Async.Arrow.Function": {
+  "constant_async_arrow_function": {
     "prefix": "caaf",
-    "body": "const $1 = async ($2) => {\n\t$0\n}",
-    "description": "Constant Async Arrow function"
+    "body": ["const $1 = async ($2) => {", "\t$0", "}"],
+    "description": "Constant async arrow function"
   }
 }

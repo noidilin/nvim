@@ -1,92 +1,92 @@
 {
-  "propTypeArray": {
+  "prop_type_array": {
     "prefix": "pta",
-    "body": ["PropTypes.array"],
+    "body": "PropTypes.array",
     "description": "Array prop type"
   },
-  "propTypeArrayRequired": {
+  "prop_type_array_required": {
     "prefix": "ptar",
-    "body": ["PropTypes.array.isRequired"],
+    "body": "PropTypes.array.isRequired",
     "description": "Array prop type required"
   },
-  "propTypeBool": {
+  "prop_type_bool": {
     "prefix": "ptb",
-    "body": ["PropTypes.bool"],
+    "body": "PropTypes.bool",
     "description": "Bool prop type"
   },
-  "propTypeBoolRequired": {
+  "prop_type_bool_required": {
     "prefix": "ptbr",
-    "body": ["PropTypes.bool.isRequired"],
+    "body": "PropTypes.bool.isRequired",
     "description": "Bool prop type required"
   },
-  "propTypeFunc": {
+  "prop_type_func": {
     "prefix": "ptf",
-    "body": ["PropTypes.func"],
+    "body": "PropTypes.func",
     "description": "Func prop type"
   },
-  "propTypeFuncRequired": {
+  "prop_type_func_required": {
     "prefix": "ptfr",
-    "body": ["PropTypes.func.isRequired"],
+    "body": "PropTypes.func.isRequired",
     "description": "Func prop type required"
   },
-  "propTypeNumber": {
+  "prop_type_number": {
     "prefix": "ptn",
-    "body": ["PropTypes.number"],
+    "body": "PropTypes.number",
     "description": "Number prop type"
   },
-  "propTypeNumberRequired": {
+  "prop_type_number_required": {
     "prefix": "ptnr",
-    "body": ["PropTypes.number.isRequired"],
+    "body": "PropTypes.number.isRequired",
     "description": "Number prop type required"
   },
-  "propTypeObject": {
+  "prop_type_object": {
     "prefix": "pto",
-    "body": ["PropTypes.object"],
+    "body": "PropTypes.object",
     "description": "Object prop type"
   },
-  "propTypeObjectRequired": {
+  "prop_type_object_required": {
     "prefix": "ptor",
-    "body": ["PropTypes.object.isRequired"],
+    "body": "PropTypes.object.isRequired",
     "description": "Object prop type required"
   },
-  "propTypeString": {
+  "prop_type_string": {
     "prefix": "pts",
-    "body": ["PropTypes.string"],
+    "body": "PropTypes.string",
     "description": "String prop type"
   },
-  "propTypeStringRequired": {
+  "prop_type_string_required": {
     "prefix": "ptsr",
-    "body": ["PropTypes.string.isRequired"],
+    "body": "PropTypes.string.isRequired",
     "description": "String prop type required"
   },
-  "propTypeNode": {
+  "prop_type_node": {
     "prefix": "ptnd",
-    "body": ["PropTypes.node"],
+    "body": "PropTypes.node",
     "description": "Anything that can be rendered: numbers, strings, elements or an array"
   },
-  "propTypeNodeRequired": {
+  "prop_type_node_required": {
     "prefix": "ptndr",
-    "body": ["PropTypes.node.isRequired"],
+    "body": "PropTypes.node.isRequired",
     "description": "Anything that can be rendered: numbers, strings, elements or an array required"
   },
-  "propTypeElement": {
+  "prop_type_element": {
     "prefix": "ptel",
-    "body": ["PropTypes.element"],
+    "body": "PropTypes.element",
     "description": "React element prop type"
   },
-  "propTypeElementRequired": {
+  "prop_type_element_required": {
     "prefix": "ptelr",
-    "body": ["PropTypes.element.isRequired"],
+    "body": "PropTypes.element.isRequired",
     "description": "React element prop type required"
   },
-  "propTypeInstanceOf": {
+  "prop_type_instance_of": {
     "prefix": "pti",
-    "body": ["PropTypes.instanceOf($0)"],
+    "body": "PropTypes.instanceOf($0)",
     "description": "Is an instance of a class prop type"
   },
-  "propTypeInstanceOfRequired": {
+  "prop_type_instance_of_required": {
     "prefix": "ptir",
-    "body": ["PropTypes.instanceOf($0).isRequired"],
+    "body": "PropTypes.instanceOf($0).isRequired",
     "description": "Is an instance of a class prop type required"
   }
 }
