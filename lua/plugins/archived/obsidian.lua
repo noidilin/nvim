@@ -29,8 +29,9 @@ return {
 
 	opts = {
 		workspaces = { { name = "obsidian", path = VAULT_PATH } },
-		notes_subdir = "source", -- keep notes in a specific subdirectory of your vault.
-		new_notes_location = "notes_subdir", -- put new notes in the default notes subdirectory.
+		notes_subdir = "source",
+		new_notes_location = "notes_subdir",
+
 		daily_notes = { folder = "calendar/daily", template = "daily.md" },
 		templates = {
 			folder = "extra/templates",
@@ -44,22 +45,18 @@ return {
 				week = function() -- "2024-03-w10"
 					return os.date("%Y-%m-w%V", os.time())
 				end,
-				-- nextweek = function() -- "2024-03-w11"
-				-- 	local adjustment = 7 * 24 * 60 * 60 -- One week in seconds
-				-- 	return os.date("%Y-%m-w%V", os.time() + adjustment)
-				-- end,
 			},
 		},
 
+		picker = { name = "snacks.pick" },
 		completion = {
 			nvim_cmp = false,
 			blink = false,
-			min_chars = 99, -- Trigger completion at 2 chars.
-			create_new = false, -- Set to false to disable new note creation in the picker
+			min_chars = 99, -- minimum character to trigger
+			create_new = false, -- disable new note creation in the picker
 		},
-		disable_frontmatter = true, -- boolean or a function that takes a filename and returns a boolean.
+		frontmatter = { enable = false },
 		ui = { enable = false },
-		picker = { name = "snacks.pick" },
 
 		-- key mappings
 		callbacks = {
@@ -86,6 +83,8 @@ return {
 					{ "<leader>nd", "<cmd>Obsidian today<cr>", desc = "today", icon = { icon = "" } },
 					{ "<leader>nt", "<cmd>Obsidian tomorrow<cr>", desc = "tomorrow", icon = { icon = "" } },
 					{ "<leader>ns", "<cmd>Obsidian template<cr>", desc = "snippet", icon = { icon = "" } },
+					{ "<leader>nb", "<cmd>Obsidian backlinks<cr>", desc = "backlinks", icon = { icon = "" } },
+					{ "<leader>nl", "<cmd>Obsidian links<cr>", desc = "links", icon = { icon = "" } },
 				},
 			},
 		},
