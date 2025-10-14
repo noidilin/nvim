@@ -1,23 +1,33 @@
 {
   "use_state_hook": {
     "prefix": "ush",
-    "body": "const [${1}, set${2}] = useState($3);$0",
-    "description": "React useState() hook"
+    "body": "const [${1:state}, set${2:State}] = useState(${3:initialState});$0",
+    "description": "useState hook"
+  },
+  "typed_use_state_hook": {
+    "prefix": "tush",
+    "body": "const [${1:state}, set${2:State}] = useState<${3:type}>(${0});",
+    "description": "Typed useState hook"
+  },
+  "use_ref_hook": {
+    "prefix": "urh",
+    "body": "const ${1:ref} = useRef(${2:initialValue});$0",
+    "description": "useRef hook"
+  },
+  "typed_use_ref_hook": {
+    "prefix": "turh",
+    "body": "const ${1:ref} = useRef<${2:HTMLDivElement}>(null);",
+    "description": "Typed useRef hook"
   },
   "use_reducer_hook": {
     "prefix": "urdh",
     "body": "const [${1:state}, ${2:dispatch}] = useReducer(${3:reducer}, ${4:initialArg}, ${5:init});",
-    "description": "React useReducer() hook"
+    "description": "useReducer hook"
   },
   "use_context_hook": {
     "prefix": "uch",
-    "body": "const $1 = useContext($2);$0",
-    "description": "React useContext() hook"
-  },
-  "use_ref_hook": {
-    "prefix": "urh",
-    "body": "const $1 = useRef($2);$0",
-    "description": "React useRef() hook"
+    "body": "const ${1:value} = useContext(${2:Context});$0",
+    "description": "useContext hook"
   },
   "use_imperative_handle_hook": {
     "prefix": "uihh",
@@ -28,7 +38,7 @@
       "\t}",
       "}, [$2]);$0"
     ],
-    "description": "React useImperativeHandle() hook"
+    "description": "useImperativeHandle hook"
   },
   "use_effect_hook": {
     "prefix": "ueh",
@@ -41,22 +51,32 @@
       "\t}",
       "}, [$3]);$0"
     ],
-    "description": "React useEffect() hook"
+    "description": "useEffect hook"
+  },
+  "use_effect_abort_controller": {
+    "prefix": "ueac",
+    "body": [
+      "useEffect(() => {",
+      "\tconst controller = new AbortController();",
+      "\t",
+      "\t${1:fetchData}(controller.signal);",
+      "\t",
+      "\treturn () => {",
+      "\t\tcontroller.abort();",
+      "\t};",
+      "}, [${2}]);"
+    ],
+    "description": "useEffect with AbortController cleanup"
   },
   "use_layout_effect_hook": {
     "prefix": "uleh",
     "body": ["useLayoutEffect(() => {", "\t$1", "}, [$2]);$0"],
-    "description": "React useLayoutEffect() hook"
-  },
-  "use_insertion_effect_hook": {
-    "prefix": "uieh",
-    "body": ["useInsertionEffect(() => {", "\t$1", "}, [$2]);$0"],
-    "description": "React useInsertionEffect() hook"
+    "description": "useLayoutEffect hook"
   },
   "use_memo_hook": {
     "prefix": "umh",
     "body": "const ${1:memoizedValue} = useMemo(() => ${2:computeExpensiveValue}($3, $4), [$5, $6]);$0",
-    "description": "React useMemo() hook"
+    "description": "useMemo hook"
   },
   "use_callback_hook": {
     "prefix": "ucbh",
@@ -68,46 +88,36 @@
       "\t[${5:a}, ${6:b}],",
       ");$0"
     ],
-    "description": "React useCallback() hook"
+    "description": "useCallback hook"
   },
   "use_transition_hook": {
     "prefix": "uth",
     "body": "const [isPending, startTransition] = useTransition();$0",
-    "description": "React useTransition() hook"
+    "description": "useTransition hook"
   },
   "use_deferred_value_hook": {
     "prefix": "udvh",
     "body": "const ${1:deferredValue} = useDeferredValue(${2:value});$0",
-    "description": "React useDeferredValue() hook"
+    "description": "useDeferredValue hook"
   },
   "use_form_status_hook": {
     "prefix": "ufsh",
     "body": "const { ${1:pending}, ${2:data}, ${3:method}, ${4:action} } = useFormStatus();$0",
-    "description": "React Dom useFormStatus() hook"
-  },
-  "use_debug_value_hook": {
-    "prefix": "udbvh",
-    "body": "useDebugValue(${1:value});$0",
-    "description": "React useDebugValue() hook"
+    "description": "useFormStatus hook"
   },
   "use_id_hook": {
     "prefix": "uidh",
     "body": "const ${1:id} = useId();$0",
-    "description": "React useId() hook"
-  },
-  "use_sync_external_store_hook": {
-    "prefix": "usesh",
-    "body": "const ${1:snapshot} = useSyncExternalStore(${2:subscribe}, ${3:getSnapshot}, ${4:getServerSnapshot});$0",
-    "description": "React useSyncExternalStore() hook"
+    "description": "useId hook"
   },
   "use_action_state_hook": {
     "prefix": "uash",
     "body": "const [${1:state}, ${2:formAction}, ${3:isPending}] = useActionState(${4:fn}, ${5:initialState});$0",
-    "description": "React useActionState() hook"
+    "description": "useActionState hook"
   },
   "use_optimistic_hook": {
     "prefix": "uoh",
     "body": "const [${1:optimisticState}, ${2:addOptimistic}] = useOptimistic(${3:state}, ${4:updateFn});$0",
-    "description": "React useOptimistic() hook"
+    "description": "useOptimistic hook"
   }
 }

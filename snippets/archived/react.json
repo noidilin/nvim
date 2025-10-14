@@ -1,0 +1,71 @@
+{
+  "prop_types": {
+    "prefix": "rpt",
+    "body": ["$1.propTypes = {", "\t$2", "}"],
+    "description": "Creates empty propTypes declaration"
+  },
+  "hoc_component": {
+    "prefix": "hoc",
+    "body": [
+      "import PropTypes from 'prop-types'",
+      "",
+      "export default (WrappedComponent) => {",
+      "  const hocComponent = ({ ...props }) => <WrappedComponent {...props} />",
+      "",
+      "  hocComponent.propTypes = {}",
+      "",
+      "  return hocComponent",
+      "}",
+      ""
+    ],
+    "description": "Higher-order component wrapper"
+  },
+  "use_debug_value_hook": {
+    "prefix": "udbvh",
+    "body": "useDebugValue(${1:value});$0",
+    "description": "React useDebugValue() hook"
+  },
+  "use_insertion_effect_hook": {
+    "prefix": "uieh",
+    "body": ["useInsertionEffect(() => {", "\t$1", "}, [$2]);$0"],
+    "description": "React useInsertionEffect() hook"
+  },
+  "use_sync_external_store_hook": {
+    "prefix": "usesh",
+    "body": "const ${1:snapshot} = useSyncExternalStore(${2:subscribe}, ${3:getSnapshot}, ${4:getServerSnapshot});$0",
+    "description": "React useSyncExternalStore() hook"
+  },
+  "custom_hook_template": {
+    "prefix": "cht",
+    "body": [
+      "import { useState, useEffect } from 'react';",
+      "",
+      "export function use${1:Custom}(${2:param}) {",
+      "\tconst [${3:state}, ${4:setState}] = useState($5);",
+      "\t",
+      "\tuseEffect(() => {",
+      "\t\t${0}",
+      "\t}, [${2}]);",
+      "\t",
+      "\treturn { ${3}, ${4} };",
+      "}"
+    ],
+    "description": "Custom React hook template with useState and useEffect"
+  },
+  "typed_custom_hook_template": {
+    "prefix": "tcht",
+    "body": [
+      "interface Use${1:Custom}Return {",
+      "\t${2:value}: ${3:type};",
+      "\t${0}",
+      "}",
+      "",
+      "export function use${1}(${4:param}: ${5:type}): Use${1}Return {",
+      "\tconst [${2}, set${2}] = useState<${3}>();",
+      "\t",
+      "\treturn { ${2} };",
+      "}"
+    ],
+    "description": "Typed custom React hook with return type interface"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "console_log": {
+    "prefix": "clg",
+    "body": "console.log(${1:first})",
+    "description": "Log message"
+  },
+  "console_log_json": {
+    "prefix": "clj",
+    "body": "console.log('${1:first}', JSON.stringify(${2:second}, null, 2))",
+    "description": "Log stringified JSON property with name"
+  },
+  "console_log_object": {
+    "prefix": "clo",
+    "body": "console.log('${1:first}', ${2:second})",
+    "description": "Log property with name"
+  },
+  "console_warn": {
+    "prefix": "cwa",
+    "body": "console.warn(${1:first})",
+    "description": "Log message with warning icon"
+  },
+  "console_info": {
+    "prefix": "cin",
+    "body": "console.info(${1:first})",
+    "description": "Log message with information icon"
+  },
+  "console_error": {
+    "prefix": "cer",
+    "body": "console.error(${1:first})",
+    "description": "Log message with a stack trace from where the method was called"
+  },
+  "console_assert": {
+    "prefix": "cas",
+    "body": "console.assert(${1:first}, ${2:second})",
+    "description": "Log message with a stack trace, if the specified expression is false"
+  },
+  "console_clear": {
+    "prefix": "ccl",
+    "body": "console.clear()",
+    "description": "Clears the console"
+  }
+}

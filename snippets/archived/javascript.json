@@ -1,0 +1,92 @@
+{
+  "console_count": {
+    "prefix": "cco",
+    "body": "console.count(${1:first})",
+    "description": "Writes the the number of times that count() has been invoked at the same line and with the same label"
+  },
+  "console_dir": {
+    "prefix": "cdi",
+    "body": "console.dir(${1:first})",
+    "description": "Prints a JavaScript representation of the specified object"
+  },
+  "console_group": {
+    "prefix": "cgr",
+    "body": "console.group('${1:first}')",
+    "description": "Groups and indents all following output by an additional level, until console.groupEnd() is called"
+  },
+  "console_group_end": {
+    "prefix": "cge",
+    "body": "console.groupEnd()",
+    "description": "Closes out the corresponding console.group()"
+  },
+  "console_trace": {
+    "prefix": "ctr",
+    "body": "console.trace(${1:first})",
+    "description": "Prints a stack trace from the point where the method was called"
+  },
+  "console_time": {
+    "prefix": "ctm",
+    "body": "console.time('${1:first}')",
+    "description": "Console time wrapper"
+  },
+  "console_time_end": {
+    "prefix": "cte",
+    "body": "console.timeEnd('${1:first}')",
+    "description": "Console time end wrapper"
+  },
+  "console_table": {
+    "prefix": "ctl",
+    "body": "console.table([${1:first}])",
+    "description": "Logs table to console"
+  },
+  "partial_type": {
+    "prefix": "prt",
+    "body": "type ${1:Name} = Partial<${2:Type}>",
+    "description": "Partial utility type"
+  },
+  "required_type": {
+    "prefix": "rqt",
+    "body": "type ${1:Name} = Required<${2:Type}>",
+    "description": "Required utility type"
+  },
+  "pick_type": {
+    "prefix": "pck",
+    "body": "type ${1:Name} = Pick<${2:Type}, '${3:keys}'>",
+    "description": "Pick utility type"
+  },
+  "omit_type": {
+    "prefix": "omt",
+    "body": "type ${1:Name} = Omit<${2:Type}, '${3:keys}'>",
+    "description": "Omit utility type"
+  },
+  "record_type": {
+    "prefix": "rcd",
+    "body": "type ${1:Name} = Record<${2:Keys}, ${3:Type}>",
+    "description": "Record utility type"
+  },
+  "readonly_type": {
+    "prefix": "rdo",
+    "body": "type ${1:Name} = Readonly<${2:Type}>",
+    "description": "Readonly utility type"
+  },
+  "switch_statement": {
+    "prefix": "switch",
+    "body": [ "switch (${1:key}) {", "\tcase ${2:value}:", "\t\t$0", "\t\tbreak;", "", "\tdefault:", "\t\tbreak;", "}" ],
+    "description": "Switch statement"
+  },
+  "for_loop": {
+    "prefix": "for",
+    "body": [ "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {", "\t$0", "}" ],
+    "description": "For loop"
+  },
+  "for_of": {
+    "prefix": "fof",
+    "body": [ "for (let $1 of $2) {", "\t$3", "}" ],
+    "description": "For-of loop: iterating over property values of iterable objects"
+  },
+  "for_in": {
+    "prefix": "fin",
+    "body": [ "for (let $1 in $2) {", "\t$3", "}" ],
+    "description": "For-in loop: iterating over property names of objects"
+  }
+}

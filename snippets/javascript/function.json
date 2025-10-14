@@ -1,0 +1,67 @@
+{
+  "named_function": {
+    "prefix": "nf",
+    "body": ["function ${1:name}(${2:param}) {", "\t${0}", "}"],
+    "description": "Named function"
+  },
+  "typed_named_function": {
+    "prefix": "tnf",
+    "body": ["function ${1:name}(${2:param}: ${3:type}): ${4:returnType} {", "\t${0}", "}"],
+    "description": "Typed named function"
+  },
+  "typed_generic_named_function": {
+    "prefix": "tgnf",
+    "body": ["function ${1:name}<T>(${2:param}: T): ${3:T} {", "\t${0}", "}"],
+    "description": "Generic function"
+  },
+  "async_named_function": {
+    "prefix": "anf",
+    "body": ["async function ${1:name}(${2:param}) {", "\t${0}", "}"],
+    "description": "Async named function"
+  },
+  "async_typed_named_function": {
+    "prefix": "atnf",
+    "body": ["async function ${1:name}(${2:param}: ${3:type}): Promise<${4:returnType}> {", "\t${0}", "}"],
+    "description": "Async typed named function"
+  },
+  "arrow_function": {
+    "prefix": "af",
+    "body": "(${1:param}) => ${0}",
+    "description": "Arrow function with arguments"
+  },
+  "typed_arrow_function": {
+    "prefix": "taf",
+    "body": "(${1:param}: ${2:type}): ${3:returnType} => ${0}",
+    "description": "Typed arrow function with arguments"
+  },
+  "async_arrow_function": {
+    "prefix": "aaf",
+    "body": "async (${1:param}) => ${0}",
+    "description": "Async arrow function with arguments"
+  },
+  "async_typed_arrow_function": {
+    "prefix": "ataf",
+    "body": "async (${1:param}: ${2:type}): Promise<${3:returnType}> => ${0}",
+    "description": "Async typed arrow function with arguments"
+  },
+  "constant_arrow_function": {
+    "prefix": "caf",
+    "body": "const ${1:name} = (${2:param}) => ${0}",
+    "description": "Constant arrow function"
+  },
+  "constant_typed_arrow_function": {
+    "prefix": "ctaf",
+    "body": ["const ${1:name} = (${2:param}: ${3:type}): ${4:returnType} => {", "\t${0}", "}"],
+    "description": "Typed arrow function"
+  },
+  "constant_async_arrow_function": {
+    "prefix": "caaf",
+    "body": ["const ${1:name} = async (${2:param}) => {", "\t${0}", "}"],
+    "description": "Constant async arrow function"
+  },
+  "constant_async_typed_arrow_function": {
+    "prefix": "cataf",
+    "body": ["const ${1:name} = async (${2:param}: ${3:type}): Promise<${4:returnType}> => {", "\t${0}", "}"],
+    "description": "Constant async typed arrow function"
+  }
+}

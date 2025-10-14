@@ -1,0 +1,77 @@
+{
+  "import_module": {
+    "prefix": "im",
+    "body": "import ${2} from '${1}'",
+    "description": "Import module"
+  },
+  "import_module_as": {
+    "prefix": "ima",
+    "body": "import ${2} as ${3} from '${1}'",
+    "description": "Import module as alias"
+  },
+  "import_module_destructured": {
+    "prefix": "imd",
+    "body": "import { ${2} } from '${1}'",
+    "description": "Import module with destructuring"
+  },
+  "export": {
+    "prefix": "e",
+    "body": "export ${1}",
+    "description": "Export statement"
+  },
+  "export_default": {
+    "prefix": "ed",
+    "body": "export default ${1}",
+    "description": "Export default statement"
+  },
+  "interface_declaration": {
+    "prefix": "int",
+    "body": ["interface ${1:Name} {", "\t${0}", "}"],
+    "description": "Interface declaration"
+  },
+  "type_alias": {
+    "prefix": "ta",
+    "body": "type ${1:Name} = ${0}",
+    "description": "Type alias"
+  },
+  "type_union": {
+    "prefix": "tu",
+    "body": "type ${1:Name} = ${2:Type1} | ${3:Type2}${0}",
+    "description": "Union type"
+  },
+  "type_intersection": {
+    "prefix": "ti",
+    "body": "type ${1:Name} = ${2:Type1} & ${3:Type2}${0}",
+    "description": "Intersection type"
+  },
+  "try_catch": {
+    "prefix": "tc",
+    "body": [ "try {", "\t${0}", "} catch (${1}) {", "\t", "}" ],
+    "description": "Try-catch block"
+  },
+  "async_try_catch": {
+    "prefix": "atc",
+    "body": [ "try {", "\tconst ${1:result} = await ${2:promise};", "\t${0}", "} catch (${3:error}) {", "\tconsole.error(${3});", "}" ],
+    "description": "Async/await with try-catch block"
+  },
+  "destructuring_object": {
+    "prefix": "dob",
+    "body": "const { ${2} } = ${1}",
+    "description": "Creates and assigns a local variable using object destructuring"
+  },
+  "destructuring_array": {
+    "prefix": "dar",
+    "body": "const [ ${2} ] = ${1}",
+    "description": "Creates and assigns a local variable using array destructuring"
+  },
+  "const_object": {
+    "prefix": "cob",
+    "body": [ "const ${1} = {", "\t${0}", "}" ],
+    "description": "Constant object declaration"
+  },
+  "const_array": {
+    "prefix": "car",
+    "body": [ "const ${1} = [", "\t${0}", "]" ],
+    "description": "Constant array declaration"
+  }
+}

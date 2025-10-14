@@ -29,7 +29,7 @@
           "typescriptreact",
           "tsx-attr"
         ],
-        "path": "./javascript/js.json"
+        "path": "./javascript/syntax.json"
       },
       {
         "language": [
@@ -40,7 +40,18 @@
           "typescriptreact",
           "tsx-attr"
         ],
-        "path": "./javascript/js-console.json"
+        "path": "./javascript/function.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "jsx-attr",
+          "typescript",
+          "typescriptreact",
+          "tsx-attr"
+        ],
+        "path": "./javascript/console.json"
       }
     ]
   }

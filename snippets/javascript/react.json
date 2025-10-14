@@ -1,96 +1,209 @@
 {
   "jsx_element": {
-    "prefix": "jsx",
-    "body": ["<${1:elementName}>", "\t$0", "</${1}>"],
+    "prefix": "je",
+    "body": [
+      "<${1:elementName}>",
+      "\t${0}",
+      "</${1}>"
+    ],
     "description": "JSX element"
   },
   "jsx_element_self_closed": {
-    "prefix": "jsxc",
+    "prefix": "jec",
     "body": "<${1:elementName} />",
     "description": "JSX self-closing element"
   },
   "jsx_elements_map": {
-    "prefix": "jsxmap",
-    "body": ["{${1:array}.map((item) => <${2:elementName} key={item.id}>", "\t$0", "</${2}>)}"],
+    "prefix": "jem",
+    "body": [
+      "{${1:array}.map((item) => <${2:elementName} key={item.id}>",
+      "\t${0}",
+      "</${2}>)}"
+    ],
     "description": "JSX map over array with inline return"
   },
   "jsx_elements_map_with_return": {
-    "prefix": "jsxmapr",
-    "body": ["{${1:array}.map((item) => {", "\treturn <${2:elementName} key={item.id}>", "\t$0", "</${2}>", "})}"],
+    "prefix": "jemr",
+    "body": [
+      "{${1:array}.map((item) => {",
+      "\treturn <${2:elementName} key={item.id}>",
+      "\t${0}",
+      "</${2}>",
+      "})}"
+    ],
     "description": "JSX map over array with explicit return"
-  },
-  "prop_types": {
-    "prefix": "rpt",
-    "body": ["$1.propTypes = {", "\t$2", "}"],
-    "description": "Creates empty propTypes declaration"
-  },
-  "typescript_react_functional_export_component": {
-    "prefix": "trfce",
-    "body": [
-      "type Props = {}",
-      "",
-      "function ${TM_FILENAME_BASE}({}: Props) {",
-      "  return (",
-      "    <div>${0}</div>",
-      "  )",
-      "}",
-      "",
-      "export default ${TM_FILENAME_BASE}"
-    ],
-    "description": "Creates a React Functional Component with ES7 module system and TypeScript interface"
-  },
-  "typescript_react_functional_component": {
-    "prefix": "trfc",
-    "body": [
-      "type Props = {}",
-      "",
-      "export default function ${TM_FILENAME_BASE}({}: Props) {",
-      "  return (",
-      "    <div>${0}</div>",
-      "  )",
-      "}"
-    ],
-    "description": "Creates a React Functional Component with ES7 module system and TypeScript interface"
-  },
-  "react_functional_export_component": {
-    "prefix": "rfce",
-    "body": [
-      "function ${1:${TM_FILENAME_BASE}}() {",
-      "  return (",
-      "    <div>${0}</div>",
-      "  )",
-      "}",
-      "",
-      "export default ${1:${TM_FILENAME_BASE}}"
-    ],
-    "description": "Creates a React Functional Component with ES7 module system"
   },
   "react_functional_component": {
     "prefix": "rfc",
     "body": [
-      "export default function ${1:${TM_FILENAME_BASE}}() {",
-      "  return (",
-      "    <div>${0}</div>",
-      "  )",
+      "export default function ${1:Component}({ ${2} }) {",
+      "\treturn (",
+      "\t\t<div>{${2}}</div>",
+      "\t)${0}",
       "}",
       ""
     ],
-    "description": "Creates a React Functional Component with ES7 module system"
+    "description": "React component with props interface"
   },
-  "hoc_component": {
-    "prefix": "hoc",
+  "typed_react_functional_component": {
+    "prefix": "trfc",
     "body": [
-      "import PropTypes from 'prop-types'",
+      "interface ${1:Component}Props {",
+      "\t${2:prop}: ${3:type};",
+      "\t${0}",
+      "}",
       "",
-      "export default (WrappedComponent) => {",
-      "  const hocComponent = ({ ...props }) => <WrappedComponent {...props} />",
-      "",
-      "  hocComponent.propTypes = {}",
-      "",
-      "  return hocComponent",
+      "export default function ${1}({ ${2} }: ${1}Props) {",
+      "\treturn <div>{${2}}</div>;",
       "}",
       ""
     ],
-    "description": "Higher-order component wrapper"
+    "description": "TypeScript React component with props interface"
+  },
+  "react_functional_component_export": {
+    "prefix": "rfce",
+    "body": [
+      "function ${1:Component}({ ${2} }) {",
+      "\treturn (",
+      "\t\t<div>{${2}}</div>",
+      "\t)${0}",
+      "}",
+      "",
+      "export default ${1}"
+    ],
+    "description": "React component with props interface"
+  },
+  "typed_react_functional_component_export": {
+    "prefix": "trfce",
+    "body": [
+      "interface ${1:Component}Props {",
+      "\t${2:prop}: ${3:type};",
+      "\t${0}",
+      "}",
+      "",
+      "function ${1}({ ${2} }: ${1}Props) {",
+      "\treturn <div>{${2}}</div>;",
+      "}",
+      "",
+      "export default ${1}"
+    ],
+    "description": "TypeScript React component with props interface"
+  },
+  "typed_react_generic_component": {
+    "prefix": "trgc",
+    "body": [
+      "interface ${1:Component}Props<T> {",
+      "\titems: T[];",
+      "\trenderItem: (item: T) => React.ReactNode;",
+      "}",
+      "",
+      "export function ${1}<T>({ items, renderItem }: ${1}Props<T>) {",
+      "\treturn (",
+      "\t\t<>",
+      "\t\t\t{items.map((item, index) => (",
+      "\t\t\t\t<div key={index}>{renderItem(item)}</div>",
+      "\t\t\t))}",
+      "\t\t</>",
+      "\t);",
+      "}"
+    ],
+    "description": "TypeScript generic React component"
+  },
+  "forward_ref_component": {
+    "prefix": "frc",
+    "body": [
+      "import { forwardRef } from 'react';",
+      "",
+      "const ${1:Component} = forwardRef((props, ref) => {",
+      "\treturn (",
+      "\t\t<div ref={ref}>",
+      "\t\t\t${0}",
+      "\t\t</div>",
+      "\t);",
+      "});",
+      "",
+      "${1}.displayName = '${1}';",
+      "",
+      "export default ${1};"
+    ],
+    "description": "React forwardRef component"
+  },
+  "typed_forward_ref_component": {
+    "prefix": "tfrc",
+    "body": [
+      "import { forwardRef } from 'react';",
+      "",
+      "interface ${1:Component}Props {",
+      "\t${0}",
+      "}",
+      "",
+      "const ${1} = forwardRef<${2:HTMLDivElement}, ${1}Props>((props, ref) => {",
+      "\treturn <div ref={ref}>{props.children}</div>;",
+      "});",
+      "",
+      "${1}.displayName = '${1}';"
+    ],
+    "description": "TypeScript forwardRef component with types"
+  },
+  "react_context_provider": {
+    "prefix": "rcp",
+    "body": [
+      "import { createContext, useContext, useState } from 'react';",
+      "",
+      "const ${1:My}Context = createContext();",
+      "",
+      "export function ${1}Provider({ children }) {",
+      "\tconst [${2:state}, ${3:setState}] = useState($4);",
+      "\t",
+      "\treturn (",
+      "\t\t<${1}Context.Provider value={{ ${2}, ${3} }}>",
+      "\t\t\t{children}",
+      "\t\t</${1}Context.Provider>",
+      "\t);",
+      "}",
+      "",
+      "export function use${1}() {",
+      "\tconst context = useContext(${1}Context);",
+      "\tif (!context) {",
+      "\t\tthrow new Error('use${1} must be used within ${1}Provider');",
+      "\t}",
+      "\treturn context;",
+      "}"
+    ],
+    "description": "React Context with Provider and custom hook"
+  },
+  "typed_react_context_provider": {
+    "prefix": "trcp",
+    "body": [
+      "import { createContext, useContext, ReactNode } from 'react';",
+      "",
+      "interface ${1:My}ContextValue {",
+      "\t${2:value}: ${3:type};",
+      "\t${0}",
+      "}",
+      "",
+      "const ${1}Context = createContext<${1}ContextValue | undefined>(undefined);",
+      "",
+      "interface ${1}ProviderProps {",
+      "\tchildren: ReactNode;",
+      "}",
+      "",
+      "export function ${1}Provider({ children }: ${1}ProviderProps) {",
+      "\tconst value: ${1}ContextValue = {",
+      "\t\t${2}: ${4}",
+      "\t};",
+      "\t",
+      "\treturn <${1}Context.Provider value={value}>{children}</${1}Context.Provider>;",
+      "}",
+      "",
+      "export function use${1}() {",
+      "\tconst context = useContext(${1}Context);",
+      "\tif (!context) {",
+      "\t\tthrow new Error('use${1} must be used within ${1}Provider');",
+      "\t}",
+      "\treturn context;",
+      "}"
+    ],
+    "description": "TypeScript React Context with Provider and hook"
   }
 }
