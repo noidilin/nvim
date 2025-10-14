@@ -3,55 +3,28 @@
   "contributes": {
     "snippets": [
       {
-        "language": [
-          "typescriptreact",
-          "javascriptreact",
-          "jsx-attr",
-          "tsx-attr"
-        ],
-        "path": "./javascript/react.json"
-      },
-      {
-        "language": [
-          "typescriptreact",
-          "javascriptreact",
-          "jsx-attr",
-          "tsx-attr"
-        ],
-        "path": "./javascript/react-hook.json"
-      },
-      {
-        "language": [
-          "javascript",
-          "javascriptreact",
-          "jsx-attr",
-          "typescript",
-          "typescriptreact",
-          "tsx-attr"
-        ],
+        "language": [ "javascript", "javascriptreact", "jsx-attr", "typescript", "typescriptreact", "tsx-attr" ],
         "path": "./javascript/syntax.json"
       },
       {
-        "language": [
-          "javascript",
-          "javascriptreact",
-          "jsx-attr",
-          "typescript",
-          "typescriptreact",
-          "tsx-attr"
-        ],
+        "language": [ "javascript", "javascriptreact", "jsx-attr", "typescript", "typescriptreact", "tsx-attr" ],
         "path": "./javascript/function.json"
       },
       {
-        "language": [
-          "javascript",
-          "javascriptreact",
-          "jsx-attr",
-          "typescript",
-          "typescriptreact",
-          "tsx-attr"
-        ],
+        "language": [ "javascript", "javascriptreact", "jsx-attr", "typescript", "typescriptreact", "tsx-attr" ],
         "path": "./javascript/console.json"
+      },
+      {
+        "language": [ "javascriptreact", "jsx-attr", "typescriptreact", "tsx-attr" ],
+        "path": "./javascript/react/component.json"
+      },
+      {
+        "language": [ "javascriptreact", "jsx-attr", "typescriptreact", "tsx-attr" ],
+        "path": "./javascript/react/hook.json"
+      },
+      {
+        "language": [ "javascriptreact", "jsx-attr", "typescriptreact", "tsx-attr" ],
+        "path": "./javascript/react/syntax.json"
       }
     ]
   }

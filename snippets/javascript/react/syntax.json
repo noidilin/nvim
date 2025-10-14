@@ -33,117 +33,31 @@
     ],
     "description": "JSX map over array with explicit return"
   },
-  "react_functional_component": {
-    "prefix": "rfc",
-    "body": [
-      "export default function ${1:Component}({ ${2} }) {",
-      "\treturn (",
-      "\t\t<div>{${2}}</div>",
-      "\t)${0}",
-      "}",
-      ""
-    ],
-    "description": "React component with props interface"
+  "react_lazy_import": {
+    "prefix": "rli",
+    "body": "const ${1:Component} = lazy(() => import('${2:./Component}'));",
+    "description": "React lazy import for code splitting"
   },
-  "typed_react_functional_component": {
-    "prefix": "trfc",
+  "react_suspense": {
+    "prefix": "rsu",
     "body": [
-      "interface ${1:Component}Props {",
-      "\t${2:prop}: ${3:type};",
+      "<Suspense fallback={${1:<div>Loading...</div>}}>",
       "\t${0}",
-      "}",
-      "",
-      "export default function ${1}({ ${2} }: ${1}Props) {",
-      "\treturn <div>{${2}}</div>;",
-      "}",
-      ""
+      "</Suspense>"
     ],
-    "description": "TypeScript React component with props interface"
+    "description": "React Suspense boundary"
   },
-  "react_functional_component_export": {
-    "prefix": "rfce",
+  "react_server_action": {
+    "prefix": "rsa",
     "body": [
-      "function ${1:Component}({ ${2} }) {",
-      "\treturn (",
-      "\t\t<div>{${2}}</div>",
-      "\t)${0}",
-      "}",
+      "'use server';",
       "",
-      "export default ${1}"
-    ],
-    "description": "React component with props interface"
-  },
-  "typed_react_functional_component_export": {
-    "prefix": "trfce",
-    "body": [
-      "interface ${1:Component}Props {",
-      "\t${2:prop}: ${3:type};",
+      "export async function ${1:actionName}(formData: FormData) {",
+      "\tconst ${2:data} = formData.get('${3:fieldName}');",
       "\t${0}",
-      "}",
-      "",
-      "function ${1}({ ${2} }: ${1}Props) {",
-      "\treturn <div>{${2}}</div>;",
-      "}",
-      "",
-      "export default ${1}"
-    ],
-    "description": "TypeScript React component with props interface"
-  },
-  "typed_react_generic_component": {
-    "prefix": "trgc",
-    "body": [
-      "interface ${1:Component}Props<T> {",
-      "\titems: T[];",
-      "\trenderItem: (item: T) => React.ReactNode;",
-      "}",
-      "",
-      "export function ${1}<T>({ items, renderItem }: ${1}Props<T>) {",
-      "\treturn (",
-      "\t\t<>",
-      "\t\t\t{items.map((item, index) => (",
-      "\t\t\t\t<div key={index}>{renderItem(item)}</div>",
-      "\t\t\t))}",
-      "\t\t</>",
-      "\t);",
       "}"
     ],
-    "description": "TypeScript generic React component"
-  },
-  "forward_ref_component": {
-    "prefix": "frc",
-    "body": [
-      "import { forwardRef } from 'react';",
-      "",
-      "const ${1:Component} = forwardRef((props, ref) => {",
-      "\treturn (",
-      "\t\t<div ref={ref}>",
-      "\t\t\t${0}",
-      "\t\t</div>",
-      "\t);",
-      "});",
-      "",
-      "${1}.displayName = '${1}';",
-      "",
-      "export default ${1};"
-    ],
-    "description": "React forwardRef component"
-  },
-  "typed_forward_ref_component": {
-    "prefix": "tfrc",
-    "body": [
-      "import { forwardRef } from 'react';",
-      "",
-      "interface ${1:Component}Props {",
-      "\t${0}",
-      "}",
-      "",
-      "const ${1} = forwardRef<${2:HTMLDivElement}, ${1}Props>((props, ref) => {",
-      "\treturn <div ref={ref}>{props.children}</div>;",
-      "});",
-      "",
-      "${1}.displayName = '${1}';"
-    ],
-    "description": "TypeScript forwardRef component with types"
+    "description": "React Server Action"
   },
   "react_context_provider": {
     "prefix": "rcp",

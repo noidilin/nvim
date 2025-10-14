@@ -88,5 +88,15 @@
     "prefix": "fin",
     "body": [ "for (let $1 in $2) {", "\t$3", "}" ],
     "description": "For-in loop: iterating over property names of objects"
+  },
+  "optional_chaining": {
+    "prefix": "oc",
+    "body": "${1:object}?.${2:property}",
+    "description": "Optional chaining operator"
+  },
+  "nullish_coalescing": {
+    "prefix": "nc",
+    "body": "${1:value} ?? ${2:defaultValue}",
+    "description": "Nullish coalescing operator"
   }
 }

@@ -73,5 +73,52 @@
     "prefix": "car",
     "body": [ "const ${1} = [", "\t${0}", "]" ],
     "description": "Constant array declaration"
+  },
+  "promise_all": {
+    "prefix": "pa",
+    "body": "const ${1:results} = await Promise.all([${2}]);${0}",
+    "description": "Promise.all with await"
+  },
+  "promise_all_settled": {
+    "prefix": "pas",
+    "body": "const ${1:results} = await Promise.allSettled([${2}]);${0}",
+    "description": "Promise.allSettled with await"
+  },
+  "promise_race": {
+    "prefix": "pr",
+    "body": "const ${1:result} = await Promise.race([${2}]);${0}",
+    "description": "Promise.race with await"
+  },
+  "fetch_with_error_handling": {
+    "prefix": "fe",
+    "body": [
+      "const response = await fetch('${1:url}');",
+      "if (!response.ok) throw new Error('Failed to fetch');",
+      "const ${2:data} = await response.json();",
+      "${0}"
+    ],
+    "description": "Fetch with error handling"
+  },
+  "fetch_with_abort": {
+    "prefix": "fea",
+    "body": [
+      "const controller = new AbortController();",
+      "",
+      "try {",
+      "\tconst response = await fetch('${1:url}', {",
+      "\t\tsignal: controller.signal",
+      "\t});",
+      "\tif (!response.ok) throw new Error('Failed to fetch');",
+      "\tconst ${2:data} = await response.json();",
+      "\t${0}",
+      "} catch (${3:error}) {",
+      "\tif (${3}.name === 'AbortError') {",
+      "\t\tconsole.log('Fetch aborted');",
+      "\t} else {",
+      "\t\tconsole.error(${3});",
+      "\t}",
+      "}"
+    ],
+    "description": "Fetch with AbortController"
   }
 }

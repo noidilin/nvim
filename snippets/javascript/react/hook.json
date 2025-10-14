@@ -119,5 +119,48 @@
     "prefix": "uoh",
     "body": "const [${1:optimisticState}, ${2:addOptimistic}] = useOptimistic(${3:state}, ${4:updateFn});$0",
     "description": "useOptimistic hook"
+  },
+  "use_hook": {
+    "prefix": "uh",
+    "body": "const ${1:value} = use(${2:promiseOrContext});${0}",
+    "description": "React 19 use() hook for promises/context"
+  },
+  "custom_hook_template": {
+    "prefix": "ch",
+    "body": [
+      "import { useState, useEffect } from 'react';",
+      "",
+      "export function use${1:CustomHook}(${2:param}) {",
+      "\tconst [${3:state}, ${4:setState}] = useState(${5:initialState});",
+      "",
+      "\tuseEffect(() => {",
+      "\t\t${0}",
+      "\t}, [${2}]);",
+      "",
+      "\treturn { ${3}, ${4} };",
+      "}"
+    ],
+    "description": "Custom hook template"
+  },
+  "typed_custom_hook_template": {
+    "prefix": "tch",
+    "body": [
+      "import { useState, useEffect } from 'react';",
+      "",
+      "interface Use${1:CustomHook}Return {",
+      "\t${2:value}: ${3:type};",
+      "}",
+      "",
+      "export function use${1}(${4:param}: ${5:type}): Use${1}Return {",
+      "\tconst [${2}, set${2/(.*)/\\u$1/}] = useState<${3}>(${6:initialState});",
+      "",
+      "\tuseEffect(() => {",
+      "\t\t${0}",
+      "\t}, [${4}]);",
+      "",
+      "\treturn { ${2} };",
+      "}"
+    ],
+    "description": "TypeScript custom hook template"
   }
 }
