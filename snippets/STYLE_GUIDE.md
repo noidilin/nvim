@@ -75,6 +75,38 @@ Snippets follow VSCode snippet format to ensure maximum compatibility across edi
 - **React Components:** `<type>_<variant>_component` (e.g., `react_functional_component`)
 - **JSX:** `jsx_<element_type>` (e.g., `jsx_element`, `jsx_elements_map`)
 
+### Proximity and Similarity
+
+For snippets with similar use cases, their names and prefixes should be named similarly, and they should be placed near each other in the same file.
+
+**Rationale:**
+- Improves discoverability when browsing snippet files
+- Makes maintenance easier by grouping related functionality
+- Creates logical patterns that are easier to remember
+- Helps users find variants of the same snippet
+
+**Example:**
+
+```json
+{
+  "use_state_hook": {
+    "prefix": "ush",
+    "body": "const [${1:state}, set${2:State}] = useState(${3:initialState});${0}",
+    "description": "useState hook"
+  },
+  "typed_use_state_hook": {
+    "prefix": "tush",
+    "body": "const [${1:state}, set${2:State}] = useState<${3:type}>(${0});",
+    "description": "Typed useState hook"
+  }
+}
+```
+
+In this example:
+- The typed variant follows immediately after the base variant
+- Both share a similar prefix pattern (`ush` → `tush`)
+- Names clearly indicate the relationship (`use_state_hook` → `typed_use_state_hook`)
+
 ---
 
 ## Body Format
@@ -94,7 +126,7 @@ Use a simple string when the snippet body fits on one line.
 {
   "import_module": {
     "prefix": "im",
-    "body": "import $2 from '$1'",
+    "body": "import ${2:module} from '${1:path}'",
     "description": "Import module"
   }
 }
@@ -110,8 +142,8 @@ Use an array of strings when the snippet spans multiple lines. Each array elemen
     "prefix": "tc",
     "body": [
       "try {",
-      "\t$0",
-      "} catch ($1) {",
+      "\t${0}",
+      "} catch (${1:error}) {",
       "\t",
       "}"
     ],
@@ -125,14 +157,14 @@ Use an array of strings when the snippet spans multiple lines. Each array elemen
 ```json
 // Single line
 "export": {
-  "body": "export $1"
+  "body": "export ${1:value}"
 }
 
 // Multi-line
 "const_object": {
   "body": [
-    "const $1 = {",
-    "\t$0",
+    "const ${1:name} = {",
+    "\t${0}",
     "}"
   ]
 }
@@ -143,12 +175,12 @@ Use an array of strings when the snippet spans multiple lines. Each array elemen
 ```json
 // Don't use array for single line
 "export": {
-  "body": ["export $1"]
+  "body": ["export ${1:value}"]
 }
 
 // Don't use string for multi-line
 "const_object": {
-  "body": "const $1 = {\n\t$0\n}"
+  "body": "const ${1:name} = {\n\t${0}\n}"
 }
 ```
 
@@ -290,24 +322,40 @@ Placeholders provide default text that can be modified.
 2. **Final Position:** Always use `$0` for the final cursor position
 3. **Meaningful Placeholders:** Use descriptive placeholder text
 4. **Optional:** End with `$0` after semicolon for statement completion
+5. **Consistent Format:** All tabstops MUST be wrapped with `{}` for consistency
+
+### Tabstop Consistency Rule
+
+**Rule:** All tabstops must be wrapped with `{}`, even when they don't have placeholders. Whenever possible, provide a descriptive placeholder to better illustrate the purpose of that tabstop.
+
+**Rationale:**
+- Improves code readability and consistency
+- Makes placeholders easier to add later
+- Helps users understand what should be filled in
+- Provides better visual distinction between tabstops and regular code
 
 ### ✅ Correct
 
 ```json
 {
   "import_module": {
-    "body": "import $2 from '$1'",
+    "body": "import ${2:module} from '${1:path}'",
     "description": "Import module"
+  },
+  "arrow_function": {
+    "body": "(${1:param}) => ${0}",
+    "description": "Arrow function with arguments"
   },
   "for_loop": {
     "body": [
       "for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {",
-      "\t$0",
+      "\t${0}",
       "}"
     ]
   },
   "use_state_hook": {
-    "body": "const [${1}, set${2}] = useState($3);$0"
+    "body": "const [${1:state}, set${2:State}] = useState(${3:initialState});${0}",
+    "description": "useState hook"
   }
 }
 ```
@@ -317,14 +365,20 @@ Placeholders provide default text that can be modified.
 ```json
 {
   "import_module": {
-    "body": "import $ from '$'",        // No tabstop numbers
+    "body": "import $2 from '$1'",        // Missing braces and placeholders
+  },
+  "arrow_function": {
+    "body": "($1) => $0",                 // Missing braces and placeholder
   },
   "for_loop": {
     "body": [
       "for (let ${1:x} = 0; ${1:x} < ${2:y}.length; ${1:x}++) {",
-      "",                                // No $0 marker
+      "",                                 // No $0 marker
       "}"
     ]
+  },
+  "use_state_hook": {
+    "body": "const [$1, set$2] = useState($3);$0"  // Missing braces and placeholders
   }
 }
 ```
@@ -393,8 +447,8 @@ Use `\t` (tab character) for indentation to respect user's tab settings.
 {
   "const_object": {
     "body": [
-      "const $1 = {",
-      "\t$0",        // Use \t, not spaces
+      "const ${1:name} = {",
+      "\t${0}",        // Use \t, not spaces
       "}"
     ]
   }
@@ -403,12 +457,12 @@ Use `\t` (tab character) for indentation to respect user's tab settings.
 
 ### 2. Semicolons
 
-Include semicolons for statements, append `$0` after for cursor positioning.
+Include semicolons for statements, append `${0}` after for cursor positioning.
 
 ```json
 {
   "use_state_hook": {
-    "body": "const [${1}, set${2}] = useState($3);$0"
+    "body": "const [${1:state}, set${2:State}] = useState(${3:initialState});${0}"
   }
 }
 ```
@@ -420,24 +474,30 @@ Follow JavaScript/TypeScript conventions for spacing.
 ```json
 // Good spacing
 "arrow_function": {
-  "body": "($1) => $0"
+  "body": "(${1:param}) => ${0}"
 }
 
 // Function calls
 "console_log": {
-  "body": "console.log(${1:first})"
+  "body": "console.log(${1:message})"
 }
 ```
 
 ### 4. Logical Grouping
 
-Group related snippets in the same file.
+Group related snippets in the same file based on functionality and category.
 
-- `js.json` - General JavaScript
-- `js-console.json` - Console methods
-- `react.json` - React components and JSX
-- `react-hook.json` - React hooks
-- `react-prop-type.json` - PropTypes (legacy)
+**Current Directory Structure:**
+
+- `javascript/` - Main JavaScript snippets
+  - `console.json` - Console methods (log, warn, error, etc.)
+  - `function.json` - Function patterns (arrow, async, named)
+  - `syntax.json` - General JavaScript syntax (loops, conditionals, imports)
+  - `react/` - React-specific snippets
+    - `component.json` - React components and JSX elements
+    - `hook.json` - React hooks (useState, useEffect, etc.)
+    - `syntax.json` - React/JSX syntax patterns
+- `archived/` - Deprecated snippets (PropTypes, old patterns)
 
 ### 5. Deprecation Handling
 
@@ -478,7 +538,7 @@ Use this template when creating new snippets:
 {
   "snippet_name_in_snake_case": {
     "prefix": "short",
-    "body": "single line snippet with $1 and $0",
+    "body": "single line snippet with ${1:placeholder} and ${0}",
     "description": "Clear description of what this snippet does"
   },
   "multi_line_snippet_name": {
@@ -486,7 +546,7 @@ Use this template when creating new snippets:
     "body": [
       "line one with ${1:placeholder}",
       "\tindented line",
-      "\t$0",
+      "\t${0}",
       "closing line"
     ],
     "description": "Multi-line snippet description"
@@ -501,7 +561,10 @@ Use this template when creating new snippets:
 - [ ] Body format matches line count (string vs array)
 - [ ] Includes descriptive description
 - [ ] Tabstops are numbered logically
-- [ ] Final cursor position uses `$0`
+- [ ] All tabstops are wrapped with `{}`
+- [ ] Placeholders provided where appropriate
+- [ ] Similar snippets are placed adjacently
+- [ ] Final cursor position uses `${0}`
 - [ ] Indentation uses `\t`
 - [ ] No complex regex transformations
 - [ ] Follows spacing conventions
@@ -631,30 +694,30 @@ type Props = {
 {
   "import_module": {
     "prefix": "im",
-    "body": "import $2 from '$1'",
+    "body": "import ${2:module} from '${1:path}'",
     "description": "Import module"
   },
   "import_module_destructured": {
     "prefix": "imd",
-    "body": "import { $2 } from '$1'",
+    "body": "import { ${2:exports} } from '${1:path}'",
     "description": "Import module with destructuring"
   },
   "arrow_function": {
     "prefix": "afa",
-    "body": "($1) => $0",
+    "body": "(${1:param}) => ${0}",
     "description": "Arrow function with arguments"
   },
   "constant_arrow_function": {
     "prefix": "caf",
-    "body": "const $1 = ($2) => $0",
+    "body": "const ${1:name} = (${2:params}) => ${0}",
     "description": "Constant arrow function"
   },
   "try_catch": {
     "prefix": "tc",
     "body": [
       "try {",
-      "\t$0",
-      "} catch ($1) {",
+      "\t${0}",
+      "} catch (${1:error}) {",
       "\t",
       "}"
     ],
@@ -670,7 +733,7 @@ type Props = {
 {
   "use_state_hook": {
     "prefix": "ush",
-    "body": "const [${1}, set${2}] = useState($3);$0",
+    "body": "const [${1:state}, set${2:State}] = useState(${3:initialState});${0}",
     "description": "React useState() hook"
   }
 }
@@ -681,7 +744,7 @@ type Props = {
 {
   "import_module": {
     "prefix": "im",
-    "body": "import $2 from '$1'",
+    "body": "import ${2:module} from '${1:path}'",
     "description": "Import module"
   }
 }
@@ -694,8 +757,8 @@ type Props = {
     "prefix": "tc",
     "body": [
       "try {",
-      "\t$0",
-      "} catch ($1) {",
+      "\t${0}",
+      "} catch (${1:error}) {",
       "\t",
       "}"
     ],
@@ -728,14 +791,18 @@ type Props = {
 ## Related Files
 
 - **Snippet Files:**
-  - `javascript/js.json` - General JavaScript snippets
-  - `javascript/js-console.json` - Console method snippets
-  - `javascript/react.json` - React and JSX snippets
-  - `javascript/react-hook.json` - React hooks snippets
-  - `javascript/react-prop-type.json` - PropTypes (deprecated)
+  - `javascript/console.json` - Console method snippets (log, warn, error, etc.)
+  - `javascript/function.json` - Function patterns (arrow, async, named)
+  - `javascript/syntax.json` - General JavaScript syntax (loops, conditionals, imports)
+  - `javascript/react/component.json` - React components and JSX elements
+  - `javascript/react/hook.json` - React hooks (useState, useEffect, etc.)
+  - `javascript/react/syntax.json` - React/JSX syntax patterns
+  - `archived/javascript.json` - Archived general JavaScript snippets
+  - `archived/react.json` - Archived React snippets (includes PropTypes)
   
 - **Configuration:**
   - `package.json` - Snippet registration and language mapping
+  - `STYLE_GUIDE.md` - This comprehensive style guide
 
 ---
 
@@ -752,6 +819,13 @@ When adding new snippets:
 ---
 
 ## Version History
+
+- **v1.1** - Structure and consistency updates (Oct 2025)
+  - Added proximity and similarity rule for related snippets
+  - Enforced tabstop consistency with `{}` wrapping
+  - Updated directory structure documentation
+  - Enhanced all examples with proper placeholders
+  - Expanded checklist for new snippets
 
 - **v1.0** - Initial standardization (Oct 2025)
   - Established snake_case naming convention
