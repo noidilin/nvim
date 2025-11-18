@@ -1,4 +1,4 @@
-local leet_arg = "leetcode.nvim"
+local leet_arg = "leetcode"
 
 return {
 	{
@@ -62,44 +62,6 @@ return {
 					require("smart-splits").move_cursor_right()
 				end,
 				desc = "move cursor right",
-			},
-
-			-- swapping buffers between windows
-			{
-				"g<leader>h",
-				function()
-					require("smart-splits").swap_buf_left()
-				end,
-				desc = "swap buffer left",
-			},
-			{
-				"g<leader>j",
-				function()
-					require("smart-splits").swap_buf_down()
-				end,
-				desc = "swap buffer down",
-			},
-			{
-				"g<leader>k",
-				function()
-					require("smart-splits").swap_buf_up()
-				end,
-				desc = "swap buffer up",
-			},
-			{
-				"g<leader>l",
-				function()
-					require("smart-splits").swap_buf_right()
-				end,
-				desc = "swap buffer right",
-			},
-			-- resizing mode
-			{
-				"g<leader>s",
-				function()
-					require("smart-splits").start_resize_mode()
-				end,
-				desc = "resize mode",
 			},
 		},
 	},
