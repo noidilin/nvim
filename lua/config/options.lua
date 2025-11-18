@@ -12,6 +12,9 @@ vim.o.shell = "nu"
 -- Enable this option to avoid conflicts with Prettier.
 vim.g.lazyvim_prettier_needs_config = true
 
+-- enable chinese
+vim.opt.spelllang = { "en", "cjk" }
+
 -- set to `true` to follow the main branch
 -- you need to have a working rust toolchain to build the plugin
 -- in this case.
