@@ -15,11 +15,11 @@ There is a sub-configuration for vscode, located in `lua\noidilin\`.
 
 ## Theme customization
 
-This configuration is customized with my own theme color-fatigue, which powered by the lush plugin.
+This configuration is customized with my own theme 'achroma', which powered by the lush plugin.
 
 - `lua\plugins\lush.lua` loads lush function, and my custom theme directory `lua\theme\`
-- load custom theme: `lua\theme\colors\color-fatigue.lua` is loaded
-  - theme is named after `vim.g.colors_name = "color-fatigue"`
+- load custom theme: `lua\theme\colors\achroma.lua` is loaded
+  - theme is named after `vim.g.colors_name = "achroma"`
   - theme setup is passed to lush to apply with `require("lush")(require("lush_theme.init"))`
 - theme setup: `lua\theme\lua\lush_theme\init.lua` is the entry point of my theme.
   - design token level 1: `_primitive.lua` (color palette)
@@ -35,7 +35,7 @@ This configuration is customized with my own theme color-fatigue, which powered 
 > [!note] naming in lazyvim
 >
 > - plugin name: `theme` (based on the directory name)
-> - colorscheme name: `color-fatigue` (based on `vim.g.colors_name` in `lua\theme\colors\color-fatigue.lua`)
+> - colorscheme name: `achroma` (based on `vim.g.colors_name` in `lua\theme\colors\achroma.lua`)
 >   Note that custom theme file needs to be named after the name of the colorscheme.
 
 ## Snippet

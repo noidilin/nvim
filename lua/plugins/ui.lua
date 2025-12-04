@@ -7,7 +7,7 @@ return {
 		},
 	},
 	{ "vague2k/vague.nvim", lazy = true },
-	{ "LazyVim/LazyVim", opts = { colorscheme = "color-fatigue" } },
+	{ "LazyVim/LazyVim", opts = { colorscheme = "achroma" } },
 	{
 		"folke/noice.nvim",
 		opts = { presets = { lsp_doc_border = true } },
@@ -17,7 +17,7 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = function(_, opts)
 			local p = require("theme.lua.lush_theme._primitive").hex
-			local color_fatigue = {
+			local achroma = {
 				normal = {
 					a = { bg = p.mono03, fg = p.mono17, gui = "bold" },
 					b = { bg = p.mono03, fg = p.mono17 },
@@ -50,7 +50,7 @@ return {
 				},
 			}
 
-			opts.options = { theme = color_fatigue }
+			opts.options = { theme = achroma }
 			return opts
 		end,
 	},

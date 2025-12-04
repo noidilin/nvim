@@ -10,7 +10,7 @@
 ## Code Style
 
 - **Language**: Lua with LazyVim framework
-- **Formatter**: StyLua with default settings, except `call_parentheses = "Input"` in color-fatigue theme
+- **Formatter**: StyLua with default settings, except `call_parentheses = "Input"` in achroma theme
 - **Imports**: Use `require("module")` - no explicit import organization needed
 - **Comments**: Use `--` for single line, `--[[]]` for multi-line, `-- stylua: ignore` for exceptions
 - **Strings**: Use double quotes by convention
@@ -38,4 +38,3 @@
 - Use kebab-case for plugin file names (e.g., `_lsp-config.lua`)
 - Prefix archived/disabled files with `_` (e.g., `_archived.lua`)
 - Use descriptive variable names: `lazypath`, `lazyrepo`, etc.
-
