@@ -64,6 +64,7 @@ return {
 	opts = {
 		options = {
 			always_show_bufferline = true,
+			sort_by = "insert_at_end",
 			name_formatter = function(buf)
         -- stylua: ignore
 				if not isNext() then return nil end
