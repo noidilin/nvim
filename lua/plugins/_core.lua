@@ -12,6 +12,16 @@ return {
 		"folke/snacks.nvim",
 		opts = {
 			picker = {
+				win = {
+					input = {
+						keys = {
+							["<a-b>"] = {
+								"toggle_hidden",
+								mode = { "n", "i" },
+							},
+						},
+					},
+				},
 				layout = function()
 					return vim.o.columns >= 150 and { preset = "default" }
 						or {
