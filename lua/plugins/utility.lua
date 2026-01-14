@@ -6,11 +6,12 @@ return {
 		lazy = leet_arg ~= vim.fn.argv()[1],
 		build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
 		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 			"folke/snacks.nvim",
 		},
-		opts = { arg = leet_arg, lang = "javascript" },
+		opts = { arg = leet_arg, lang = "python3" },
 	},
 	{
 		"mikavilpas/yazi.nvim",
