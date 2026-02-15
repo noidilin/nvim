@@ -34,7 +34,7 @@ return {
 		local p = require("theme.lua.lush_theme._primitive").hex
 		opts = {
 			arg = leet_arg,
-			lang = "golang",
+			lang = "typescript",
 			injector = {
 				golang = { before = "package main" },
 			},
