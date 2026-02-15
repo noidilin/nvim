@@ -15,10 +15,21 @@ return {
 				win = {
 					input = {
 						keys = {
-							["<a-b>"] = {
-								"toggle_hidden",
-								mode = { "n", "i" },
-							},
+							["<a-b>"] = { "toggle_hidden", mode = { "n", "i" } },
+							["J"] = { "preview_scroll_down", mode = "n" },
+							["K"] = { "preview_scroll_up", mode = "n" },
+						},
+					},
+					list = {
+						keys = {
+							["J"] = "preview_scroll_down",
+							["K"] = "preview_scroll_up",
+						},
+					},
+					preview = {
+						keys = {
+							["J"] = "preview_scroll_down",
+							["K"] = "preview_scroll_up",
 						},
 					},
 				},
@@ -95,6 +106,12 @@ return {
 				line_down = "<M-Down>",
 				line_up = "<M-Up>",
 			},
+		},
+	},
+	{
+		"folke/sidekick.nvim",
+		opts = {
+			nes = { enabled = false },
 		},
 	},
 }
