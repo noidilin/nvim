@@ -13,4 +13,18 @@ return {
 			bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
 		},
 	},
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				tailwindcss = {
+					settings = {
+						tailwindCSS = {
+							classFunctions = { "cn", "cva", "clsx", "twMerge" },
+						},
+					},
+				},
+			},
+		},
+	},
 }
