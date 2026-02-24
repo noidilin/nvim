@@ -2,7 +2,7 @@
 ---@diagnostic disable: undefined-global
 
 local lush = require("lush")
-local p = require("lush_theme._primitive").hsl
+local p = require("lush_theme._primitive").hex
 -- local s = require("lush_theme._semantic")
 
 return lush(function()

@@ -1,4 +1,4 @@
-local p = require("lush_theme._primitive").hsl
+local p = require("lush_theme._primitive").hex
 
 -- design system: semantic token
 return {

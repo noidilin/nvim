@@ -2,7 +2,8 @@
 ---@diagnostic disable: undefined-global
 
 local lush = require("lush")
-local p = require("lush_theme._primitive").hsl
+local h = lush.hsl
+local p = require("lush_theme._primitive").hex
 local s = require("lush_theme._semantic")
 
 -- design system: component token
@@ -60,8 +61,8 @@ return lush(function()
 		DiffLine { fg = p.mono09 },
 		DiffIndexLine { fg = p.mono13 },
 		-- background: darken diff
-		DiffAdd { bg = p.green00.darken(65) }, -- Diff mode: Added line |diff.txt|
-		DiffDelete { bg = p.red00.darken(65) }, -- Diff mode: Deleted line |diff.txt|
+		DiffAdd { bg = h(p.green00).darken(65) }, -- Diff mode: Added line |diff.txt|
+		DiffDelete { bg = h(p.red00).darken(65) }, -- Diff mode: Deleted line |diff.txt|
 		DiffChange { bg = p.mono05 }, -- Diff mode: Changed line |diff.txt|
 		DiffText { bg = p.mono05 }, -- Diff mode: Changed text within a changed line |diff.txt|
 	}
