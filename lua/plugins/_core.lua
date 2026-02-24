@@ -34,7 +34,7 @@ return {
 					},
 				},
 				layout = function()
-					return vim.o.columns >= 150 and { preset = "default" }
+					return vim.o.columns >= 150 and { preset = "default", layout = { backdrop = false } }
 						or {
 							layout = {
 								backdrop = false,
