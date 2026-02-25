@@ -76,6 +76,41 @@ return {
 						"^().*()$",
 					},
 					g = LazyVim.mini.ai_buffer, -- buffer
+					h = function()
+						local ok, gitsigns = pcall(require, "gitsigns")
+						if not ok then
+							return nil
+						end
+
+						local hunks = gitsigns.get_hunks(0) or {}
+						if #hunks == 0 then
+							return nil
+						end
+
+						local regions = {}
+						local line_count = vim.api.nvim_buf_line_count(0)
+
+						for _, hunk in ipairs(hunks) do
+							local start_line = hunk.added.start
+							local count = hunk.added.count
+
+							if count == 0 then
+								start_line = math.max(1, math.min(start_line, line_count))
+								count = 1
+							end
+
+							local end_line = math.min(start_line + count - 1, line_count)
+							if start_line <= end_line then
+								table.insert(regions, {
+									from = { line = start_line, col = 1 },
+									to = { line = end_line, col = math.max(vim.fn.getline(end_line):len(), 1) },
+									vis_mode = "V",
+								})
+							end
+						end
+
+						return regions
+					end,
 					u = ai.gen_spec.function_call(), -- u for "Usage"
 					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
 
