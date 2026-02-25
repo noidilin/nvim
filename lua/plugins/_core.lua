@@ -9,94 +9,9 @@ return {
 		},
 	},
 	{
-		"folke/snacks.nvim",
+		"folke/sidekick.nvim",
 		opts = {
-			gh = {
-				-- your gh configuration comes here
-				-- or leave it empty to use the default settings
-			},
-			picker = {
-				sources = {
-					gh_issue = {
-						-- your gh_issue picker configuration comes here
-						-- or leave it empty to use the default settings
-					},
-					gh_pr = {
-						-- your gh_pr picker configuration comes here
-						-- or leave it empty to use the default settings
-					},
-				},
-				win = {
-					input = {
-						keys = {
-							["<a-b>"] = { "toggle_hidden", mode = { "n", "i" } },
-							["J"] = { "preview_scroll_down", mode = "n" },
-							["K"] = { "preview_scroll_up", mode = "n" },
-						},
-					},
-					list = {
-						keys = {
-							["J"] = "preview_scroll_down",
-							["K"] = "preview_scroll_up",
-						},
-					},
-					preview = {
-						keys = {
-							["J"] = "preview_scroll_down",
-							["K"] = "preview_scroll_up",
-						},
-					},
-				},
-				layout = function()
-					return vim.o.columns >= 150 and { preset = "default", layout = { backdrop = false } }
-						or {
-							layout = {
-								backdrop = false,
-								width = 0.8,
-								min_width = 80,
-								height = 0.8,
-								min_height = 30,
-								box = "vertical",
-								border = "rounded",
-								title = "{title} {live} {flags}",
-								title_pos = "center",
-								{ win = "input", height = 1, border = "bottom" },
-								{ win = "list", border = "none" },
-								{ win = "preview", title = "{preview}", height = 0.7, border = "top" },
-							},
-						}
-				end,
-			},
-		},
-		keys = {
-			{
-				"<leader>gi",
-				function()
-					Snacks.picker.gh_issue()
-				end,
-				desc = "GitHub Issues (open)",
-			},
-			{
-				"<leader>gI",
-				function()
-					Snacks.picker.gh_issue({ state = "all" })
-				end,
-				desc = "GitHub Issues (all)",
-			},
-			{
-				"<leader>gp",
-				function()
-					Snacks.picker.gh_pr()
-				end,
-				desc = "GitHub Pull Requests (open)",
-			},
-			{
-				"<leader>gP",
-				function()
-					Snacks.picker.gh_pr({ state = "all" })
-				end,
-				desc = "GitHub Pull Requests (all)",
-			},
+			nes = { enabled = false },
 		},
 	},
 	{
@@ -153,9 +68,25 @@ return {
 		},
 	},
 	{
-		"folke/sidekick.nvim",
-		opts = {
-			nes = { enabled = false },
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = {
+			{
+				"folke/which-key.nvim",
+				opts = {
+					spec = {
+						{ "<leader>1", hidden = true },
+						{ "<leader>2", hidden = true },
+						{ "<leader>3", hidden = true },
+						{ "<leader>4", hidden = true },
+						{ "<leader>5", hidden = true },
+						{ "<leader>6", hidden = true },
+						{ "<leader>7", hidden = true },
+						{ "<leader>8", hidden = true },
+						{ "<leader>9", hidden = true },
+					},
+				},
+			},
 		},
 	},
 }
