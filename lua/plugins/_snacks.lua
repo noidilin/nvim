@@ -1,7 +1,8 @@
 return {
 	'folke/snacks.nvim',
 	opts = {
-		styles = { float = { backdrop = 85 } },
+		-- BUG: enable backdrop causing the underline became red in the float backgroud
+		styles = { float = { backdrop = 100 } },
 		gh = {}, -- leave it empty to use the default settings
 		picker = {
 			sources = {
