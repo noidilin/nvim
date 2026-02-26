@@ -15,12 +15,20 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = { "DrKJeff16/wezterm-types" },
 		opts = {
 			servers = {
 				tailwindcss = {
 					settings = {
 						tailwindCSS = {
 							classFunctions = { "cn", "cva", "clsx", "twMerge" },
+						},
+					},
+				},
+				lua_ls = {
+					settings = {
+						Lua = {
+							workspace = { library = { vim.fn.stdpath("data") .. "/lazy/wezterm-types/lua" } },
 						},
 					},
 				},
