@@ -57,10 +57,10 @@ return lush(function()
 		IncSearch { fg = p.mono02, bg = p.mono10 or p.mono07 }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		CurSearch { fg = p.mono16, bg = p.mono07 or p.mono05 }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
 		SpecialKey { fg = p.mono12 }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-		SpellBad { sp = p.red00, gui = "underline" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-		SpellCap { sp = p.orange00, gui = "underline" }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-		SpellLocal { sp = p.yellow00, gui = "underline" }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-		SpellRare { sp = p.yellow00, gui = "underline" }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
+		SpellBad { sp = p.red00, gui = "undercurl" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		SpellCap { sp = p.orange00, gui = "undercurl" }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+		SpellLocal { sp = p.yellow00, gui = "undercurl" }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+		SpellRare { sp = p.yellow00, gui = "undercurl" }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 		StatusLine { fg = p.mono16, bg = p.mono03 }, -- Status line of current window
 		StatusLineTerm { fg = p.mono16, bg = p.mono03 },
 		StatusLineNC { fg = p.mono12, bg = p.mono03 }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
