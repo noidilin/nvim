@@ -1,14 +1,15 @@
-local reserved = { "default", "error", "layout", "loading", "not-found", "page", "route", "template" }
-local utils = { "actions", "components", "data", "entities", "hooks", "lib", "utils", "env" }
+local reserved =
+	{ 'default', 'error', 'layout', 'loading', 'not-found', 'page', 'route', 'template' }
+local utils = { 'actions', 'components', 'data', 'entities', 'hooks', 'lib', 'utils', 'env' }
 local utils_temp = {
-	["actions"] = "act",
-	["components"] = "cmp",
-	["data"] = "data",
-	["entities"] = "ent",
-	["hooks"] = "hooks",
-	["lib"] = "lib",
-	["utils"] = "util",
-	["env"] = "env",
+	['actions'] = 'act',
+	['components'] = 'cmp',
+	['data'] = 'data',
+	['entities'] = 'ent',
+	['hooks'] = 'hooks',
+	['lib'] = 'lib',
+	['utils'] = 'util',
+	['env'] = 'env',
 }
 
 local function isNext()
@@ -17,7 +18,7 @@ local function isNext()
 
 	-- similar to reduce array method in javascript
 	if
-		vim.iter({ "next.config.js", "next.config.ts", "next.config.mjs" }):any(function(f)
+		vim.iter({ 'next.config.js', 'next.config.ts', 'next.config.mjs' }):any(function(f)
 			return vim.fn.filereadable(root .. sep .. f) == 1
 		end)
 	then
@@ -28,7 +29,7 @@ end
 local function getBufName(path, name)
 	-- Split path into segments (works on both "/" and "\" separators)
 	local segments = {}
-	for seg in path:gmatch("[^/\\]+") do
+	for seg in path:gmatch('[^/\\]+') do
 		table.insert(segments, seg)
 	end
 	local seg_count = #segments
@@ -37,10 +38,10 @@ local function getBufName(path, name)
 	if vim.tbl_contains(reserved, name) then
 		-- Look for "app" in any ancestor directory
 		for i, seg in ipairs(segments) do
-			if seg == "app" and i < seg_count then
+			if seg == 'app' and i < seg_count then
 				-- Use the immediate parent folder of the file
-				local parent = segments[seg_count - 1] or ""
-				return parent .. "/" .. name
+				local parent = segments[seg_count - 1] or ''
+				return parent .. '/' .. name
 			end
 		end
 	end
@@ -51,7 +52,7 @@ local function getBufName(path, name)
 		-- 	return seg .. "/" .. name
 		-- end
 		if utils_temp[seg] then
-			return utils_temp[seg] .. "/" .. name
+			return utils_temp[seg] .. '/' .. name
 		end
 	end
 
@@ -60,17 +61,17 @@ local function getBufName(path, name)
 end
 
 return {
-	"akinsho/bufferline.nvim",
+	'akinsho/bufferline.nvim',
 	opts = {
 		options = {
 			always_show_bufferline = true,
-			sort_by = "insert_at_end",
+			sort_by = 'insert_at_end',
 			name_formatter = function(buf)
         -- stylua: ignore
 				if not isNext() then return nil end
 
 				local path = buf.path -- Full file path
-				local name = vim.fn.fnamemodify(path, ":t:r") -- Strip extension ("page.tsx" -> "page")
+				local name = vim.fn.fnamemodify(path, ':t:r') -- Strip extension ("page.tsx" -> "page")
 				return getBufName(path, name)
 			end,
 		},

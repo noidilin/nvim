@@ -49,20 +49,20 @@ M.hex = {
 	accDim01 = "#7b7974",
 	accDim00 = "#6c6a65",
 
-	red01     = "#cc9393", -- '#eba0ac' maroon
-	red00     = "#b07878", -- '#f38ba8' red
-	green01   = "#9bb09b", -- '#94e2d5' teal
-	green00   = "#778777", -- '#a6e3a1' green
-	yellow01  = "#ebd6b7", -- '#f9e2af' yellow
-	yellow00  = "#d6caab", -- '#fab387' peach
-	blue01    = "#9db2cf", -- '#b4befe' lavender
-	blue00    = "#7d96ad", -- '#89b4fa' blue
+	red01 = "#cc9393", -- '#eba0ac' maroon
+	red00 = "#b07878", -- '#f38ba8' red
+	green01 = "#9bb09b", -- '#94e2d5' teal
+	green00 = "#778777", -- '#a6e3a1' green
+	yellow01 = "#ebd6b7", -- '#f9e2af' yellow
+	yellow00 = "#d6caab", -- '#fab387' peach
+	blue01 = "#9db2cf", -- '#b4befe' lavender
+	blue00 = "#7d96ad", -- '#89b4fa' blue
 	magenta01 = "#9f9fbd", -- '#f5c2e7' pink
 	magenta00 = "#797994", -- '#cba6f7' mauve
-	cyan01    = "#92b3b3", -- '#89dceb' sky
-	cyan00    = "#769494", -- '#74c7ec' sapphire
-	orange01  = "#dcb5a5", -- '#f5e0dc' rosewater
-	orange00  = "#c8a492", -- '#f2cdcd' flamingo
+	cyan01 = "#92b3b3", -- '#89dceb' sky
+	cyan00 = "#769494", -- '#74c7ec' sapphire
+	orange01 = "#dcb5a5", -- '#f5e0dc' rosewater
+	orange00 = "#c8a492", -- '#f2cdcd' flamingo
 }
 
 local function map_palette(palette, transform)

@@ -5,15 +5,15 @@ if true then return {} end
 -- [vim shell set to nushell caused windows device couldn't get clipboard image · Issue #103](https://github.com/hakonharnes/img-clip.nvim/issues/103)
 
 return {
-	"HakonHarnes/img-clip.nvim",
-	event = "VeryLazy",
+	'HakonHarnes/img-clip.nvim',
+	event = 'VeryLazy',
 	opts = {
 		default = {
 			-- file and directory options
-			dir_path = "./extra/asset", ---@type string | fun(): string
+			dir_path = './extra/asset', ---@type string | fun(): string
 			-- extension = "avif", ---@type string | fun(): string
-			extension = "jpg", ---@type string | fun(): string
-			file_name = "r-%Y%m%d%H%M%S", ---@type string | fun(): string
+			extension = 'jpg', ---@type string | fun(): string
+			file_name = 'r-%Y%m%d%H%M%S', ---@type string | fun(): string
 			use_absolute_path = false, ---@type boolean | fun(): boolean
 			-- if set to false, image will be created in cwd
 			relative_to_current_file = false, ---@type boolean | fun(): boolean
@@ -21,7 +21,7 @@ return {
 			insert_mode_after_paste = false, ---@type boolean | fun(): boolean
 			prompt_for_file_name = false, ---@type boolean | fun(): boolean
 
-			process_cmd = "convert - -quality 75 jpg:-", ---@type string | fun(): string
+			process_cmd = 'convert - -quality 75 jpg:-', ---@type string | fun(): string
 			-- process_cmd = "convert - -quality 75 -resize 50% jpg:-", ---@type string | fun(): string
 			copy_images = true, ---@type boolean | fun(): boolean
 		},
@@ -36,11 +36,11 @@ return {
 				-- 1. $FILE_NAME: automatically fill in "file_name" value as display text.
 				-- 2. $CURSOR: paste image and place cursor in there to type the display text (not filename)
 				-- 3. plain text: plain text for every display text
-				template = "![$FILE_NAME]($FILE_PATH)", ---@type string | fun(context: table): string
+				template = '![$FILE_NAME]($FILE_PATH)', ---@type string | fun(context: table): string
 				-- template = "![$CURSOR]($FILE_PATH)", ---@type string | fun(context: table): string
 				-- template = "![Image]($FILE_PATH)", ---@type string
 			},
 		},
 	},
-	keys = { { "<leader>np", "<cmd>PasteImage<cr>", desc = "paste img" } },
+	keys = { { '<leader>np', '<cmd>PasteImage<cr>', desc = 'paste img' } },
 }

@@ -3,16 +3,16 @@
 if true then return {} end
 
 return {
-	"levouh/tint.nvim",
-	event = "VeryLazy",
+	'levouh/tint.nvim',
+	event = 'VeryLazy',
 	opts = function()
-		local tint = require("tint")
-		local p = require("theme.lua.lush_theme._primitive").hex
+		local tint = require('tint')
+		local p = require('theme.lua.lush_theme._primitive').hex
 		tint.setup({
 			-- ref: https://github.com/levouh/tint.nvim/blob/master/DOC.md#transforms-tint_with_threshold
 			transforms = {
-				require("tint.transforms").tint_with_threshold(-35, p.mono02, 20), -- tint by -40, keep 20 away from #191919
-				require("tint.transforms").saturate(0.4),
+				require('tint.transforms').tint_with_threshold(-35, p.mono02, 20), -- tint by -40, keep 20 away from #191919
+				require('tint.transforms').saturate(0.4),
 			},
 		})
 		return {

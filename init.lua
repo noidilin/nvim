@@ -1,5 +1,5 @@
-require("config.lazy")
+require('config.lazy')
 
 if vim.g.vscode then
-	require("vsc")
+	require('vsc')
 end

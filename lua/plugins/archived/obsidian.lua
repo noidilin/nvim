@@ -6,49 +6,49 @@ if true then return {} end
 -- snack.image provide image preview feature, but it heavily relys on caching image in png format.
 
 -- Try to resolve the real path of the vault
-local VAULT_PATH = vim.uv.fs_realpath(vim.fn.expand("$XDG_DATA_HOME/obsidian"))
+local VAULT_PATH = vim.uv.fs_realpath(vim.fn.expand('$XDG_DATA_HOME/obsidian'))
 
 -- Fallback to a default value if VAULT_PATH is nil
 if not VAULT_PATH then
-	vim.notify("Vault path not found. Using fallback path.", vim.log.levels.WARN)
-	VAULT_PATH = "" -- Set a reasonable default here
+	vim.notify('Vault path not found. Using fallback path.', vim.log.levels.WARN)
+	VAULT_PATH = '' -- Set a reasonable default here
 else
 	-- Normalize slashes to forward slashes
-	VAULT_PATH = VAULT_PATH:gsub("\\", "/")
+	VAULT_PATH = VAULT_PATH:gsub('\\', '/')
 end
 
-local MD_PATH = VAULT_PATH .. "/**.md"
+local MD_PATH = VAULT_PATH .. '/**.md'
 
 return {
-	"obsidian-nvim/obsidian.nvim",
+	'obsidian-nvim/obsidian.nvim',
 	lazy = true,
 	event = {
-		"BufReadPre " .. MD_PATH,
-		"BufNewFile " .. MD_PATH,
+		'BufReadPre ' .. MD_PATH,
+		'BufNewFile ' .. MD_PATH,
 	},
 
 	opts = {
-		workspaces = { { name = "obsidian", path = VAULT_PATH } },
-		notes_subdir = "source",
-		new_notes_location = "notes_subdir",
+		workspaces = { { name = 'obsidian', path = VAULT_PATH } },
+		notes_subdir = 'source',
+		new_notes_location = 'notes_subdir',
 
-		daily_notes = { folder = "calendar/daily", template = "daily.md" },
+		daily_notes = { folder = 'calendar/daily', template = 'daily.md' },
 		templates = {
-			folder = "extra/templates",
+			folder = 'extra/templates',
 			substitutions = {
 				year = function() -- "2024"
-					return os.date("%Y", os.time())
+					return os.date('%Y', os.time())
 				end,
 				month = function() -- "2024-09"
-					return os.date("%Y-%m", os.time())
+					return os.date('%Y-%m', os.time())
 				end,
 				week = function() -- "2024-03-w10"
-					return os.date("%Y-%m-w%V", os.time())
+					return os.date('%Y-%m-w%V', os.time())
 				end,
 			},
 		},
 
-		picker = { name = "snacks.pick" },
+		picker = { name = 'snacks.pick' },
 		completion = {
 			nvim_cmp = false,
 			blink = false,
@@ -61,30 +61,65 @@ return {
 		-- key mappings
 		callbacks = {
 			enter_note = function(_, note)
-				vim.keymap.del("n", "<CR>", { buffer = note.bufnr })
-				vim.keymap.set("n", "]n", function()
-					require("obsidian.api").nav_link("next")
-				end, { buffer = note.bufnr, desc = "Obsidian next link" })
-				vim.keymap.set("n", "[n", function()
-					require("obsidian.api").nav_link("prev")
-				end, { buffer = note.bufnr, desc = "Obsidian previous link" })
+				vim.keymap.del('n', '<CR>', { buffer = note.bufnr })
+				vim.keymap.set('n', ']n', function()
+					require('obsidian.api').nav_link('next')
+				end, { buffer = note.bufnr, desc = 'Obsidian next link' })
+				vim.keymap.set('n', '[n', function()
+					require('obsidian.api').nav_link('prev')
+				end, { buffer = note.bufnr, desc = 'Obsidian previous link' })
 			end,
 		},
 	},
 
 	dependencies = {
 		{
-			"folke/which-key.nvim",
+			'folke/which-key.nvim',
 			opts = {
 				spec = {
 					-- note that `<cmd>ObsidianExtractNote<cr>` and `:ObsidianExtractNote<cr>` are not equal.
-					{ "<leader>n", group = "+obsidian", mode = { "n", "v" }, icon = { icon = "" } },
-					{ "<leader>ny", "<cmd>Obsidian yesterday<cr>", desc = "yesterday", icon = { icon = "" } },
-					{ "<leader>nd", "<cmd>Obsidian today<cr>", desc = "today", icon = { icon = "" } },
-					{ "<leader>nt", "<cmd>Obsidian tomorrow<cr>", desc = "tomorrow", icon = { icon = "" } },
-					{ "<leader>ns", "<cmd>Obsidian template<cr>", desc = "snippet", icon = { icon = "" } },
-					{ "<leader>nb", "<cmd>Obsidian backlinks<cr>", desc = "backlinks", icon = { icon = "" } },
-					{ "<leader>nl", "<cmd>Obsidian links<cr>", desc = "links", icon = { icon = "" } },
+					{
+						'<leader>n',
+						group = '+obsidian',
+						mode = { 'n', 'v' },
+						icon = { icon = '' },
+					},
+					{
+						'<leader>ny',
+						'<cmd>Obsidian yesterday<cr>',
+						desc = 'yesterday',
+						icon = { icon = '' },
+					},
+					{
+						'<leader>nd',
+						'<cmd>Obsidian today<cr>',
+						desc = 'today',
+						icon = { icon = '' },
+					},
+					{
+						'<leader>nt',
+						'<cmd>Obsidian tomorrow<cr>',
+						desc = 'tomorrow',
+						icon = { icon = '' },
+					},
+					{
+						'<leader>ns',
+						'<cmd>Obsidian template<cr>',
+						desc = 'snippet',
+						icon = { icon = '' },
+					},
+					{
+						'<leader>nb',
+						'<cmd>Obsidian backlinks<cr>',
+						desc = 'backlinks',
+						icon = { icon = '' },
+					},
+					{
+						'<leader>nl',
+						'<cmd>Obsidian links<cr>',
+						desc = 'links',
+						icon = { icon = '' },
+					},
 				},
 			},
 		},

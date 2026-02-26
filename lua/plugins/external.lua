@@ -1,61 +1,81 @@
 return {
 	{
-		"alker0/chezmoi.vim", -- highlighting for chezmoi files template files
+		'alker0/chezmoi.vim', -- highlighting for chezmoi files template files
 		init = function()
-			vim.g["chezmoi#use_tmp_buffer"] = 1
-			vim.g["chezmoi#source_dir_path"] = vim.env.HOME .. "/.local/share/chezmoi"
+			vim.g['chezmoi#use_tmp_buffer'] = 1
+			vim.g['chezmoi#source_dir_path'] = vim.env.HOME .. '/.local/share/chezmoi'
 		end,
 	},
 	{
-		"mikavilpas/yazi.nvim",
-		event = "VeryLazy",
+		'mikavilpas/yazi.nvim',
+		event = 'VeryLazy',
 		dependencies = {
-			{ "nvim-lua/plenary.nvim", lazy = true },
+			{ 'nvim-lua/plenary.nvim', lazy = true },
 			{
-				"folke/which-key.nvim",
+				'folke/which-key.nvim',
 				opts = {
 					spec = {
-						{ "<leader>y", group = "+yazi", mode = { "n", "v" }, icon = { icon = "󰇥" } },
-						mode = { "n", "v" },
-						{ "<leader>yy", "<cmd>Yazi toggle<cr>", desc = "open last session", icon = { icon = "󰇥" } },
-						{ "<leader>yd", "<cmd>Yazi cwd<cr>", desc = "open yazi in cwd", icon = { icon = "" } },
-						{ "<leader>yf", "<cmd>Yazi<cr>", desc = "open yazi at current file", icon = { icon = "󰈔" } },
+						{
+							'<leader>y',
+							group = '+yazi',
+							mode = { 'n', 'v' },
+							icon = { icon = '󰇥' },
+						},
+						mode = { 'n', 'v' },
+						{
+							'<leader>yy',
+							'<cmd>Yazi toggle<cr>',
+							desc = 'open last session',
+							icon = { icon = '󰇥' },
+						},
+						{
+							'<leader>yd',
+							'<cmd>Yazi cwd<cr>',
+							desc = 'open yazi in cwd',
+							icon = { icon = '' },
+						},
+						{
+							'<leader>yf',
+							'<cmd>Yazi<cr>',
+							desc = 'open yazi at current file',
+							icon = { icon = '󰈔' },
+						},
 					},
 				},
 			},
 		},
 	},
 	{
-		"mrjones2014/smart-splits.nvim",
+		'mrjones2014/smart-splits.nvim',
 		lazy = false,
 		keys = {
 			{
-				"<c-h>",
+				'<c-h>',
 				function()
-					require("smart-splits").move_cursor_left()
+					require('smart-splits').move_cursor_left()
 				end,
-				desc = "move cursor left",
+				desc = 'move cursor left',
 			},
 			{
-				"<c-j>",
+				'<c-j>',
 				function()
-					require("smart-splits").move_cursor_down()
+					require('smart-splits').move_cursor_down()
 				end,
-				desc = "move cursor down",
+				desc = 'move cursor down',
 			},
 			{
-				"<c-k>",
+				'<c-k>',
 				function()
-					require("smart-splits").move_cursor_up()
+					require('smart-splits').move_cursor_up()
 				end,
-				desc = "move cursor up",
+				desc = 'move cursor up',
 			},
 			{
-				"<c-l>",
+				'<c-l>',
 				function()
-					require("smart-splits").move_cursor_right()
+					require('smart-splits').move_cursor_right()
 				end,
-				desc = "move cursor right",
+				desc = 'move cursor right',
 			},
 		},
 	},

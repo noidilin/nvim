@@ -2,15 +2,15 @@
 if true then return {} end
 
 return {
-	"tris203/precognition.nvim",
-	event = "VeryLazy",
+	'tris203/precognition.nvim',
+	event = 'VeryLazy',
 	keys = {
 		{
-			"<leader>uM",
+			'<leader>uM',
 			function()
-				require("precognition").toggle()
+				require('precognition').toggle()
 			end,
-			desc = "toggle motion hint",
+			desc = 'toggle motion hint',
 		},
 	},
 	opts = { startVisible = false },
