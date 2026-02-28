@@ -7,12 +7,7 @@ return {
 				-- nvim-rip-substitute
 				{ 'gef', mode = { 'n', 'x' }, desc = 'rip substitute', icon = { icon = '' } },
 				-- treesj
-				{
-					'get',
-					mode = { 'n' },
-					desc = 'split/join (treesitter)',
-					icon = { icon = '󰊈' },
-				},
+				{ 'get', mode = { 'n' }, desc = 'split/join (ts)', icon = { icon = '󰊈' } },
 				-- mini operator
 				{ 'gem', mode = { 'n' }, desc = 'multiply operator', icon = { icon = '󰿈' } },
 				{ 'ger', mode = { 'n' }, desc = 'replace operator', icon = { icon = '' } },

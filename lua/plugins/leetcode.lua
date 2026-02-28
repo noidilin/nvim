@@ -14,6 +14,16 @@ return {
 			opts = {
 				spec = {
 					{ '<leader>Q', group = 'leetcode', icon = { icon = '󰺢' } },
+					{ '<leader>Qm', mode = { 'n' }, icon = { icon = '󰍜' } },
+					{ '<leader>Qx', mode = { 'n' }, icon = { icon = '󰈆', color = 'red' } },
+					{ '<leader>Qc', mode = { 'n' }, icon = { icon = '' } },
+					{ '<leader>Qi', mode = { 'n' }, icon = { icon = '󰋽' } },
+					{ '<leader>Qy', mode = { 'n' }, icon = { icon = '' } },
+					{ '<leader>Qt', mode = { 'n' }, icon = { icon = '', color = 'red' } },
+					{ '<leader>Qs', mode = { 'n' }, icon = { icon = '', color = 'red' } },
+					{ '<leader>Ql', mode = { 'n' }, icon = { icon = '' } },
+					{ '<leader>Qo', mode = { 'n' }, icon = { icon = '󰈔' } },
+					{ '<leader>Qr', mode = { 'n' }, icon = { icon = '󰜉' } },
 				},
 			},
 		},
@@ -34,7 +44,13 @@ return {
 		local p = require('theme.lua.lush_theme._primitive').hex
 		opts = {
 			arg = leet_arg,
-			lang = 'typescript',
+			lang = 'python3',
+			storage = {
+				home = vim.fs.joinpath(vim.fn.expand('~'), 'hub', 'leet'),
+			},
+			editor = {
+				reset_previous_code = false,
+			},
 			injector = {
 				golang = { before = 'package main' },
 			},
