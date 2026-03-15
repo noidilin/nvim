@@ -14,6 +14,7 @@ return {
 			opts = {
 				spec = {
 					{ '<leader>Q', group = 'leetcode', icon = { icon = '󰺢' } },
+					{ '<leader>Q<Tab>', mode = { 'n' }, icon = { icon = '󰘍' } },
 					{ '<leader>Qm', mode = { 'n' }, icon = { icon = '󰍜' } },
 					{ '<leader>Qx', mode = { 'n' }, icon = { icon = '󰈆', color = 'red' } },
 					{ '<leader>Qc', mode = { 'n' }, icon = { icon = '' } },
@@ -29,6 +30,7 @@ return {
 		},
 	},
 	keys = {
+		{ '<leader>Q<Tab>', '<cmd>Leet tabs<cr>', desc = 'tabs' },
 		{ '<leader>Qm', '<cmd>Leet menu<cr>', desc = 'menu' },
 		{ '<leader>Qx', '<cmd>Leet exit<cr>', desc = 'exit' },
 		{ '<leader>Qc', '<cmd>Leet console<cr>', desc = 'console' },
