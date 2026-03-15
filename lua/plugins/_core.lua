@@ -1,5 +1,5 @@
 return {
-	{ 'ggandor/leap.nvim', enabled = false },
+	{ 'https://codeberg.org/andyg/leap.nvim.git', enabled = false },
 	{
 		-- BUG: char mode in macro [bug: Weird behavior when using f in a macro](https://github.com/folke/flash.nvim/issues/379)
 		'folke/flash.nvim',
