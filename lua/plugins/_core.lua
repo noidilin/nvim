@@ -9,12 +9,6 @@ return {
 		},
 	},
 	{
-		'folke/sidekick.nvim',
-		opts = {
-			nes = { enabled = false },
-		},
-	},
-	{
 		'saghen/blink.cmp',
 		opts = {
 			keymap = { preset = 'default', ['<Up>'] = {}, ['<Down>'] = {} },
