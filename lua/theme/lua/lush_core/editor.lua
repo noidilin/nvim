@@ -7,6 +7,8 @@ local p = require("lush_theme._primitive").hex
 -- design system: component token
 return lush(function()
 	return {
+		NvimInternalError { fg = p.red01 },
+		-- nvim_set_hl_x_hi_clear_bugfix { fg = p.orange00 },
 		-- The following are the Neovim (as of 0.8.0-dev+100-g371dfb174) highlight groups. See :h highlight-groups
 		ColorColumn { bg = p.mono05 }, -- Columns set with 'colorcolumn'
 		Conceal { fg = p.mono22, bg = p.mono02 }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
