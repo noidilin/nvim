@@ -2,7 +2,14 @@ return {
 	'folke/snacks.nvim',
 	opts = {
 		-- BUG: enable backdrop causing the underline became red in the float backgroud
-		styles = { float = { backdrop = 100 } },
+		styles = {
+			float = { backdrop = 100 },
+			-- This keeps the image on the top right corner, basically leaving your text area free, suggestion found in reddit by user `Redox_ahmii`
+			snacks_image = {
+				relative = 'editor',
+				col = -1,
+			},
+		},
 		gh = {}, -- leave it empty to use the default settings
 		picker = {
 			sources = {
@@ -48,6 +55,13 @@ return {
 						},
 					}
 			end,
+		},
+		image = {
+			enable = true,
+			doc = {
+				inline = false,
+				float = true,
+			},
 		},
 	},
 	keys = {
