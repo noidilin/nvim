@@ -8,6 +8,7 @@ return {
 			snacks_image = {
 				relative = 'editor',
 				col = -1,
+				row = 1,
 			},
 		},
 		gh = {}, -- leave it empty to use the default settings
