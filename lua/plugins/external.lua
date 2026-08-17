@@ -48,6 +48,10 @@ return {
 	{
 		'mrjones2014/smart-splits.nvim',
 		lazy = false,
+		opts = {
+			multiplexer_integration = 'zellij',
+			zellij_move_focus_or_tab = false,
+		},
 		keys = {
 			{
 				'<c-h>',
