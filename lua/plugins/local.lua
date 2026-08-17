@@ -1,9 +1,10 @@
 return {
 	{
-		'noidilin/jjui.nvim',
-		dir = '/Users/noid/hub/dev/jjui.nvim',
+		'noidilin/tuimux.nvim',
+		enabled = false,
+		dir = '/Users/noid/hub/dev/tuimux',
 		dev = true,
-		cmd = { 'Jjui' },
+		cmd = { 'Tuimux' },
 		keys = {
 			{ '<leader>jj', '<cmd>Jjui toggle<cr>', desc = 'toggle jjui' },
 			{ '<leader>jc', '<cmd>Jjui cwd<cr>', desc = 'open jjui in cwd' },
