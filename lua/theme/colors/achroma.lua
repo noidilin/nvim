@@ -1,20 +1,15 @@
--- You probably always want to set this in your vim file
-vim.opt.background = 'dark'
-vim.g.colors_name = 'achroma'
+-- achroma -- follows 'background'.
+--
+-- Deliberately does NOT force `vim.opt.background` any more. Neovim 0.10+
+-- queries the terminal's background with OSC 11 and sets 'background' from the
+-- reply, so leaving it alone lets the editor follow wezterm -- and therefore the
+-- Windows app theme -- on its own. `:set background=light` also flips it live,
+-- via the OptionSet autocmd in lua/achroma.lua.
+--
+-- Use achroma-light / achroma-dark to pin a variant instead.
+--
+-- The loader clears the cached spec tree (lush_theme.*, lush_core.*,
+-- lush_plugin.*) before re-requiring, so the palette variant in
+-- lush_theme/_primitive.lua is re-evaluated on every apply.
 
--- By setting our module to nil, we clear lua's cache,
--- which means the require ahead will *always* occur.
---
--- This isn't strictly required but it can be a useful trick if you are
--- incrementally editing your config a lot and want to be sure your themes
--- changes are being picked up without restarting neovim.
---
--- Note if you're working in on your theme and have :Lushify'd the buffer,
--- your changes will be applied with our without the following line.
---
--- The performance impact of this call can be measured in the hundreds of
--- *nanoseconds* and such could be considered "production safe".
-package.loaded['lush_theme.main'] = nil
-
--- include our theme file and pass it to lush to apply
-require('lush')(require('lush_theme.main'))
+require('achroma').load('achroma')

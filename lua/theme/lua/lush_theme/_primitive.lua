@@ -1,8 +1,20 @@
 local lush = require("lush")
 
+-- achroma primitive palette, dark + light.
+--
+-- The numeric index is a ROLE, not a lightness: low = "background side",
+-- high = "foreground side". The light table keeps every key name and reverses
+-- which end is bright, so _semantic, _component, every lush_core/* and
+-- lush_plugin/* spec, and lua/plugins/ui.lua's lualine table all follow the
+-- variant with no further edits.
+--
+-- `M.hex` is bound to `vim.o.background` at load time. colors/achroma*.lua
+-- clear this module from package.loaded before requiring, so the binding is
+-- re-evaluated on every :colorscheme / :set background.
+
 local M = {}
 
-M.hex = {
+M.dark = {
 	mono25 = "#eaeaea",
 	mono24 = "#dcdcdc",
 	mono23 = "#cccccc",
@@ -64,6 +76,77 @@ M.hex = {
 	orange01 = "#dcb5a5", -- '#f5e0dc' rosewater
 	orange00 = "#c8a492", -- '#f2cdcd' flamingo
 }
+
+-- Greys marked (zebar) are verbatim from ~/.glzr/zebar/noidilin/styles.css so
+-- the bar, the terminal and the editor share one set of surfaces.
+M.light = {
+	mono00 = "#ffffff",
+	mono01 = "#fafafa",
+	mono02 = "#f7f7f7", -- mantle   (zebar)
+	mono03 = "#ededed", -- base     (zebar)
+	mono04 = "#ebebeb",
+	mono05 = "#eaeaea", -- surface0 (zebar)
+	mono06 = "#e5e5e5",
+	mono07 = "#e0e0e0", -- surface1 (zebar)
+	mono08 = "#dadada",
+	mono09 = "#d4d4d4", -- surface2 (zebar)
+	mono10 = "#c4c4c4",
+	mono11 = "#b4b4b4", -- overlay0
+	mono12 = "#9f9f9f",
+	mono13 = "#8a8a8a", -- overlay1 (zebar)
+	mono14 = "#7c7c7c",
+	mono15 = "#6e6e6e", -- overlay2 (zebar)
+	mono16 = "#656565",
+	mono17 = "#5c5c5c", -- subtext0 (zebar)
+	mono18 = "#555555",
+	mono19 = "#4d4d4d", -- subtext1 (zebar)
+	mono20 = "#444444",
+	mono21 = "#3a3a3a", -- text     (zebar)
+	mono22 = "#313131",
+	mono23 = "#292929",
+	mono24 = "#1f1f1f",
+	mono25 = "#111111",
+
+	-- warm accent, lightness mirrored, hue/sat preserved
+	acc08 = "#24211a",
+	acc07 = "#35312a",
+	acc06 = "#454037",
+	acc05 = "#524c42",
+	acc04 = "#5f594e",
+	acc03 = "#6c655a",
+	acc02 = "#7a7367",
+	acc01 = "#8b8478",
+	acc00 = "#9c9488",
+	accDim08 = "#201e1a",
+	accDim07 = "#302e29",
+	accDim06 = "#403d37",
+	accDim05 = "#4c4a44",
+	accDim04 = "#5a5750",
+	accDim03 = "#67645d",
+	accDim02 = "#75726b",
+	accDim01 = "#86837c",
+	accDim00 = "#97948c",
+
+	-- Re-derived, not inverted: the dark pastels land at 2.1-2.8:1 on #ededed.
+	-- XX01 remains the emphasis slot, i.e. darker than XX00 in light mode.
+	red01 = "#7f4747", -- maroon
+	red00 = "#9b5f5f", -- red
+	green01 = "#3d573d", -- teal
+	green00 = "#4f6b4f", -- green
+	yellow01 = "#5c4c2c", -- yellow
+	yellow00 = "#6f5c37", -- peach
+	blue01 = "#384f68", -- lavender
+	blue00 = "#4a6480", -- blue
+	magenta01 = "#4a4a66", -- pink
+	magenta00 = "#5f5f7e", -- mauve
+	cyan01 = "#3b5a5a", -- sky
+	cyan00 = "#4f7070", -- sapphire
+	orange01 = "#70503c", -- rosewater
+	orange00 = "#8a6348", -- flamingo
+}
+
+M.is_light = vim.o.background == "light"
+M.hex = M.is_light and M.light or M.dark
 
 local function map_palette(palette, transform)
 	local result = {}
