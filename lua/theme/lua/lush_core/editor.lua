@@ -4,6 +4,12 @@
 local lush = require("lush")
 local p = require("lush_theme._primitive").hex
 
+-- A few groups below use a background-side token as `fg` over a mid or pale
+-- `bg`. That reads fine on the dark ramp and collapses on the light one, so
+-- those pick their `bg` by variant. Every `or` branch is the original dark
+-- value, so the dark theme renders byte-identically to before.
+local light = require("lush_theme._primitive").is_light
+
 -- design system: component token
 return lush(function()
 	return {
@@ -46,7 +52,9 @@ return lush(function()
 		FloatTitle { fg = p.mono16, bg = p.mono02 }, -- Title of floating windows.
 		FloatFooter { fg = p.mono09, bg = p.mono02 },
 		Pmenu { fg = p.mono16, bg = p.mono03 }, -- Popup menu: Normal item.
-		PmenuSel { bg = p.mono04, gui = "bold" }, -- Popup menu: Selected item.
+		-- light: mono04 is 1.02:1 against Pmenu's mono03 bg, so the selected row
+		-- is invisible without the bold. mono07 separates it.
+		PmenuSel { bg = light and p.mono07 or p.mono04, gui = "bold" }, -- Popup menu: Selected item.
 		PmenuKind { fg = p.mono22, bg = p.mono03 }, -- Popup menu: Normal item "kind"
 		-- PmenuKindSel   { }, -- Popup menu: Selected item "kind"
 		PmenuExtra { fg = p.mono12, bg = p.mono03 }, -- Popup menu: Normal item "extra text"
@@ -56,7 +64,8 @@ return lush(function()
 		Question { fg = p.accDim05 }, -- |hit-enter| prompt and yes/no questions
 		QuickFixLine { fg = p.mono22, gui = "underline" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		Search { fg = p.mono16, bg = p.mono10 or p.mono07 }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-		IncSearch { fg = p.mono02, bg = p.mono10 or p.mono07 }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+		-- light: fg mono02 on bg mono10 is 1.63:1 -> mono19 gives 7.89:1
+		IncSearch { fg = p.mono02, bg = light and p.mono19 or (p.mono10 or p.mono07) }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		CurSearch { fg = p.mono16, bg = p.mono07 or p.mono05 }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
 		SpecialKey { fg = p.mono12 }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
 		SpellBad { sp = p.red00, gui = "undercurl" }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
@@ -73,7 +82,8 @@ return lush(function()
 		Terminal { fg = p.mono16, bg = p.mono02 },
 		-- TermCursor     { }, -- Cursor in a focused terminal
 		-- TermCursorNC   { }, -- Cursor in an unfocused terminal
-		ToolbarButton { fg = p.mono02, bg = p.mono07 },
+		-- light: fg mono02 on bg mono07 is 1.23:1 -> mono15 gives 4.76:1
+		ToolbarButton { fg = p.mono02, bg = light and p.mono15 or p.mono07 },
 		ToolbarLine { fg = p.mono16 },
 		Title { fg = p.mono10 }, -- Titles for output from ":set all", ":autocmd"
 		Visual { fg = p.mono16, bg = p.mono07 }, -- Visual mode selection
