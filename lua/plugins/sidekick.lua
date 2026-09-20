@@ -4,12 +4,13 @@ return {
 		-- add any options here
 		cli = {
 			win = {
-				layout = 'right', ---@type "float"|"left"|"bottom"|"top"|"right"
+				layout = 'float', ---@type "float"|"left"|"bottom"|"top"|"right"
 				--- Options used when layout is "float"
 				---@type vim.api.keyset.win_config
 				float = {
 					width = 0.9,
 					height = 0.9,
+					border = 'rounded',
 				},
 				-- Options used when layout is "left"|"bottom"|"top"|"right"
 				---@type vim.api.keyset.win_config
