@@ -46,11 +46,17 @@ return {
 		},
 	},
 	{
-		'mrjones2014/smart-splits.nvim',
+		'smart-splits-nvim/smart-splits.nvim',
 		lazy = false,
+		dependencies = {
+			{
+				'smart-splits-nvim/backend-zellij-lua',
+				main = 'smart-splits-backend-zellij-lua',
+				opts = {},
+			},
+		},
 		opts = {
-			multiplexer_integration = 'zellij',
-			zellij_move_focus_or_tab = false,
+			mux = { backend = 'smart-splits-backend-zellij-lua' },
 		},
 		keys = {
 			{
