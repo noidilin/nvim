@@ -128,8 +128,8 @@ return lush(function(injected_functions)
 		sym("@markup.quote") { fg = p.mono12 }, -- quotes with >
 		sym("@markup.math") { fg = p.mono15 }, -- math environments (e.g. `$ ... $` in LaTeX)
 		sym("@markup.link") { fg = p.mono15 }, -- text references, footnotes, citations, etc
-		sym("@markup.link.label") { fg = p.mono15, gui = "underline" }, -- link, reference, descriptions
-		sym("@markup.link.url") { fg = p.mono15, gui = "underline" }, -- urls, links, emails
+		sym("@markup.link.label") { fg = p.mono15, sp = p.mono15, gui = "underline" }, -- link, reference, descriptions
+		sym("@markup.link.url") { fg = p.mono15, sp = p.mono15, gui = "underline" }, -- urls, links, emails
 		sym("@markup.raw") { fg = p.accDim05 }, -- literal or verbatim text (e.g. inline code in markdown and for doc in python ("""))
 		sym("@markup.raw.block") { fg = p.accDim05 }, -- literal or verbatim text as a stand-alone block
 		sym("@markup.list") { fg = p.mono22 }, -- list markers
