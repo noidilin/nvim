@@ -3,7 +3,9 @@
 
 local lush = require("lush")
 local h = lush.hsl
-local p = require("lush_theme._primitive").hex
+local primitive = require("lush_theme._primitive")
+local p = primitive.hex
+local light = primitive.is_light
 local s = require("lush_theme._semantic")
 
 -- design system: component token
@@ -60,9 +62,11 @@ return lush(function()
 		DiffFile { fg = p.mono19 },
 		DiffLine { fg = p.mono09 },
 		DiffIndexLine { fg = p.mono13 },
-		-- background: darken diff
-		DiffAdd { bg = h(p.green00).darken(65) }, -- Diff mode: Added line |diff.txt|
-		DiffDelete { bg = h(p.red00).darken(65) }, -- Diff mode: Deleted line |diff.txt|
+		-- Diff fills need to move toward the background end of each palette.
+		-- Sidekick uses these groups for Copilot NES, including virtual lines whose
+		-- syntax foregrounds become unreadable on dark fills in the light variant.
+		DiffAdd { bg = light and h(p.green00).lighten(65) or h(p.green00).darken(65) }, -- Diff mode: Added line |diff.txt|
+		DiffDelete { bg = light and h(p.red00).lighten(65) or h(p.red00).darken(65) }, -- Diff mode: Deleted line |diff.txt|
 		DiffChange { bg = p.mono05 }, -- Diff mode: Changed line |diff.txt|
 		DiffText { bg = p.mono05 }, -- Diff mode: Changed text within a changed line |diff.txt|
 	}

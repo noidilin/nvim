@@ -10,6 +10,7 @@ local bufferline = require("lush_plugin.bufferline")
 local markdown = require("lush_plugin.markdown")
 local neotest = require("lush_plugin.neotest")
 local snack = require("lush_plugin.snack")
+local sidekick = require("lush_plugin.sidekick")
 local avante = require("lush_plugin.avante")
 local trivia = require("lush_plugin.trivia")
 -- stale
@@ -28,6 +29,7 @@ local specs = {
 	markdown,
 	neotest,
 	snack,
+	sidekick,
 	avante,
 	trivia,
 	-- neotree,
