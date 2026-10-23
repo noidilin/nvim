@@ -1,9 +1,5 @@
 return {
 	{
-		'nvim-treesitter/nvim-treesitter',
-		opts = { ensure_installed = { 'powershell' } },
-	},
-	{
 		'cordx56/rustowl',
 		version = '*', -- Latest stable version
 		build = 'cargo binstall rustowl', -- cargo-binstall is needed
@@ -23,20 +19,6 @@ return {
 
 			return opts
 		end,
-	},
-	{
-		'mason-org/mason.nvim',
-		opts = {
-			ensure_installed = {
-				'powershell-editor-services',
-			},
-		},
-	},
-	{
-		'TheLeoP/powershell.nvim',
-		opts = {
-			bundle_path = vim.fn.stdpath('data') .. '/mason/packages/powershell-editor-services',
-		},
 	},
 	{
 		'neovim/nvim-lspconfig',
