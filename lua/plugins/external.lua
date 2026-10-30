@@ -44,6 +44,32 @@ return {
 				},
 			},
 		},
+		opts = {
+			-- yazi.nvim runs yazi as a chooser and `:edit`s the result, bypassing yazi.toml openers
+			open_file_function = function(chosen_file)
+				local ext = vim.fn.fnamemodify(chosen_file, ':e'):lower()
+				if
+					vim.tbl_contains({
+						'pdf',
+						'pptx',
+						'xlsx',
+						'docx',
+						'png',
+						'jpg',
+						'jpeg',
+						'gif',
+						'webp',
+						'heic',
+						'bmp',
+						'tiff',
+					}, ext)
+				then
+					vim.ui.open(chosen_file)
+				else
+					require('yazi.openers').open_file(chosen_file)
+				end
+			end,
+		},
 	},
 	{
 		'smart-splits-nvim/smart-splits.nvim',
